@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp)
+add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp landing.cpp landing.h landing.ui table.cpp table.h table.ui)
 target_link_libraries(DBMS
         Qt5::Core
         Qt5::Gui
