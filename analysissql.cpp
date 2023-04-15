@@ -28,6 +28,7 @@
  * 修改字段：alter table tablename modify column columnname datatype;
  * 5.查询操作：
  * 查询全部：select * from tablename;
+ *
  * 查询指定字段：select （column1,column2,column3） from tablename;
  * 查询指定字段以及where条件：select （column1,column2,column3） from tablename where 属性名=XXX;
  * 6.建立索引：
