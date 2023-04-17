@@ -39,7 +39,7 @@ void landing::logButton_clicked() {
     QString password=ui->passWord->text();
 
 //    //userInformation example;
-//    QFile file("./userInformation");
+//    QFile file("./user.txt");
 //    if(file.open(QIODevice::ReadOnly|QIODevice::Text))
 //    {
 //        QString line1;
