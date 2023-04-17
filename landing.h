@@ -6,6 +6,10 @@
 #define DBMS_LANDING_H
 
 #include <QWidget>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QByteArray>
+#include<QCheckBox>
 
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +24,19 @@ public:
 
     ~landing() override;
 
+    void read_json();//读json
+    void write_json();//写json
+    void message_init(QString flag1,QString flag2);//根据json内容决定是否填入输入框
+
+
+signals:
+    //登录mainwindow主界面信号
+    void login();
+    //关闭登录界面信号
+    void close_window();
+public slots:
+    //登录按钮后触发的事件
+    void logButton_clicked();
 private:
     Ui::landing *ui;
 };

@@ -6,6 +6,7 @@
 #define DBMS_MAINWINDOW_H
 
 #include <QWidget>
+#include "landing.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,9 @@ public:
 
 private:
     Ui::Mainwindow *ui;
+
+    //登录界面类的对象作为指针
+    landing * m_log;
 };
 
 
