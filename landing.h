@@ -20,6 +20,19 @@ public:
 
     ~landing() override;
 
+//   typedef struct userInformation{
+//        QString name;
+//        QString password;
+//    }userInformation;
+
+signals:
+    //登录mainwindow主界面信号
+    void login();
+    //关闭登录界面信号
+    void close_window();
+public slots:
+    //登录按钮后触发的事件
+    void logButton_clicked();
 private:
     Ui::landing *ui;
 };
