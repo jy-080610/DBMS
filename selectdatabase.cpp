@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/6.
+// 选择数据库/选择用户
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_selectdatabase.h" resolved
