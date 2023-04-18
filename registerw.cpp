@@ -16,3 +16,11 @@ registerw::registerw(QWidget *parent) :
 registerw::~registerw() {
     delete ui;
 }
+
+void registerw::createuser(QString name) {
+
+}
+
+void registerw::setVisibleSignal() {
+
+}

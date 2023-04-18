@@ -19,6 +19,14 @@ public:
     explicit registerw(QWidget *parent = nullptr);
 
     ~registerw() override;
+signals:
+
+    void setVisibleSignal();
+
+private slots:
+
+
+    void createuser(QString name);
 
 private:
     Ui::registerw *ui;
