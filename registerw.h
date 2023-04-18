@@ -21,7 +21,7 @@ public:
     ~registerw() override;
 signals:
 
-    void setVisibleSignal();
+    //void setVisibleSignal();
 
 private slots:
 

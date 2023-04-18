@@ -21,6 +21,6 @@ void registerw::createuser(QString name) {
 
 }
 
-void registerw::setVisibleSignal() {
-
-}
+//void registerw::setVisibleSignal() {
+//
+//}
