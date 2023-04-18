@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "C:/qt/5.14.2/mingw73_64")
+set(CMAKE_PREFIX_PATH "E:/qt5.14.2/5.14.2/mingw73_64")
 
 find_package(Qt5 COMPONENTS
         Core
@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp landing.cpp landing.h landing.ui table.cpp table.h table.ui)
+add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp landing.cpp landing.h landing.ui table.cpp table.h table.ui createdatabase.cpp createdatabase.h dataoperation.cpp dbmanager.cpp deletedatabase.cpp deletetable.cpp fieldmanager.cpp indexmanager.cpp logdialog.cpp login.cpp managedatabysql.cpp managefieldbysql.cpp managetablebysql.cpp privilegemanager.cpp registerw.cpp resetpassword.h resetpassword.cpp selectdatabase.cpp tablemanageload.cpp tablemanager.cpp)
 target_link_libraries(DBMS
         Qt5::Core
         Qt5::Gui
