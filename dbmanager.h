@@ -21,8 +21,8 @@ public:
     dbmanager();//构造函数
     void myCreateDataBase(QString dataname);;//创建数据库
     void myDeteleDataBase(QString dataname);//删除数据库
-    void writeDBinto(struct dataBase my_database);//将数据库信息写入文件
-    void writedelDBinto(QString dataname);//将数据库信息写入文件
+    void writeDBinto(struct dataBase my_database);//将创建数据库信息写入日志文件
+    void writedelDBinto(QString dataname);//将删除数据库信息写入日志文件
 
 private:
     QString path;//数据库文件路径
