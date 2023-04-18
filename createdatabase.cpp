@@ -21,7 +21,7 @@ void createdatabase::on_pushButton_2_clicked() {
 }
 
 void createdatabase::on_pushButton_clicked() {
-    QString str = ui->lineEdit->text();
-    dbmanager *userdata = new dbmanager();
-    userdata->myCreateDataBase(str);
+    //QString str = ui->lineEdit->text();
+    //dbmanager *userdata = new dbmanager();
+    //userdata->myCreateDataBase(str);
 }
