@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 注册
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_registerw.h" resolved

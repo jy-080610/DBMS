@@ -1,5 +1,5 @@
 //
-// Created by lx on 2023/4/6.
+// 数据库管理
 //
 #include"qdir.h"//qdir类的主要作用：创建目录、删除目录、重命名目录、判断目录是否存在、获取目录下的文件列表等
 #include "dbmanager.h"

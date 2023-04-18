@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 重设密码
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_resetpassword.h" resolved
