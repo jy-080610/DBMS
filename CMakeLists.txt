@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp landing.cpp landing.h landing.ui table.cpp table.h table.ui createdatabase.cpp createdatabase.h dataoperation.cpp dbmanager.cpp deletedatabase.cpp deletetable.cpp fieldmanager.cpp indexmanager.cpp logdialog.cpp login.cpp managedatabysql.cpp managefieldbysql.cpp managetablebysql.cpp privilegemanager.cpp registerw.cpp resetpassword.h resetpassword.cpp selectdatabase.cpp tablemanageload.cpp tablemanager.cpp)
+add_executable(DBMS main.cpp mainwindow.cpp mainwindow.h mainwindow.ui analysissql.h analysissql.cpp landing.cpp landing.h landing.ui table.cpp table.h table.ui createdatabase.cpp createdatabase.h dataoperation.cpp dbmanager.cpp deletedatabase.cpp deletetable.cpp fieldmanager.cpp indexmanager.cpp logdialog.cpp login.cpp managedatabysql.cpp managefieldbysql.cpp managetablebysql.cpp privilegemanager.cpp registerw.cpp resetpassword.h resetpassword.cpp selectdatabase.cpp tablemanageload.cpp tablemanager.cpp privilegemanager.h)
 target_link_libraries(DBMS
         Qt5::Core
         Qt5::Gui

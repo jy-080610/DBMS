@@ -12,19 +12,23 @@
 dbmanager::dbmanager() {//构造函数
     QDir *dir = new QDir(QDir::currentPath());//获取当前路径
     dir->cdUp();//返回上一级目录
-    path =dir->path()+"/DBMS/data/";//数据库文件路径
+    path =dir->path()+"/data/";//数据库文件路径
+    QDir dir1(path);//创建QDir对象
+    if(!dir1.exists()){//判断数据库文件夹是否存在
+        dir1.mkdir(path);//创建数据库文件夹
+    }
 }
 
 void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
-    qDebug()<<dataname;
-    QDir *dir1 = new QDir(QDir::currentPath());//创建QDir对象
-    dir1->cdUp();//返回上一级目录
+    //qDebug()<<dataname;
+    //QDir *dir1 = new QDir(QDir::currentPath());//创建QDir对象
+    //dir1->cdUp();//返回上一级目录
     dataPath=path+dataname;//数据文件路径
     QDir dir(dataPath);//创建QDir对象
 
     if(dir.exists()){//判断数据库是否存在
         qDebug()<<"数据库已存在，数据库创建失败！";
-        QMessageBox::warning(NULL,
+        QMessageBox::warning(nullptr,
                              "警告",
                              "数据库已存在,创建数据库失败",
                              QMessageBox::Yes|QMessageBox::No,
@@ -33,7 +37,7 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
     }
     else {//数据库不存在
         dir.mkdir(dataPath);//创建数据库文件夹
-        QMessageBox::information(NULL,
+        QMessageBox::information(nullptr,
                                  "提示",
                                  "数据库创建成功",
                                  QMessageBox::Yes|QMessageBox::No,
@@ -67,7 +71,7 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
 
 
         //用户信息文件创建
-        QString userin =path+dataname+"/userinfor.txt";//用户信息文件路径
+        QString userin =dataPath+"/userinfor.txt";//用户信息文件路径
         QFile userfile(userin);//创建QFile对象
         if(!userfile.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append))
             //writeonly:只写方式打开文件，如果文件不存在则创建，如果文件存在则清空文件内容
@@ -77,27 +81,27 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
             qDebug()<<"文件打开失败, 用户信息文件创建失败！";
             return;
         }
-        QTextStream outu(&userfile);//创建QTextStream对象
-        QString adminpath=path+"sys/admin.txt";//管理员信息文件路径
-        QFile adminfile(adminpath);//创建QFile对象
-        if(!adminfile.open(QIODevice::ReadOnly)){//readonly:只读方式打开文件
-            qDebug()<<"文件打开失败, 管理员信息文件打开失败！";
-            return;
-        }
-
-        QTextStream reada(&adminfile);//创建QTextStream对象
-        QString adminuser=reada.readLine();//读取管理员用户名
-        while(!adminuser.isNull()){//判断是否读到文件末尾
-            outu<<adminuser<<endl;//写入用户名
-            adminuser=reada.readLine();//读取管理员用户名
-        }
-        adminfile.close();//关闭文件
-        userfile.close();//关闭文件
+//        QTextStream outu(&userfile);//创建QTextStream对象
+//        QString adminpath=path+"sys/admin.txt";//管理员信息文件路径
+//        QFile adminfile(adminpath);//创建QFile对象
+//        if(!adminfile.open(QIODevice::ReadOnly)){//readonly:只读方式打开文件
+//            qDebug()<<"文件打开失败, 管理员信息文件打开失败！";
+//            return;
+//        }
+//
+//        QTextStream reada(&adminfile);//创建QTextStream对象
+//        QString adminuser=reada.readLine();//读取管理员用户名
+//        while(!adminuser.isNull()){//判断是否读到文件末尾
+//            outu<<adminuser<<endl;//写入用户名
+//            adminuser=reada.readLine();//读取管理员用户名
+//        }
+//        adminfile.close();//关闭文件
+//        userfile.close();//关闭文件
 
 
 
         //用户权限文件创立
-        QString userpri =path+dataname+"/userprivilege.txt";//用户权限文件路径
+        QString userpri =dataPath+"/userprivilege.txt";//用户权限文件路径
         QFile   userprifile(userpri);//创建QFile对象
         if(!userprifile.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){
             qDebug()<<"文件打开失败, 用户权限文件创建失败！";
@@ -134,12 +138,12 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
 
 void dbmanager::myDeteleDataBase(QString dataname) {
     qDebug()<<dataname;
-    dataPath=path+"/"+dataname;//数据文件路径
+    dataPath=path+dataname;//数据文件路径
     QDir dir(dataPath);//创建QDir对象
 
     if(dir.exists()){
         dir.removeRecursively();//删除数据库文件夹
-        QMessageBox::information(NULL,
+        QMessageBox::information(nullptr,
                                  "提示",
                                  "数据库删除成功!",
                                  QMessageBox::Yes|QMessageBox::No,
@@ -148,7 +152,7 @@ void dbmanager::myDeteleDataBase(QString dataname) {
         return;
     }else{
         qDebug()<<"数据库不存在，删除失败！";
-        QMessageBox::warning(NULL,
+        QMessageBox::warning(nullptr,
                              "警告",
                              "数据库不存在,删除数据库失败",
                              QMessageBox::Yes|QMessageBox::No,
@@ -168,7 +172,7 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
     {
-        QMessageBox::warning(NULL,
+        QMessageBox::warning(nullptr,
                              "警告！",
                              "打开文件失败！",
                              QMessageBox::Yes | QMessageBox::No,
@@ -177,10 +181,10 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
     QTextStream streamFile(&file);
 
     streamFile << endl;
-    extern QString name;
+    //extern QString name;
 
 
-    streamFile << name << "create " << my_database.daname << " dataBase ";
+    //streamFile << name << "create " << my_database.daname << " dataBase ";
     streamFile << "filepath: " << my_database.filename << " " <<
                my_database.crtime.toString() << endl;
     file.close();
@@ -199,7 +203,7 @@ void dbmanager::writedelDBinto(QString dataname) {
     QFile   file(fileName);
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){
         qDebug()<<"打开文件失败";
-        QMessageBox::warning(NULL,
+        QMessageBox::warning(nullptr,
                              "警告！",
                              "打开文件失败！",
                              QMessageBox::Yes|QMessageBox::No,
@@ -208,8 +212,8 @@ void dbmanager::writedelDBinto(QString dataname) {
     }
     QTextStream streamFile(&file);//创建QTextStream对象
     streamFile << endl;
-    extern QString name;
-    streamFile << name << " delete database " << dataname << endl;
+    //extern QString name;
+    //streamFile << name << " delete database " << dataname << endl;
 
     file.close();
 
