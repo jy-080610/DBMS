@@ -1,5 +1,5 @@
 //
-// Created by 52750 on 2023/4/15.
+// 登陆管理
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_landing.h" resolved

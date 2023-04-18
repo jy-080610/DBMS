@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+//  2023/4/18.
 //
 
 #ifndef DBMS_CREATEDATABASE_H
@@ -19,7 +19,10 @@ public:
     explicit createdatabase(QWidget *parent = nullptr);
 
     ~createdatabase() override;
+private slots:
+    void on_pushButton_2_clicked();
 
+    void on_pushButton_clicked();
 private:
     Ui::createdatabase *ui;
 };

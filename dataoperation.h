@@ -6,7 +6,12 @@
 #define DBMS_DATAOPERATION_H
 
 #include <QWidget>
-
+#include <QWidget>
+#include <QDialog>
+#include <QDebug>
+#include <QMessageBox>
+#include <QDir>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class dataoperation; }
