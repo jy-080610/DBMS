@@ -6,7 +6,7 @@
 #define DBMS_LANDING_H
 
 #include <QWidget>
-
+extern QString name; // 创建全局变量用户名
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class landing; }

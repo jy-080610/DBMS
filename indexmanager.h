@@ -14,10 +14,10 @@
 #define QUANEUE_LEN 100//B+树的最大关键字数
 using namespace std;
 
-# define MALLOC_NODE(p,type) type *p=(type *)malloc(sizeof(type);memset(p, \
-                                                                        0, \
-                                                                        sizeof( \
-                                                                        type)))//申请内存空间
+#define MALLOC_NODE(p, type) type *p = (type *)malloc(sizeof(type)); memset(p,      \
+                                                                            0,      \
+                                                                            sizeof( \
+                                                                                type))
 #define FREE_NODE(p) free(p)//释放内存空间
 #define FSEEK_END_WRITE(fp,pos,buf,size)fseek(fp,0,SEEK_END); \
                                                              pos=ftell(fp);fwrite(buf,size,1,fp)//将buf写入文件fp中
@@ -27,7 +27,7 @@ using namespace std;
                                                                  fread(buf,size,1,fp)//从文件fp中读取数据到buf中
 #define FSEEK_FIXED_WRITE(fp,pos,buf,size)fseek(fp,pos,SEEK_SET); \
                                                                   fwrite(buf,size,1,fp)//将buf写入文件fp中
-#define OPEN_FILE(filename,mode)fp=fopen(filename,mode)//打开文件
+#define OPEN_FILE(file_name,mode) fopen(file_name,mode)//打开文件
 #define CLOSE_FILE(fp)fclose(fp)//关闭文件
 #define OPEN_FILE_READ(file_name,mode,buf,size) fp =OPEN_FILE(file_name,mode);fread(buf,size,1,fp);//打开文件并读取数据到buf中
 #define OPEN_FILE_WRITE(file_name,mode,buf,size) fp =OPEN_FILE(file_name,mode);fwrite(buf,size,1,fp);//打开文件并将buf写入文件中
@@ -50,7 +50,7 @@ typedef struct {
     sint keyNum;//关键字数目
     unit parent;//父节点位置
     ull key[M+1];//关键字-索引值
-    unit ptr[M+1];//儿子节点位置
+    unit ptr[M+1];//节点位置
     _data data[M+1];//数据信息
 } BTNode;//索引节点结构体
 //存储查找结果
