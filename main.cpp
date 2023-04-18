@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
 //    l.show();
 //    Mainwindow w;
     dbmanager db;
-    db.myCreateDataBase("test");
-    //db.myDeteleDataBase("test");
+    //db.myCreateDataBase("test");
+    db.myDeteleDataBase("test");
 
 
     //这边把主窗口的show()函数注释，这样主窗口才不会自动打开，

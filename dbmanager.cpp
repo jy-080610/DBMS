@@ -137,7 +137,7 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
 
 
 void dbmanager::myDeteleDataBase(QString dataname) {
-    qDebug()<<dataname;
+    //qDebug()<<dataname;
     dataPath=path+dataname;//数据文件路径
     QDir dir(dataPath);//创建QDir对象
 
