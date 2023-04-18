@@ -6,7 +6,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.14.2/5.14.2/mingw73_64")
+set(CMAKE_PREFIX_PATH "CMake Error at CMakeLists.txt:17 (add_executable):
+  Cannot find source file:
+
+    table.h4")
 
 find_package(Qt5 COMPONENTS
         Core
