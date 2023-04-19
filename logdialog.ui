@@ -6,24 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>549</width>
+    <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>logdialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+  </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>250</y>
-     <width>93</width>
-     <height>41</height>
+     <x>420</x>
+     <y>390</y>
+     <width>121</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 87 18pt &quot;爱奇艺黑体 Black&quot;;</string>
+    <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
    </property>
    <property name="text">
     <string>退出</string>
@@ -34,9 +37,25 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>331</width>
-     <height>221</height>
+     <width>411</width>
+     <height>381</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>20</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
+   </property>
+   <property name="text">
+    <string>DBMS</string>
    </property>
   </widget>
  </widget>
