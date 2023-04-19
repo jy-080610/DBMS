@@ -94,7 +94,7 @@ void TableManager::tableCreator(QString tableName)
     privilege.close();
 }
 
-:  //当用户修改表中的某些字段时，更改对应表描述文件中的字段数、记录数、修改时间或路径
+ //当用户修改表中的某些字段时，更改对应表描述文件中的字段数、记录数、修改时间或路径
 
 void TableManager::tableModifier(QString tableName, int type)
 {
