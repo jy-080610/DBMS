@@ -6,30 +6,62 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>497</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>createdatabase</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>481</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>30</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>创建数据库</string>
+   </property>
+  </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>30</y>
-     <width>231</width>
-     <height>31</height>
+     <x>80</x>
+     <y>90</y>
+     <width>341</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>请输入数据库名称</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>70</x>
      <y>180</y>
-     <width>93</width>
-     <height>28</height>
+     <width>141</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
@@ -39,14 +71,30 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>290</x>
      <y>180</y>
-     <width>93</width>
-     <height>28</height>
+     <width>121</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
     <string>退出</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>131</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
+   </property>
+   <property name="text">
+    <string>DBMS</string>
    </property>
   </widget>
  </widget>
