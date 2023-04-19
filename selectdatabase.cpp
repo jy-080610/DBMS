@@ -39,9 +39,9 @@ void selectdatabase::on_pushButton_clicked()
 
     QTextStream txtOutput(file);
 
-    extern QString name;
-    txtOutput <<name<<","<<ui->lineEdit->text();
-    txtOutput.flush();
+    //extern QString name;
+    //txtOutput <<name<<","<<ui->lineEdit->text();
+    //txtOutput.flush();
 
     file->close();
 
