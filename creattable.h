@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/18.
+// 创建表
 //
 
 #ifndef DBMS_CREATTABLE_H
