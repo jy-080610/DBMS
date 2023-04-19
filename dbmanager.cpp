@@ -219,4 +219,4 @@ void dbmanager::writedelDBinto(QString dataname) {
 
 }
 
-
+//test
