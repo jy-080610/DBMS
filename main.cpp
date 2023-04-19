@@ -4,6 +4,8 @@
 #include"dbmanager.h"
 #include"tablemanager.h"
 #include "managetablebysql.h"
+#include"fieldmanager.h"
+#include "registerw.h"
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 //    QPushButton button("Hello world!", nullptr);

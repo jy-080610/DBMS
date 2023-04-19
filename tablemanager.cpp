@@ -233,7 +233,7 @@ bool TableManager::tableDelete(QString tableName)
 
     // 是否传入了空的路径||路径是否存在
     if (tablePath.isEmpty() || !QDir().exists(tablePath)) {
-        QMessageBox::critical(0, "critical message", "此表不存在",
+        QMessageBox::critical(nullptr, "critical message", "此表不存在",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
 

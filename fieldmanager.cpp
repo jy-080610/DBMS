@@ -36,18 +36,19 @@ void FieldManager::initDir()
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "initDir文件打开失败";
     }
-    QTextStream read(&file);
-    QStringList list;
-    QString     str = read.readLine();
-
-    qDebug() << "用户信息" + str;
-
-    list = str.split(",");
-
-    // 初始化用户名，数据库名和数据库路径
-    userName = list[0];
-    dbName = list[1];
-    dirPath = dir->path() + "/data/" + list[1];
+//    QTextStream read(&file);
+//    QStringList list;
+//    QString     str = read.readLine();
+//
+//    qDebug() << "用户信息" + str;
+//
+//    list = str.split(",");
+//
+//    // 初始化用户名，数据库名和数据库路径
+//    userName = list[0];
+//    dbName = list[1];
+//    dirPath = dir->path() + "/data/" + list[1];
+    dirPath = dir->path() + "/data/test";
     file.close();
 }
 
