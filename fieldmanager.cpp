@@ -31,7 +31,7 @@ void FieldManager::initDir()
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "initDir文件打开失败";
@@ -47,7 +47,7 @@ void FieldManager::initDir()
     // 初始化用户名，数据库名和数据库路径
     userName = list[0];
     dbName = list[1];
-    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    dirPath = dir->path() + "/data/" + list[1];
     file.close();
 }
 
@@ -108,7 +108,7 @@ void FieldManager::on_add_clicked()
         QString textInfo = read.readAll();
 
         if (textInfo.contains(",主键,")) {
-            QMessageBox::critical(0, "错误", "此表中已存在主键",
+            QMessageBox::critical(nullptr, "错误", "此表中已存在主键",
                                   QMessageBox::Ok | QMessageBox::Default,
                                   QMessageBox::Cancel | QMessageBox::Escape, 0);
             return;
@@ -164,7 +164,7 @@ void FieldManager::on_modify_clicked()
     if (this->ui->path->text().isEmpty() ||
         this->ui->fieldNameEdit->text().isEmpty() ||
         (this->ui->fieldNameEdit->text() == "")) {
-        QMessageBox::critical(0, "错误", "字段名为空",
+        QMessageBox::critical(nullptr, "错误", "字段名为空",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
@@ -189,7 +189,7 @@ void FieldManager::on_modify_clicked()
         QString textInfo = checkText.readAll();
 
         if (textInfo.contains(",主键,")) {
-            QMessageBox::critical(0, "错误", "此表中已存在主键",
+            QMessageBox::critical(nullptr, "错误", "此表中已存在主键",
                                   QMessageBox::Ok | QMessageBox::Default,
                                   QMessageBox::Cancel | QMessageBox::Escape, 0);
             return;
