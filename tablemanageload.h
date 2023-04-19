@@ -20,9 +20,21 @@ public:
 
     ~tablemanageload() override;
 
+
+private slots:
+
+    //更新表
+    void on_updatetable_clicked();
+    //删除表
+    void on_pushButton_2_clicked();
+    //创建表
+    void on_creattable_clicked();
+
 private:
     Ui::tablemanageload *ui;
 };
+
+
 
 
 #endif //DBMS_TABLEMANAGELOAD_H

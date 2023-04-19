@@ -106,7 +106,7 @@ void TableManager::tableCreator(QString tableName)
     privilege.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream outp(&privilege);
 
-    outp << username + ",0,0,0,0,0\n";
+    outp << username + ",0,0,0,0,0\n";// 记录用户权限：0-无权限 1-有权限
     privilege.close();
 }
 
