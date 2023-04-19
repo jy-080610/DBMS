@@ -323,7 +323,7 @@ bool privilegemanager::mdt(QString tablename, QString user) {
 //查询
 void privilegemanager::on_querry_clicked() {
         if(this->ui->user->text().isEmpty()||this->ui->user->text()==""){
-            QMessageBox::critical(0,"错误","请输入用户名",
+            QMessageBox::critical(nullptr,"错误","请输入用户名",
                                 QMessageBox::Ok|QMessageBox::Default,
                                 QMessageBox::Cancel|QMessageBox::Escape,0);
         qDebug()<<"请输入用户名(查询时用户名不能为空)";
@@ -459,7 +459,7 @@ void privilegemanager::display() {
     }
 
     if(flag==0){
-        QMessageBox::critical(0,"错误","用户不存在",
+        QMessageBox::critical(nullptr,"错误","用户不存在",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
         qDebug()<<"用户不存在";
@@ -564,7 +564,7 @@ void privilegemanager::initPrivilege(QString tablename, QString user) {
 //授权
 void privilegemanager::grant(QStringList keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")){
-        QMessageBox::critical(0,"错误","用户名或表名不能为空,请检查信息是否正确",
+        QMessageBox::critical(nullptr,"错误","用户名或表名不能为空,请检查信息是否正确",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
     }
@@ -643,7 +643,7 @@ void privilegemanager::grant(QStringList keywordList) {
             write<<str<<"\n";
         }
     }
-    QMessageBox::information(0,"提示","授权成功",
+    QMessageBox::information(nullptr,"提示","授权成功",
                         QMessageBox::Ok|QMessageBox::Default,
                         QMessageBox::Cancel|QMessageBox::Escape,0);
     readFile.close();//关闭文件
@@ -655,7 +655,7 @@ void privilegemanager::grant(QStringList keywordList) {
 //回收权限
 void privilegemanager::revoke(QStringList keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")){
-        QMessageBox::critical(0,"错误","用户名或表名不能为空,请检查信息是否正确",
+        QMessageBox::critical(nullptr,"错误","用户名或表名不能为空,请检查信息是否正确",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
     }
@@ -734,7 +734,7 @@ void privilegemanager::revoke(QStringList keywordList) {
             write<<str<<"\n";
         }
     }
-    QMessageBox::information(0,"提示","回收成功",
+    QMessageBox::information(nullptr,"提示","回收成功",
                         QMessageBox::Ok|QMessageBox::Default,
                         QMessageBox::Cancel|QMessageBox::Escape,0);
     readFile.close();//关闭文件

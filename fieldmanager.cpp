@@ -75,14 +75,14 @@ void FieldManager::on_add_clicked()
     if ((this->ui->path->text() == "") ||
         this->ui->fieldNameEdit->text().isEmpty() ||
         (this->ui->fieldNameEdit->text() == "")) {
-        QMessageBox::critical(0, "错误", "字段名为空",
+        QMessageBox::critical(nullptr, "错误", "字段名为空",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
     }
 
     if (isDuplicate(this->ui->fieldNameEdit->text())) {
-        QMessageBox::critical(0, "错误", "当前字段已存在",
+        QMessageBox::critical(nullptr, "错误", "当前字段已存在",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
@@ -351,7 +351,7 @@ void FieldManager::on_display_clicked()
 {
     if (this->ui->path->text().isEmpty() ||
         (this->ui->path->text() == "")) {
-        QMessageBox::critical(0, "错误", "请输入表名",
+        QMessageBox::critical(nullptr, "错误", "请输入表名",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;

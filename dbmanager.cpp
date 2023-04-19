@@ -167,7 +167,7 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
@@ -199,7 +199,7 @@ void dbmanager::writedelDBinto(QString dataname) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){
         qDebug()<<"打开文件失败";
