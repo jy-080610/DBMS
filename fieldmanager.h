@@ -22,6 +22,17 @@ public:
 
 private:
     Ui::fieldmanager *ui;
+    void initDir();
+    bool isTableExist();
+
+    QString dirPath;
+    QString dbName;
+    QString userName;
+    QString tablePath;
+    void display();
+    bool isDuplicate(QString);
+    void addComma2trd();
+    void removedata(int);
 };
 
 

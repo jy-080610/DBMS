@@ -12,8 +12,8 @@ int main(int argc, char *argv[]) {
 //    l.show();
 //    Mainwindow w;
     dbmanager db;
-    db.myCreateDataBase("test");
-    //db.myDeteleDataBase("test");
+    //db.myCreateDataBase("test");
+    db.myDeteleDataBase("test");
     //TableManager tb("wende","test");
     //tb.tableDelete("table1");
 
