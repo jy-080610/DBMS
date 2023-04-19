@@ -1,28 +1,49 @@
-//
-// Created by Asus on 2023/4/17.
-//
-
-#ifndef DBMS_FIELDMANAGER_H
-#define DBMS_FIELDMANAGER_H
+#ifndef FIELDMANAGER_H
+#define FIELDMANAGER_H
 
 #include <QWidget>
 
+namespace Ui {
+    class FieldManager;
+}
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class fieldmanager; }
-QT_END_NAMESPACE
-
-class fieldmanager : public QWidget {
+class FieldManager : public QWidget {
 Q_OBJECT
 
 public:
-    explicit fieldmanager(QWidget *parent = nullptr);
 
-    ~fieldmanager() override;
+    explicit FieldManager(QWidget *parent = nullptr);
+    ~FieldManager();
+
+private slots:
+
+    void on_add_clicked();
+
+    void on_modify_clicked();
+
+    void on_dele_clicked();
+
+    void on_display_clicked();
+
+    void on_isPK_clicked();
+
+    void on_isNull_clicked();
 
 private:
-    Ui::fieldmanager *ui;
+
+    Ui::FieldManager *ui;
+
+    void initDir();
+    bool isTableExist();
+
+    QString dirPath;
+    QString dbName;
+    QString userName;
+    QString tablePath;
+    void display();
+    bool isDuplicate(QString);
+    void addComma2trd();
+    void removedata(int);
 };
 
-
-#endif //DBMS_FIELDMANAGER_H
+#endif // FIELDMANAGER_H
