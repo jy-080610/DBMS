@@ -42,7 +42,7 @@
     <string>权限</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="user">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -91,7 +91,7 @@
     <string>完成</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="exit">
    <property name="geometry">
     <rect>
      <x>520</x>
