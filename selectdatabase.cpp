@@ -10,6 +10,7 @@
 #include"qtextstream.h"
 #include"qdebug.h"
 #include"qmessagebox.h"
+#include "qdebug.h"
 selectdatabase::selectdatabase(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::selectdatabase)

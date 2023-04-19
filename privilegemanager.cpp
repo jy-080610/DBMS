@@ -10,6 +10,7 @@
 privilegemanager::privilegemanager(QWidget *parent) :
         QWidget(parent), ui(new Ui::privilegemanager) {
     ui->setupUi(this);
+    initDir();
 }
 
 privilegemanager::~privilegemanager() {
@@ -424,6 +425,7 @@ void privilegemanager::display() {
     p << "创建表：" << "删除表：" << "增加数据：" << "删除数据：" << "修改数据：";
     qDebug()<<"p="<<p;//输出p
     privilegePath=dirPath+"/userprivilege.txt";//用户权限文件路径
+    qDebug()<<"dirPath="<<dirPath;
     qDebug()<<"privilegePath="<<privilegePath;//输出用户权限文件路径
     QFile privilege(privilegePath);//打开用户权限文件
     if(!privilege.open(QIODevice::ReadOnly|QIODevice::Text))
