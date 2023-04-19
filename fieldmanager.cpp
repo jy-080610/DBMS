@@ -1,32 +1,31 @@
-//
-// 权限管理，是否允许增插删改字段操作
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_fieldmanager.h" resolved
-
 #include "fieldmanager.h"
 #include "ui_fieldmanager.h"
+#include "QFileDialog"
+#include "qdebug.h"
 #include "tablemanager.h"
-#include <QDir>
-#include <QFile>
-#include <QTextStream>
-#include <QDebug>
-#include <QMessageBox>
+#include "qmessagebox.h"
+#include "dataoperation.h"
 
-
-fieldmanager::fieldmanager(QWidget *parent) :
-        QWidget(parent), ui(new Ui::fieldmanager) {
+FieldManager::FieldManager(QWidget *parent) :
+        QWidget(parent),
+        ui(new Ui::FieldManager)
+{
     ui->setupUi(this);
+
+    // 初始化目录文件路径
+    initDir();
 }
 
-fieldmanager::~fieldmanager() {
+FieldManager::~FieldManager()
+{
     delete ui;
 }
+
 /*
  * @Brief:  初始化文件目录
  * @Return: NULL
  */
-void fieldmanager::initDir()
+void FieldManager::initDir()
 {
     // 以只读方式打开存放用户名和数据库名的文件，并给所需变量依次赋值
     QDir *dir = new QDir(QDir::currentPath());
@@ -56,7 +55,7 @@ void fieldmanager::initDir()
  * @Brief:  判断当前表文件是否已经存在，防止重复创建
  * @Return: 存在为真，不存在为假
  */
-bool fieldmanager::isTableExist()
+bool FieldManager::isTableExist()
 {
     tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
                 this->ui->path->text() + ".tdf";
@@ -70,7 +69,7 @@ bool fieldmanager::isTableExist()
  * @Brief:  增加字段
  * @Return: NULL
  */
-void fieldmanager::on_add_clicked()
+void FieldManager::on_add_clicked()
 {
     // 容错处理，防止输入为空或字段重复
     if ((this->ui->path->text() == "") ||
@@ -159,7 +158,7 @@ void fieldmanager::on_add_clicked()
  * @Brief:  修改字段
  * @Return: NULL
  */
-void fieldmanager::on_modify_clicked()
+void FieldManager::on_modify_clicked()
 {
     // 容错判断
     if (this->ui->path->text().isEmpty() ||
@@ -270,7 +269,7 @@ void fieldmanager::on_modify_clicked()
  * @Brief:  删除字段
  * @Return: NULL
  */
-void fieldmanager::on_dele_clicked()
+void FieldManager::on_dele_clicked()
 {
     // 容错处理
     if (this->ui->path->text().isEmpty() ||
@@ -348,7 +347,7 @@ void fieldmanager::on_dele_clicked()
  * @Return: NULL
  * @Todo:   根据后续的表格设计再增加展示信息
  */
-void fieldmanager::on_display_clicked()
+void FieldManager::on_display_clicked()
 {
     if (this->ui->path->text().isEmpty() ||
         (this->ui->path->text() == "")) {
@@ -364,7 +363,7 @@ void fieldmanager::on_display_clicked()
  * @Brief:  展示表结构，将字段信息展示在UI的table上
  * @Return: NULL
  */
-void fieldmanager::display()
+void FieldManager::display()
 {
     ui->tableWidget->clear();
 
@@ -417,7 +416,7 @@ void fieldmanager::display()
  * @Param:  fieldName 要添加的字段名
  * @Return: 存在为真，否则为假
  */
-bool fieldmanager::isDuplicate(QString fieldName)
+bool FieldManager::isDuplicate(QString fieldName)
 {
     // 以只读方式打开文件
     tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
@@ -450,7 +449,7 @@ bool fieldmanager::isDuplicate(QString fieldName)
  * @Brief:在添加字段后调用此函数保证字段和数据的列数相同
  * @Return: NULL
  */
-void fieldmanager::addComma2trd()
+void FieldManager::addComma2trd()
 {
     // 以只读方式打开指定文件
     QString trdPath = dirPath + "/table/" + this->ui->path->text() + "/" +
@@ -492,7 +491,7 @@ void fieldmanager::addComma2trd()
  * @Param:  datacol 要删除的数据位于的列
  * @Return: NULL
  */
-void fieldmanager::removedata(int datacol) {
+void FieldManager::removedata(int datacol) {
     // 以下操作与之前均相同，依次打开原文件和存储修改后信息的新文件
     QString trdPath = dirPath + "/table/" + this->ui->path->text() + "/" +
                       this->ui->path->text() + ".trd";
@@ -547,14 +546,14 @@ void fieldmanager::removedata(int datacol) {
 }
 
 // 当主键点击时，同步更改非空判断
-void fieldmanager::on_isPK_clicked()
+void FieldManager::on_isPK_clicked()
 {
     if (ui->isPK->isChecked()) {
         ui->isNull->setChecked(false);
     }
 }
 
-void fieldmanager::on_isNull_clicked()
+void FieldManager::on_isNull_clicked()
 {
     if (ui->isPK->isChecked()) {
         ui->isNull->setChecked(false);
