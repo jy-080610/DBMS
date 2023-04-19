@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     //TableManager *tb=new TableManager("wende","test");
     //tb->tableDelete("table1");
     //TableManager tb("wende","test");
-    //tb.tableDelete("table1");
+    //tb.tableCreator("table1");
     FieldManager f;
     f.show();
     //这边把主窗口的show()函数注释，这样主窗口才不会自动打开，
