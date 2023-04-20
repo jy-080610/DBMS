@@ -114,7 +114,7 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
 
 
         for(int i=0;i<sqlList.size();i++) {
-            QRegExp rx(sqlList.at(i));//正则表达式
+            QRegExp rx(sqlList[i]);//正则表达式
             int pos = rx.indexIn(sql);//匹配
             if (pos != -1) {//匹配成功
                 keyWordList = rx.capturedTexts();//返回所有匹配的字符串
