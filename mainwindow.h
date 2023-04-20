@@ -18,6 +18,7 @@
 #include "qfiledialog.h"
 #include"analysissql.h"
 #include "qdirmodel.h"
+#include"fieldmanager.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -33,7 +34,7 @@ public:
     ~Mainwindow() override;
 private slots:
     void on_run_clicked();
-
+    void on_fieldmanage_clicked();
 private:
     Ui::Mainwindow *ui;
     AnalysisSQL *dealwithSql;
