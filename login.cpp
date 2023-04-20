@@ -69,7 +69,7 @@ bool login::checkLog(QString dbname, QString username, QString psd)
                     QFile useFile(path + "/sys/curuse.txt");
 
                     if (!useFile.open(QIODevice::WriteOnly)) {
-                        QMessageBox::critical(0,
+                        QMessageBox::critical(nullptr,
                                               "错误",
                                               "curuse文件打开失败",
                                               QMessageBox::Ok | QMessageBox::Default,

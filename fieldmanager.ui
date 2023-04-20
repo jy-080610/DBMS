@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>fieldmanager</class>
- <widget class="QWidget" name="fieldmanager">
+ <class>FieldManager</class>
+ <widget class="QWidget" name="FieldManager">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,7 +29,7 @@
     <string>请输入表名</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="display">
    <property name="geometry">
     <rect>
      <x>10</x>

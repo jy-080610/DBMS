@@ -19,11 +19,11 @@ dbmanager::dbmanager() {//构造函数
     }
 }
 
-void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
-    //qDebug()<<dataname;
+void dbmanager::myCreateDataBase(QString dbname1) {//创建用户数据库
+    //qDebug()<<dbname1;
     //QDir *dir1 = new QDir(QDir::currentPath());//创建QDir对象
     //dir1->cdUp();//返回上一级目录
-    dataPath=path+dataname;//数据文件路径
+    dataPath= path + dbname1;//数据文件路径
     QDir dir(dataPath);//创建QDir对象
 
     if(dir.exists()){//判断数据库是否存在
@@ -109,26 +109,26 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
 
         //数据存入结构体databae中
         database my_database;
-        char *pre =dataname.toLatin1().data();//toLatin1()函数的作用：将QString转换为char*,data()函数的作用：将QByteArray转换为char*
-        memcpy(my_database.daname,pre,128);//将数据库名存入结构体中
+        char *pre =dbname1.toLatin1().data();//toLatin1()函数的作用：将QString转换为char*,data()函数的作用：将QByteArray转换为char*
+        memcpy(my_database.dbname, pre, 128);//将数据库名存入结构体中
         my_database.crtime=QDateTime::currentDateTime();//获取当前时间
         char *pre2=dataPath.toLatin1().data();
         //memcpy()函数的作用：将内存区域src中的前count个字节复制到内存区域dest中
-        memcpy(my_database.filename,pre2,256);//将数据库路径存入结构体中
+        memcpy(my_database.dbpath, pre2, 256);//将数据库路径存入结构体中
         my_database.type=true;//数据库类型为用户数据库
         //
 
         //创建基本信息文件
-        QFile file01(dataPath+"/"+dataname+".db");//创建QFile对象
+        QFile file01(dataPath + "/" + dbname1 + ".db");//创建QFile对象
         if(!file01.open(QIODevice::WriteOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败, 基本信息文件创建失败！";
             return;
         }
         QTextStream out(&file01);//创建QTextStream对象
-        out<<"NAME:"+dataname+"\n";
+        out<< "NAME:" + dbname1 + "\n";
         out<<"TYPE:用户\n";
-        out<<"FILENAME:"+dataPath+"\n";
-        out<<"CREATETIME:"+(my_database.crtime).toString("yyyy-mm-dd hh.mm.ss")+"\n";
+        out<<"DBPATH:"+dataPath+"\n";
+        out<<"CREATE TIME:"+(my_database.crtime).toString("yyyy-MM-dd hh:mm:ss")+"\n";
         file01.close();//关闭文件
 
 
@@ -136,9 +136,9 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
 }
 
 
-void dbmanager::myDeteleDataBase(QString dataname) {
-    //qDebug()<<dataname;
-    dataPath=path+dataname;//数据文件路径
+void dbmanager::myDeteleDataBase(QString dbname2) {
+    //qDebug()<<dbname2;
+    dataPath= path + dbname2;//数据文件路径
     QDir dir(dataPath);//创建QDir对象
 
     if(dir.exists()){
@@ -167,7 +167,7 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
@@ -184,8 +184,8 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
     //extern QString name;
 
 
-    //streamFile << name << "create " << my_database.daname << " dataBase ";
-    streamFile << "filepath: " << my_database.filename << " " <<
+    //streamFile << name << "create " << my_database.dbname << " dataBase ";
+    streamFile << "filepath: " << my_database.dbpath << " " <<
                my_database.crtime.toString() << endl;
     file.close();
 
@@ -194,12 +194,12 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
 
 
 //将创建数据库日志写入文件
-void dbmanager::writedelDBinto(QString dataname) {
+void dbmanager::writedelDBinto(QString dbname3) {
     // 初始化系统目录
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){
         qDebug()<<"打开文件失败";
@@ -213,7 +213,7 @@ void dbmanager::writedelDBinto(QString dataname) {
     QTextStream streamFile(&file);//创建QTextStream对象
     streamFile << endl;
     //extern QString name;
-    //streamFile << name << " delete database " << dataname << endl;
+    //streamFile << name << " delete database " << dbname3 << endl;
 
     file.close();
 

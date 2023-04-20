@@ -5,10 +5,13 @@
 #ifndef DBMS_MANAGETABLEBYSQL_H
 #define DBMS_MANAGETABLEBYSQL_H
 
+#include "QString"
+class ManageTableBySql {
+public:
 
-class managetablebysql {
-
+    ManageTableBySql();
+    void createTable(QString);
+    void deleteTable(QString);
 };
 
-
-#endif //DBMS_MANAGETABLEBYSQL_H
+#endif // MANAGETABLEBYSQL_H
