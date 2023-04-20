@@ -275,7 +275,7 @@ void FieldManager::on_dele_clicked()
     if (this->ui->path->text().isEmpty() ||
         this->ui->fieldNameEdit->text().isEmpty() ||
         (this->ui->fieldNameEdit->text() == "")) {
-        QMessageBox::critical(0, "错误", "字段名为空",
+        QMessageBox::critical(nullptr, "错误", "字段名为空",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;

@@ -6,7 +6,7 @@
 #define DBMS_MANAGEDATABYSQL_H
 
 
-class managedatabysql {
+class ManageDataBySql {
 
 };
 

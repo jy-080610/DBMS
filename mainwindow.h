@@ -7,6 +7,18 @@
 
 #include <QWidget>
 #include "landing.h"
+#include "privilegemanager.h"
+#include "indexmanager.h"
+#include "qdebug.h"
+#include "managetablebysql.h"
+#include "managedatabysql.h"
+#include "managefieldbysql.h"
+#include "dbmanager.h"
+#include "qmessagebox.h"
+#include "qfiledialog.h"
+#include"analysissql.h"
+#include "qdirmodel.h"
+#include"fieldmanager.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,8 +34,18 @@ public:
     ~Mainwindow() override;
 private slots:
     void setVisibleSlot();
+
+    void on_run_clicked();
+    void on_fieldmanage_clicked();
 private:
     Ui::Mainwindow *ui;
+    AnalysisSQL *dealwithSql;
+    QString dirPath;
+    QString dbname;
+    void    displayField(QString);
+    void    displayDir();
+    //登录界面类的对象作为指针
+    //landing * m_log;
 
 };
 

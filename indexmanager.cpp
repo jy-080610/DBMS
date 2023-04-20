@@ -297,7 +297,7 @@ void Indexmanager::createFalseIndex(QStringList keyword) {
 
         }
         if(column02==0){
-            QMessageBox::critical(0,"错误","索引创建错误，字段不存在",
+            QMessageBox::critical(nullptr,"错误","索引创建错误，字段不存在",
                                  QMessageBox::Ok|QMessageBox::Default,
                                  QMessageBox::Cancel|QMessageBox::Escape,0);
 
@@ -330,7 +330,7 @@ void Indexmanager::createFalseIndex(QStringList keyword) {
         file.close();//关闭记录文件
         CLOSE_FILE(fp);//关闭数据文件
     }
-    QMessageBox::information(0,"提示","索引创建成功",
+    QMessageBox::information(nullptr,"提示","索引创建成功",
                              QMessageBox::Ok|QMessageBox::Default,
                              QMessageBox::Cancel|QMessageBox::Escape,0);
 }
@@ -388,7 +388,7 @@ void Indexmanager::deleteIndex(QString index_name) {
     //是否传入了空的路径或路径是否存在
     if (datafile.isEmpty() || !QFile::exists(datafile))
     {
-        QMessageBox::critical(0,"错误","索引文件不存在",
+        QMessageBox::critical(nullptr,"错误","索引文件不存在",
                               QMessageBox::Ok|QMessageBox::Default,
                               QMessageBox::Cancel|QMessageBox::Escape,0);
         qDebug()<<"索引文件不存在";
@@ -400,7 +400,7 @@ void Indexmanager::deleteIndex(QString index_name) {
         QFile::remove(datafile);
         QFile::remove(indexfile);
     }
-    QMessageBox::information(0,"提示","索引删除成功",
+    QMessageBox::information(nullptr,"提示","索引删除成功",
                              QMessageBox::Ok|QMessageBox::Default,
                              QMessageBox::Cancel|QMessageBox::Escape,0);
 }

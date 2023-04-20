@@ -10,19 +10,19 @@
 #include"selectdatabase.h"
 using namespace std;
 typedef struct dataBase{
-    char daname[128];//数据库名
+    char dbname[128];//数据库名称
     bool type;//数据库类型
-    char filename[256];//文件名
-    QDateTime crtime;//创建时间
+    char dbpath[256];//数据库路径
+    QDateTime crtime;//数据库创建时间
 }database;//数据库信息结构体
 
 class dbmanager {
 public:
     dbmanager();//构造函数
-    void myCreateDataBase(QString dataname);;//创建数据库
-    void myDeteleDataBase(QString dataname);//删除数据库
+    void myCreateDataBase(QString dbname1);;//创建数据库
+    void myDeteleDataBase(QString dbname2);//删除数据库
     void writeDBinto(struct dataBase my_database);//将创建数据库信息写入日志文件
-    void writedelDBinto(QString dataname);//将删除数据库信息写入日志文件
+    void writedelDBinto(QString dbname3);//将删除数据库信息写入日志文件
 
 private:
     QString path;//数据库文件路径

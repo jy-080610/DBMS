@@ -10,8 +10,8 @@ class AnalysisSQL{
 public:
     AnalysisSQL();
     QStringList resolveSql(QString sql);
-private:
-    QStringList sqlList;//保存所有可能用到的正则表达式
+//private:
+    //QStringList sqlList;//保存所有可能用到的正则表达式
 };
 
 
