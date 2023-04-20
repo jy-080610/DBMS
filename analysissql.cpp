@@ -100,7 +100,7 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
 
     QStringList AnalysisSQL::resolveSql(QString sql) {
         qDebug() << "sql语句为:" << sql;
-
+        qDebug()<<sqlList.size();
         //通过分析SQL语句得到有用的SQL的列表
         QStringList keyWordList;
 
