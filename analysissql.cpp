@@ -44,7 +44,7 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
     //1.数据库
     //创建数据库：create database 数据库名称;
     //删除数据库：drop database 数据库名称;
-    sqlList.push_back("(?:create|CREATE)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
+    sqlList.insert(0,"(?:create|CREATE)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
     sqlList.push_back("(?:drop|DROP)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
 
     //2.表：
@@ -100,8 +100,10 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
 
     QStringList AnalysisSQL::resolveSql(QString sql) {
         qDebug() << "sql语句为:" << sql;
+        qDebug()<<sqlList.size();
         //通过分析SQL语句得到有用的SQL的列表
         QStringList keyWordList;
+
         for(int i=0;i<sqlList.size();i++) {
             QRegExp rx(sqlList[i]);//正则表达式
             int pos = rx.indexIn(sql);//匹配
