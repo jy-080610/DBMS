@@ -20,12 +20,11 @@ public:
     explicit Mainwindow(QWidget *parent = nullptr);
 
     ~Mainwindow() override;
-
+private slots:
+    void setVisibleSlot();
 private:
     Ui::Mainwindow *ui;
 
-    //登录界面类的对象作为指针
-    landing * m_log;
 };
 
 

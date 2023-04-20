@@ -7,6 +7,7 @@
 #include "managetablebysql.h"
 #include "privilegemanager.h"
 #include "selectdatabase.h"
+#include "login.h"
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 //    QPushButton button("Hello world!", nullptr);
@@ -14,7 +15,7 @@ int main(int argc, char *argv[]) {
 //    button.show();
 //    landing l;
 //    l.show();
-//    Mainwindow w;
+    Mainwindow w;
     //dbmanager db;
     //db.myCreateDataBase("test");
     //db.myDeteleDataBase("test");
@@ -32,8 +33,11 @@ int main(int argc, char *argv[]) {
     //electdatabase c;
     //c.show();
 //
-FieldManager c;
-c.show();
+   //FieldManager c;
+//c.show();
+//    landing h;
+//    h.show();
+
     return QApplication::exec();
     //test by fu
     //test
