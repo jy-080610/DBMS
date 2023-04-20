@@ -58,7 +58,7 @@
   <widget class="QPushButton" name="quitButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>80</x>
      <y>200</y>
      <width>121</width>
      <height>51</height>
@@ -71,8 +71,8 @@
   <widget class="QPushButton" name="deleButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>190</y>
+     <x>300</x>
+     <y>200</y>
      <width>121</width>
      <height>51</height>
     </rect>
