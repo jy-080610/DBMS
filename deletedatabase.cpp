@@ -16,16 +16,15 @@ deletedatabase::deletedatabase(QWidget *parent) :
 deletedatabase::~deletedatabase() {
     delete ui;
 }
-void deletedatabase::on_pushButton_2_clicked()
-{
-    QString str = ui->lineEdit->text();
-
-    dbmanager *userdata = new dbmanager();
-    userdata->myDeteleDataBase(str);
-
-}
 
 void deletedatabase::on_pushButton_clicked()
+{
+    QString str = ui->lineEdit->text();
+    dbmanager *userdata = new dbmanager();
+    userdata->myDeteleDataBase(str);
+}
+
+void deletedatabase::on_pushButton_2_clicked()
 {
     close();
 }
