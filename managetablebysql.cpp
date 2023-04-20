@@ -68,10 +68,8 @@ void ManageTableBySql::deleteTable(QString tableName)
 {
     // 获取当前正在使用的用户和数据库，从而确定创建目录
     QDir *dir = new QDir(QDir::currentPath());
-
     dir->cdUp();
     QString dirPath = dir->path() + "/data/sys/curuse.txt";
-
     QFile file(dirPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
