@@ -18,7 +18,7 @@ privilegemanager::~privilegemanager() {
 void privilegemanager::initDir() {
      QDir *dir=new QDir(QDir::currentPath());//获取当前路径
         dir->cdUp();//返回上一级目录
-        QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");//打开当前使用的数据库
+        QFile file(dir->path()+"/data/sys/curuse.txt");//打开当前使用的数据库
         if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
         {
             qDebug()<<"文件打开失败";
@@ -33,7 +33,7 @@ void privilegemanager::initDir() {
         qDebug()<<"list="<<list;
         userName=list[0];//获取当前用户名
         dbName=list[1];//获取当前数据库名
-        dirPath=dir->path()+"/DBMS/data/"+list[1];//当前数据库的路径
+        dirPath=dir->path()+"/data/"+list[1];//当前数据库的路径
         qDebug()<<"dirPath="<<dirPath;//输出当前数据库的路径
         file.close();//关闭文件
 

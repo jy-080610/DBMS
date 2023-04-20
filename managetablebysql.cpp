@@ -25,7 +25,7 @@ void ManageTableBySql::createTable(QString tableName)
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
 
     // 以只读方式打开文件
     QFile file(dirPath);
@@ -43,17 +43,17 @@ void ManageTableBySql::createTable(QString tableName)
     list = str.split(",");
     file.close();
 
-    // 若提取到的表名有效，则进行创建
+    // 若收到的表名有效，则进行建表操作
     if (tableName != "") {
         TableManager TM(list[0], list[1]);
         TM.tableCreator(tableName);
-        QMessageBox::information(0,
+        QMessageBox::information(nullptr,
                                  "通知",
                                  "创建成功",
                                  QMessageBox::Ok | QMessageBox::Default,
                                  QMessageBox::Cancel | QMessageBox::Escape, 0);
     } else {
-        QMessageBox::critical(0, "错误", "请确定表名合法",
+        QMessageBox::critical(nullptr, "错误", "请确定表名合法",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
@@ -70,7 +70,7 @@ void ManageTableBySql::deleteTable(QString tableName)
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
 
     QFile file(dirPath);
 
@@ -88,13 +88,13 @@ void ManageTableBySql::deleteTable(QString tableName)
     if (tableName != "") {
         TableManager TM(list[0], list[1]);
         TM.tableDelete(tableName);
-        QMessageBox::information(0,
+        QMessageBox::information(nullptr,
                                  "通知",
                                  "删除成功",
                                  QMessageBox::Ok | QMessageBox::Default,
                                  QMessageBox::Cancel | QMessageBox::Escape, 0);
     } else {
-        QMessageBox::critical(0, "错误", "请确定表名合法",
+        QMessageBox::critical(nullptr, "错误", "请确定表名合法",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
