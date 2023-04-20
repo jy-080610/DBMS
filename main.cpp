@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
 //    button.show();
 //    landing l;
 //    l.show();
+    //QStringList s;
+    //s<<"1";
+    //qDebug()<<s[0];
     Mainwindow w;
     //dbmanager db;
     //db.myCreateDataBase("test");

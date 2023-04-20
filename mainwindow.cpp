@@ -183,6 +183,32 @@ void Mainwindow::displayDir() {
     }
 }
 
+void Mainwindow::on_fieldmanage_clicked() {
+    QDir *dir = new QDir(QDir::currentPath());
+    dir->cdUp();
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
+    QFile file(dirPath);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+    }
+    QTextStream read(&file);
+    QStringList list;
+    QString     str = read.readLine();
+
+    list = str.split(",");
+    file.close();
+
+    if (list.length() == 2) {
+        FieldManager *fm = new FieldManager();
+        fm->show();
+    } else {
+        QMessageBox::critical(nullptr, "critical message", "请新建或选择数据库",
+                              QMessageBox::Ok | QMessageBox::Default,
+                              QMessageBox::Cancel | QMessageBox::Escape, 0);
+    }
+}
+
 
 
 
