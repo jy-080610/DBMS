@@ -1,44 +1,39 @@
-//
-// Created by 52750 on 2023/4/15.
-//
-
-#ifndef DBMS_LANDING_H
-#define DBMS_LANDING_H
-
+#ifndef LANDING_H
+#define LANDING_H
+#include "registerw.h"
 #include <QWidget>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QByteArray>
-#include<QCheckBox>
-
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class landing; }
-QT_END_NAMESPACE
+extern QString name; // 创建全局变量用户名
+namespace Ui {
+    class landing;
+}
 
 class landing : public QWidget {
 Q_OBJECT
 
 public:
+
     explicit landing(QWidget *parent = nullptr);
-
-    ~landing() override;
-
-    void read_json();//读json
-    void write_json();//写json
-    void message_init(QString flag1,QString flag2);//根据json内容决定是否填入输入框
-
+    ~landing();
 
 signals:
-    //登录mainwindow主界面信号
-    void login();
-    //关闭登录界面信号
-    void close_window();
-public slots:
-    //登录按钮后触发的事件
-    void logButton_clicked();
+
+    void setVisibleSignal();
+
+private slots:
+
+    void on_logButton_clicked();
+
+    void on_registerButton_clicked();
+
+    void on_pushButton_clicked();
+    void setVisibleSlot();
+
 private:
+
     Ui::landing *ui;
+    void getDbList();
+    registerw *user_register;
+    QStringList dbList;
 };
 
-#endif //DBMS_LANDING_H
+#endif // LANDING_H

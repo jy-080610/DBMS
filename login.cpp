@@ -1,31 +1,34 @@
-//
-// Created by lx on 2023/4/6.
-//
-//登录注册界面需要wjx实现
+#include "login.h"
+#include "qdir.h"
+#include "qdebug.h"
+#include <QCryptographicHash> // md5加密的库
+#include "qmessagebox.h"
 
 /**
- * 1.实现用户注册登录
- * 2.实现登录注册时的检查
- */
-#include "login.h"
-#include "qdebug.h"
-#include "qmessagebox.h"
-#include "qfile.h"
-#include "qdir.h"
-#include<QCryptographicHash>//加密头文件,QCryptographicHash类的主要作用：对数据进行加密
+   1. @ProjName:   DBMS
+   2. @Author:     Wang Yuxuan.
+   3. @Date:       2022-04-21
+   4. @Brief:      实现用户登陆或注册，以及登陆或注册时相关的异常检验
+ **/
 
 
+login::login()
+{
+    // 初始化系统目录
+    QDir *dir = new QDir(QDir::currentPath());
 
-login::login() {//构造函数
-    QDir *dir = new QDir(QDir::currentPath());//获取当前路径
-    dir->cdUp();//返回上一级目录
-    path =dir->path()+"/DBMS/data";//用户信息文件路径
+    dir->cdUp();
+
+    path = dir->path() + "/data";
+    qDebug()<<path;
 }
 
-/**
-* 用户登录时判断密码是否正确
-*/
-
+/*
+ * @Brief:  检查用户名密码是否出错
+ * @Param:  username 用户名
+ * @Param:  psd      密码
+ * @Return: 没错为真 ， 出错为假
+ */
 bool login::checkLog(QString dbname, QString username, QString psd)
 {
     // 如果是管理员账号，则进行单独的一套逻辑判断
@@ -38,9 +41,9 @@ bool login::checkLog(QString dbname, QString username, QString psd)
         qDebug() << cpath;
 
         // 密码使用md5加密
-        QString pw =
-                QCryptographicHash::hash(psd.toLatin1(),
-                                         QCryptographicHash::Md5).toHex();
+//        QString pw =
+//                QCryptographicHash::hash(psd.toLatin1(),
+//                                         QCryptographicHash::Md5).toHex();
         qDebug() << file.exists(cpath);
 
         if (file.exists(cpath)) {
@@ -63,13 +66,13 @@ bool login::checkLog(QString dbname, QString username, QString psd)
             while (!readInf.atEnd()) {
                 lineInf = readInf.readLine();
                 userList = lineInf.split(",");
-
-                if ((username == userList[0]) && (pw == userList[1])) {
+                qDebug()<<userList[0]<<userList[1]<<"输入的："<<username<<psd;
+                if ((username == userList[0]) && (psd == userList[1])) {
                     userFile.close();
                     QFile useFile(path + "/sys/curuse.txt");
 
                     if (!useFile.open(QIODevice::WriteOnly)) {
-                        QMessageBox::critical(nullptr,
+                        QMessageBox::critical(0,
                                               "错误",
                                               "curuse文件打开失败",
                                               QMessageBox::Ok | QMessageBox::Default,
@@ -84,6 +87,9 @@ bool login::checkLog(QString dbname, QString username, QString psd)
                     writeInf << username;
                     useFile.close();
                     return true;
+                }else
+                {
+                    qDebug("用户名和密码有错");
                 }
             }
             userFile.close();
@@ -91,14 +97,16 @@ bool login::checkLog(QString dbname, QString username, QString psd)
     }
 
     QString cpath = path + "/" + dbname + "/userinfo.txt"; // 信息文件路径
+    qDebug()<<cpath;
     QString cname, cpas;                                   // 用户名，密码
     QFile   file;
 
     // 密码使用md5加密
-    QString pw =
-            QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
+//    QString pw =
+//            QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
 
     if (file.exists(cpath)) {
+        qDebug()<<cpath<<"文件存在";
         QFile   userFile(cpath);
         QString lineInf; // 读取一名用户的信息
 
@@ -117,8 +125,8 @@ bool login::checkLog(QString dbname, QString username, QString psd)
         while (!readInf.atEnd()) {
             lineInf = readInf.readLine();
             userList = lineInf.split(",");
-
-            if ((username == userList[0]) && (pw == userList[1])) {
+            qDebug()<<userList[0]<<userList[1]<<"输入的："<<username<<psd;
+            if ((username == userList[0]) && (psd == userList[1])) {
                 userFile.close();
                 QFile useFile(path + "/sys/curuse.txt");
 
@@ -142,26 +150,39 @@ bool login::checkLog(QString dbname, QString username, QString psd)
         }
         userFile.close();
     }
+    else{
+        qDebug()<<"cpath不存在";
+    }
 
     return false;
 }
-//用户注册时判断用户名是否已存在
-int login::checkError(QString dbname, QString username, QString psd1, QString psd2) {
+
+/*
+ * @Brief:  注册时判断异常,两种错误，1、用户名已存在或包含标点 2、两次密码不一致 3、密码中包含标点
+ * @Param:  username 用户名
+ * @Param:  psd      密码
+ * @Return: 1 用户名已存在  2 用户名内容违规、密码内容违规 3 长度太短 4 两次密码不一致 0 通过验证
+ */
+int login::checkError(QString dbname, QString username, QString psd1,
+                      QString psd2)
+{
     if (psd1 != psd2) {
-        return 4;//输入密码前后两次不一致
+        return 4;
     }
-    if ((username.length() < 4) || (psd1.length() < 4)) {//用户名和密码长度小于4
+
+    if ((username.length() < 2) || (psd1.length() < 2)) {
         return 3;
     }
 
     if (username.contains(",") || username.contains("，") || psd1.contains(",") ||
-        psd1.contains("，")) {//用户名和密码中不能包含逗号
+        psd1.contains("，")) {
         return 2;
     }
 
     // 目标文件路径
     QString cpath = path + "/" + dbname + "/userinfo.txt";
     QFile   file;
+    qDebug()<<cpath;
 
     if (file.exists(cpath)) {
         qDebug() << "userinfo文件存在";
@@ -182,15 +203,47 @@ int login::checkError(QString dbname, QString username, QString psd1, QString ps
 
             if ((username == userList[0])) {
                 userFile.close();
+                qDebug()<<"用户名重复";
                 return 1;
             }
         }
         userFile.close();
     }
+    else{
+        qDebug()<<"userinfo文件不存在";
+    }
+
     return 0;
-
 }
-//注册好后插入数据信息
-void login::insert2File(QString, QString, QString) {
 
+/*
+ * @Brief:  将用户名密码存储到文件
+ * @Param:  username 用户名
+ * @Param:  psd      密码
+ * @Return: NULL
+ */
+void login::insert2File(QString dbname, QString username, QString psd)
+{
+    // 将密码转换为md5格式
+//    QString pw =
+//            QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
+
+    // 以追加方式打开用户文件
+    QFile file(path + "/" + dbname + "/userinfo.txt");
+
+    file.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream out(&file);
+
+    // 写入新注册的用户名和密码
+    out << username + "," + psd+ "\n";
+    file.close();
+
+    // 更新用户权限文件
+    QFile privilege(path + "/" + dbname + "/userprivilege.txt");
+
+    privilege.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream outp(&privilege);
+
+    outp << username + ",0,0,0,0,0\n";
+    privilege.close();
 }

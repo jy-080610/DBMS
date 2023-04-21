@@ -21,23 +21,21 @@ tablemanageload::~tablemanageload() {
 
 void tablemanageload::on_updatetable_clicked()
 {
-    FieldManager *fd = new FieldManager();
-
+    auto *fd = new FieldManager();
     fd->show();
     close();
 }
 
 void tablemanageload::on_pushButton_2_clicked()
 {
-    deletetable *dt = new deletetable();
-
+    auto *dt = new deletetable();
     dt->show();
     close();
 }
 
 void tablemanageload::on_creattable_clicked()
 {
-    creattable *ct = new creattable();
+    auto *ct = new creattable();
     ct->show();
     close();
 }

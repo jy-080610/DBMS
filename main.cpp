@@ -6,14 +6,12 @@
 #include "managetablebysql.h"
 #include"fieldmanager.h"
 #include "registerw.h"
+#include "dataoperation.h"
 #include"createdatabase.h"
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-//    QPushButton button("Hello world!", nullptr);
-//    button.resize(200, 100);
-//    button.show();
-//    landing l;
-//    l.show();
+    //dataoperation d;
+    //d.show();
     Mainwindow w;
     //dbmanager db;
     //db.myCreateDataBase("test");
@@ -21,14 +19,12 @@ int main(int argc, char *argv[]) {
     //TableManager *tb=new TableManager("wende","test");
     //tb->tableDelete("table1");
     //TableManager tb("wende","test");
-    //tb.tableCreator("table1");
-    //FieldManager f;
-    //f.show();
-    //createdatabase c;
-    //c.show();
+    //tb.tableDelete("table1");
+//    ManageTableBySql t;
+//    t.deleteTable("test1");
     //这边把主窗口的show()函数注释，这样主窗口才不会自动打开，
     //必须通过登录窗口发出的信号，才能启动主窗口的show()函数。
-    w.show();
+    //w.show();
     return QApplication::exec();
     //test by fu
     //test

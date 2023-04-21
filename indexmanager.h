@@ -4,9 +4,9 @@
 
 #ifndef DBMS_INDEXMANAGER_H
 #define DBMS_INDEXMANAGER_H
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include<cstdio>
+#include<cstdlib>
+#include<cstring>
 #include<unistd.h>//unistd.h是POSIX操作系统API的头文件，提供对POSIX操作系统API的访问功能
 #include<QString>
 #include<iostream>

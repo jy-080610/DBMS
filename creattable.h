@@ -6,7 +6,13 @@
 #define DBMS_CREATTABLE_H
 
 #include <QWidget>
-
+#include "fieldmanager.h"
+#include "qmessagebox.h"
+#include "qdebug.h"
+#include "dbmanager.h"
+#include"QDir"
+#include "privilegemanager.h"
+#include "tablemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class creattable; }
@@ -20,6 +26,10 @@ public:
 
     ~creattable() override;
 
+private slots:
+    void on_add_clicked();
+
+    void on_pushButton_clicked();
 private:
     Ui::creattable *ui;
 };

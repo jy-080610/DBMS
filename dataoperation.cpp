@@ -30,16 +30,16 @@ dataoperation::~dataoperation() {
 void dataoperation::initDir() {
         QDir *dir = new QDir(QDir::currentPath());
         dir->cdUp();
-        QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+        QFile file(dir->path() + "/data/sys/curuse.txt");
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             qDebug() << "文件打开失败";
         }
         QTextStream read(&file);
         QStringList list;
         QString str = read.readLine();
-        list = str.split(" ");
+        list = str.split(",");
         user=list[0];
-        dirPath= dir->path() + "/DBMS/data/" + list[1];
+        dirPath= dir->path() + "/data/" + list[1];
         qDebug() << dirPath;
         file.close();
 }
@@ -170,7 +170,7 @@ void dataoperation::on_pushButton_insert_clicked() {
             this->ui->tableWidget->setItem(row,j,new QTableWidgetItem(""));
         }
     } else{
-        QMessageBox::critical(0,"警告","您没有权限向此表插入数据",QMessageBox::Ok|QMessageBox::Default,
+        QMessageBox::critical(nullptr,"警告","您没有权限向此表插入数据",QMessageBox::Ok|QMessageBox::Default,
                               QMessageBox::Cancel|QMessageBox::Escape,0);
     }
 
@@ -185,7 +185,7 @@ void dataoperation::on_pushButton_delete_clicked() {
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);//设置焦点
     }
     else{
-        QMessageBox::critical(0, "错误", "您没有权限向此表删除数据！",
+        QMessageBox::critical(nullptr, "错误", "您没有权限向此表删除数据！",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
@@ -197,7 +197,7 @@ void dataoperation::on_pushButton_save_clicked() {
         save();
     }
     else{
-        QMessageBox::critical(0, "错误", "您没有权限！",
+        QMessageBox::critical(nullptr, "错误", "您没有权限！",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
@@ -247,7 +247,7 @@ void dataoperation::save() {
                 else if(conlist[1]=="date" && !isDateString(item->text()) ){
                     flag=1;
                 }
-                else if(conlist[3]=="非空" && item->text()==NULL ){
+                else if(conlist[3]=="非空" && item->text()==nullptr ){
                     flag=3;//非空
                 }
                 collist.append(item->text());//添加到列表

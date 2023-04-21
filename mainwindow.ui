@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
-    <height>545</height>
+    <width>816</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,15 +20,15 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
-     <width>731</width>
-     <height>521</height>
+     <y>0</y>
+     <width>811</width>
+     <height>571</height>
     </rect>
    </property>
    <widget class="QLineEdit" name="sqllineEdit">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>210</x>
       <y>60</y>
       <width>481</width>
       <height>51</height>
@@ -41,7 +41,7 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>210</x>
       <y>180</y>
       <width>481</width>
       <height>211</height>
@@ -51,7 +51,7 @@
    <widget class="QPushButton" name="tablemanage">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>210</x>
       <y>400</y>
       <width>111</width>
       <height>51</height>
@@ -64,7 +64,7 @@
    <widget class="QPushButton" name="datamanage">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>390</x>
       <y>400</y>
       <width>111</width>
       <height>51</height>
@@ -77,7 +77,7 @@
    <widget class="QPushButton" name="fieldmanage">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>580</x>
       <y>400</y>
       <width>111</width>
       <height>51</height>
@@ -90,7 +90,7 @@
    <widget class="QPushButton" name="rollback">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>410</x>
       <y>120</y>
       <width>111</width>
       <height>51</height>
@@ -103,7 +103,7 @@
    <widget class="QPushButton" name="commit">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>210</x>
       <y>120</y>
       <width>111</width>
       <height>51</height>
@@ -116,7 +116,7 @@
    <widget class="QPushButton" name="run">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>580</x>
       <y>120</y>
       <width>111</width>
       <height>51</height>
@@ -145,9 +145,9 @@
    <widget class="QTreeView" name="treeView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>120</y>
-      <width>111</width>
+      <width>201</width>
       <height>371</height>
      </rect>
     </property>
@@ -155,7 +155,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>700</x>
       <y>70</y>
       <width>81</width>
       <height>41</height>
@@ -168,7 +168,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>631</x>
+      <x>700</x>
       <y>190</y>
       <width>91</width>
       <height>31</height>
@@ -181,7 +181,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>60</y>
       <width>111</width>
       <height>51</height>
@@ -194,7 +194,7 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>390</x>
       <y>460</y>
       <width>111</width>
       <height>41</height>
@@ -207,7 +207,7 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>580</x>
       <y>460</y>
       <width>111</width>
       <height>41</height>
@@ -220,7 +220,7 @@
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>210</x>
       <y>460</y>
       <width>111</width>
       <height>41</height>
@@ -228,6 +228,32 @@
     </property>
     <property name="text">
      <string>权限管理</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>270</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>创建数据库</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="del">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>320</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>删除数据库</string>
     </property>
    </widget>
   </widget>

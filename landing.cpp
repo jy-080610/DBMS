@@ -1,139 +1,139 @@
-//
-// 登陆管理
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_landing.h" resolved
-
 #include "landing.h"
 #include "ui_landing.h"
-#include<QMessageBox>
-#include <QFile>
-#include <QTextStream>
-#include <qdebug.h>
+#include "login.h"
+#include "QDebug"
+#include "mainwindow.h"
+#include "qdir.h"
+#include "QMessageBox"
+/**
+   1. @ProjName:   DBMS
+   2. @Author:     Wang Yuxuan.
+   3. @Date:       2022-04-20
+   4. @Brief:      登陆界面的实现
+ **/
 
-
+QString name = "99"; // 初始化全局变量（没什么意义）
 landing::landing(QWidget *parent) :
-        QWidget(parent), ui(new Ui::landing) {
+        QWidget(parent),
+        ui(new Ui::landing)
+{
     ui->setupUi(this);
 
-    //connect 信号槽
+    // 去窗口边框
+    //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
 
-    //触发登录按钮的信号槽连接
-    connect(ui->logButton,SIGNAL(clicked(bool)),this,SLOT(logButton_clicked()));
+    // 把窗口背景设置为透明;
+    //setAttribute(Qt::WA_TranslucentBackground);
 
-    //发出信号后关闭登录窗口的信号槽连接
-    connect(this, SIGNAL(close_window()),this,SLOT(close()));
+    // 建立注册界面与登陆界面的信道槽
+    user_register = new registerw();
+    user_register->hide();
+    connect(user_register, SIGNAL(setVisibleSignal()), this,
+            SLOT(setVisibleSlot()));
 
-    //输入密码的时候显示圆点
-    ui->passWord->setEchoMode(QLineEdit::Password);
-
-    //读取read_json文件
-    read_json();
+    // 获取目录下存在的数据库名称
+    getDbList();
+    this->show();
 }
 
-landing::~landing() {
+landing::~landing()
+{
     delete ui;
 }
 
-void landing::read_json()
+/*
+ * @Brief:  从指定目录下读取现存的数据库文件夹的名称，并给组件赋值
+ * @Return: NULL
+ */
+void landing::getDbList()
 {
-    //打开文件
-    QFile file(QApplication::applicationDirPath()+"/config.json");
-    if(!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "File open failed!";
-    } else {
-        qDebug() <<"File open successfully!";
+    QDir *dir = new QDir(QDir::currentPath());
+
+    dir->cdUp();
+
+    // --1 判断文件夹是否存在
+
+    QString folderPath = dir->path() + "/data";
+    qDebug()<<"folderPath is "<<folderPath;
+    QDir    dbDir(folderPath);
+
+    if (!dbDir.exists())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
+        return;
     }
-    QJsonDocument jdc(QJsonDocument::fromJson(file.readAll()));
-    QJsonObject obj = jdc.object();
-    QString save_name_flag=obj.value("SAVE_NAME").toString();
-    QString save_password_flag=obj.value("SAVE_PASSWORD").toString();
-    message_init(save_name_flag,save_password_flag);
+
+    // --2 获取当前路径下所有的文件夹名字
+    // -- 注：QDir::Dirs 为获取所有文件夹名称，获取文件名称需要修改
+    QStringList names = dbDir.entryList(QDir::Dirs);
+
+    // --3 删除当前文件夹和上级文件夹（温馨提示：隐藏的文件夹获取不了）
+    names.removeOne(".");
+    names.removeOne("..");
+    names.removeOne("sys");
+
+    // --4 打印出获取的文件名
+    qDebug() << "names: " << names;
+
+    for (int i = 0; i < names.size(); i++) {
+        ui->dbName->addItem(names[i]);
+    }
 }
 
-void landing::message_init(QString flag1,QString flag2)
+/*
+ * @Brief:  登录按钮
+ * @Return: NULL
+ */
+void landing::on_logButton_clicked()
 {
-    if (flag1 == "1")
-    {
-        ui->userName->setText("FuYunxiang");
-        ui->checkBox->setChecked(true);
-    }
-    if(flag2 == "1")
-    {
-        ui->passWord->setText("123456");
-        ui->checkBox_2->setChecked(true);
-    }
+    // 当用户名和密码都输入后，进行如下操作
+    if ((ui->userName->text() != "") && (ui->passWord->text() != "")) {
+        login l;
 
+        // 检查登陆是否成功，成功后切换到主界面
+        if (l.checkLog(ui->dbName->currentText(), ui->userName->text(),
+                       ui->passWord->text())) {
+            qDebug() << "成功";
+
+            name = ui->userName->text();
+            this->hide();
+            qDebug()<<"到目前一切顺利";
+            // 向主界面发射信号，显示主界面
+            emit setVisibleSignal();
+            qDebug()<<"到目前一切顺利";
+            ui->userName->clear();
+            ui->passWord->clear();
+        } else {
+            qDebug() << "出错";
+        }
+    }
 }
 
-void landing::logButton_clicked() {
-    //从输入框获取账号
-    QString name =ui->userName->text();
-    //从输入框获取密码
-    QString password=ui->passWord->text();
-
-//    //userInformation example;
-//    QFile file("./user.txt");
-//    if(file.open(QIODevice::ReadOnly|QIODevice::Text))
-//    {
-//        QString line1;
-//        QString line2;
-//        QTextStream in(&file);
-//        line1=in.readLine();
-//        line2=in.readLine();
-//        qDebug()<<line1<<" "<<line2;
-//        if( QString::compare(name,line1)==0 && QString::compare(password,line2)==0 )
-//        {
-//        //发出登录信号
-//        emit(login());
-//        //发出关闭窗口信号
-//        emit(close_window());
-//        }
-//        else//账号或者密码错误
-//            QMessageBox::information(this, "Warning","Username or Password is wrong !");
-//    }
-
-
-    if(name=="FuYunxiang" && password=="123456")
-    {
-        //发出登录信号
-        emit(login());
-
-        write_json();
-
-
-        //发出关闭窗口信号
-        emit(close_window());
-    }
-    else//账号或者密码错误
-        QMessageBox::information(this, "Warning","Username or Password is wrong !");
-
+/*
+ * @Brief:  注册按钮
+ * @Return: NULL
+ */
+void landing::on_registerButton_clicked()
+{
+    // 切换到注册界面
+    user_register->show();
+    this->hide();
 }
 
-void landing::write_json()
+/*
+ * @Brief:  退出按钮
+ * @Return: NULL
+ */
+void landing::on_pushButton_clicked()
 {
-    QFile file(QApplication::applicationDirPath()+"/config.json");
-    if(!file.open(QIODevice::WriteOnly)) {
-        qDebug() << "File open failed!";
-    } else {
-        qDebug() <<"File open successfully!";
-    }
-    QJsonObject obj;
-    bool flag = ui->checkBox->isChecked();
-    if(flag == true)
-    {
-        obj["SAVE_NAME"] = "1";
-    }
-    else
-        obj["SAVE_NAME"] = "0";
-    flag = ui->checkBox_2->isChecked();
-    if(flag == true)
-    {
-        obj["SAVE_PASSWORD"] = "1";
-    }
-    else
-        obj["SAVE_PASSWORD"] = "0";
-    QJsonDocument jdoc(obj);
-    file.write(jdoc.toJson());
-    file.flush();
+    exit(0);
+}
+
+/*
+ * @Brief:  重现界面
+ * @Return: NULL
+ */
+void landing::setVisibleSlot()
+{
+    this->show();
 }

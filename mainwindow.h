@@ -18,7 +18,11 @@
 #include "qfiledialog.h"
 #include"analysissql.h"
 #include "qdirmodel.h"
-
+#include"fieldmanager.h"
+#include"dataoperation.h"
+#include"tablemanageload.h"
+#include"createdatabase.h"
+#include"deletedatabase.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
@@ -32,8 +36,16 @@ public:
 
     ~Mainwindow() override;
 private slots:
-    void on_run_clicked();
+    void setVisibleSlot();
 
+    void on_run_clicked();
+    void on_fieldmanage_clicked();
+    void on_datamanage_clicked();
+    void on_tablemanage_clicked();
+
+    void on_create_clicked();
+
+    void on_del_clicked();
 private:
     Ui::Mainwindow *ui;
     AnalysisSQL *dealwithSql;
@@ -43,6 +55,7 @@ private:
     void    displayDir();
     //登录界面类的对象作为指针
     //landing * m_log;
+
 };
 
 

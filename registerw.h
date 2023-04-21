@@ -1,36 +1,34 @@
-//
-// Created by Asus on 2023/4/17.
-//
-
-#ifndef DBMS_REGISTERW_H
-#define DBMS_REGISTERW_H
+#ifndef REGISTERW_H
+#define REGISTERW_H
 
 #include <QWidget>
 
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class registerw; }
-QT_END_NAMESPACE
+namespace Ui {
+    class registerw;
+}
 
 class registerw : public QWidget {
 Q_OBJECT
 
 public:
-    explicit registerw(QWidget *parent = nullptr);
 
-    ~registerw() override;
+    explicit registerw(QWidget *parent = nullptr);
+    ~registerw();
+
 signals:
 
-    //void setVisibleSignal();
+    void setVisibleSignal();
 
 private slots:
 
-
+    void on_registerButton_clicked();
+    void on_quitButton_clicked();
     void createuser(QString name);
 
 private:
+
     Ui::registerw *ui;
+    void getDbList();
 };
 
-
-#endif //DBMS_REGISTERW_H
+#endif // REGISTERW_H
