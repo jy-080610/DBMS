@@ -19,6 +19,9 @@ public:
     explicit deletetable(QWidget *parent = nullptr);
 
     ~deletetable() override;
+private slots:
+    void on_quitButtton_clicked();
+    void on_deleButton_clicked();
 
 private:
     Ui::deletetable *ui;
