@@ -1,5 +1,5 @@
 
-
+//通过权限管理判断是否有权限进行数据操作
 #include "managedatabysql.h"
 #include "qmessagebox.h"
 #include "qdebug.h"

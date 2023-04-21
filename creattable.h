@@ -22,6 +22,10 @@ public:
 
 private:
     Ui::creattable *ui;
+
+    void on_add_clicked();
+
+    void on_pushButton_clicked();
 };
 
 
