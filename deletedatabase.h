@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 删除数据库
 //
 
 #ifndef DBMS_DELETEDATABASE_H
@@ -19,6 +19,10 @@ public:
     explicit deletedatabase(QWidget *parent = nullptr);
 
     ~deletedatabase() override;
+private slots:
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+
 
 private:
     Ui::deletedatabase *ui;
