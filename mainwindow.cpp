@@ -209,6 +209,66 @@ void Mainwindow::on_fieldmanage_clicked() {
     }
 }
 
+void Mainwindow::on_datamanage_clicked() {
+    QDir *dir = new QDir(QDir::currentPath());
+    dir->cdUp();
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
+    QFile file(dirPath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+    }
+    QTextStream read(&file);
+    QStringList list;
+    QString     str = read.readLine();
+
+    list = str.split(",");
+    file.close();
+
+    if (list.length() == 2) {
+        auto *dp = new dataoperation();
+        dp->show();
+    } else {
+        QMessageBox::critical(nullptr, "critical message", "请新建或选择数据库",
+                              QMessageBox::Ok | QMessageBox::Default,
+                              QMessageBox::Cancel | QMessageBox::Escape, 0);
+    }
+}
+
+void Mainwindow::on_tablemanage_clicked() {
+    QDir *dir = new QDir(QDir::currentPath());
+    dir->cdUp();
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
+
+    QFile file(dirPath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+    }
+    QTextStream read(&file);
+    QStringList list;
+    QString     str = read.readLine();
+    list = str.split(",");
+    file.close();
+
+    if (list.length() == 2) {
+        auto *tml = new tablemanageload();
+        tml->show();
+    } else {
+        QMessageBox::critical(nullptr, "critical message", "请新建或选择数据库",
+                              QMessageBox::Ok | QMessageBox::Default,
+                              QMessageBox::Cancel | QMessageBox::Escape, 0);
+    }
+}
+
+void Mainwindow::on_create_clicked() {
+    auto *cdb = new createdatabase();
+    cdb->show();
+}
+
+void Mainwindow::on_del_clicked() {
+    auto *ddb = new deletedatabase();
+    ddb->show();
+}
+
 
 
 

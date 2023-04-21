@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>请输入要删除的表名</string>
+    <string>请输入表名</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quitButton">

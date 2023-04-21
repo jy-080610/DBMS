@@ -5,38 +5,6 @@
 #include "analysissql.h"
 #include "qdebug.h"
 
-/**
-* 1.项目名称：简易DBMS
- * 2.项目描述：实现一个简易的DBMS，支持基本的SQL语句，包括建表、插入、删除、查询、更新等
- * 3.项目时间：2023年4月5日
-*/
-
-/*初步打算实现的SQL语句：
- * 1.数据库
- * 创建数据库：create database 数据库名称;
- * 删除数据库：drop database 数据库名称;
- * 2.建立表 create table tablename;
- *   删除表 drop table tablename;
- *  3.对表的数据操作：
- *  插入数据：insert into tablename values (value1,value2,value3,...);
- *  删除数据：delete from tablename where condition;
- *  更新数据：update tablename set column1=value1 where condition;
- *4.字段操作：
- * 添加字段：alter table tablename add column columnname datatype;？
- * 删除字段：alter table tablename drop column columnname;
- * 修改字段：alter table tablename modify column columnname datatype;
- * 5.查询操作：
- * 查询全部：select * from tablename;
- *
- * 查询指定字段：select （column1,column2,column3） from tablename;
- * 查询指定字段以及where条件：select （column1,column2,column3） from tablename where 属性名=XXX;
- * 6.建立索引：
- * 建立索引：create index indexname on tablename(columnname);
- * 删除索引：drop index indexname;
- * 7.权限设置：
- * grank on tablename to username;
- * revoke on tablename from username;
- */
 //分析SQL语句:正则表达式
 
 AnalysisSQL::AnalysisSQL() {//初始化构造器

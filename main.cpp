@@ -6,9 +6,12 @@
 #include "managetablebysql.h"
 #include"fieldmanager.h"
 #include "registerw.h"
+#include "dataoperation.h"
 #include"createdatabase.h"
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
+    //dataoperation d;
+    //d.show();
     Mainwindow w;
     //dbmanager db;
     //db.myCreateDataBase("test");

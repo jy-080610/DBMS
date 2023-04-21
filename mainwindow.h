@@ -19,7 +19,10 @@
 #include"analysissql.h"
 #include "qdirmodel.h"
 #include"fieldmanager.h"
-
+#include"dataoperation.h"
+#include"tablemanageload.h"
+#include"createdatabase.h"
+#include"deletedatabase.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
@@ -37,6 +40,12 @@ private slots:
 
     void on_run_clicked();
     void on_fieldmanage_clicked();
+    void on_datamanage_clicked();
+    void on_tablemanage_clicked();
+
+    void on_create_clicked();
+
+    void on_del_clicked();
 private:
     Ui::Mainwindow *ui;
     AnalysisSQL *dealwithSql;
