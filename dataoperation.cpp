@@ -316,15 +316,16 @@ bool dataoperation::hasSame(QStringList list) {
                 flag = 1;
             }
         }
+    }
         if (flag==0){
             qDebug()<<"没有重复";
             return false;
         }
-        else{
+        else
             qDebug()<<"有重复";
             return true;
-        }
 
-    }
+
+
 
 }

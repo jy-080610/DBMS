@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 重设密码
 //
 
 #ifndef DBMS_RESETPASSWORD_H
@@ -19,9 +19,17 @@ public:
     explicit resetpassword(QWidget *parent = nullptr);
 
     ~resetpassword() override;
+private slots:
+    void on_modifyButton_clicked();
+
+    void on_exitButton_clicked();
 
 private:
     Ui::resetpassword *ui;
+    QString path;
+
+    bool checkLog(QString,QString,QString);
+    void getDbList();
 };
 
 

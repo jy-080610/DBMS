@@ -55,7 +55,7 @@
     <string>创建表</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="deletetable">
    <property name="geometry">
     <rect>
      <x>280</x>
