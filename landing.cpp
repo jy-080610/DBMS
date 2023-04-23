@@ -1,65 +1,83 @@
+//
+// 登陆管理
+//
+#include <QDir>
+#include <QMessageBox>
 #include "landing.h"
 #include "ui_landing.h"
+
 #include "login.h"
 #include "QDebug"
 #include "mainwindow.h"
-#include "qdir.h"
-#include "QMessageBox"
-/**
-   1. @ProjName:   DBMS
-   2. @Author:     Wang Yuxuan.
-   3. @Date:       2022-04-20
-   4. @Brief:      登陆界面的实现
- **/
-
-QString name = "99"; // 初始化全局变量（没什么意义）
+QString name = "DBMS"; // 初始化全局变量
 landing::landing(QWidget *parent) :
-        QWidget(parent),
-        ui(new Ui::landing)
-{
+        QWidget(parent), ui(new Ui::landing) {
     ui->setupUi(this);
-
     // 去窗口边框
-    //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
-
+    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
     // 把窗口背景设置为透明;
-    //setAttribute(Qt::WA_TranslucentBackground);
-
+    setAttribute(Qt::WA_TranslucentBackground);
     // 建立注册界面与登陆界面的信道槽
     user_register = new registerw();
     user_register->hide();
     connect(user_register, SIGNAL(setVisibleSignal()), this,
             SLOT(setVisibleSlot()));
-
     // 获取目录下存在的数据库名称
     getDbList();
     this->show();
 }
 
-landing::~landing()
-{
+landing::~landing() {
     delete ui;
 }
 
-/*
- * @Brief:  从指定目录下读取现存的数据库文件夹的名称，并给组件赋值
- * @Return: NULL
- */
-void landing::getDbList()
-{
+void landing::on_logButton_clicked() {
+// 当用户名和密码都输入后，进行如下操作
+    if ((ui->userName->text() != "") && (ui->passWord->text() != "")) {
+        login l;
+
+        // 检查登陆是否成功，成功后切换到主界面
+        if (l.checkLog(ui->dbName->currentText(), ui->userName->text(),
+                       ui->passWord->text())) {
+            qDebug() << "成功";
+            name = ui->userName->text();
+            this->hide();
+            // 向主界面发射信号，显示主界面
+            emit setVisibleSignal();
+            ui->userName->clear();
+            ui->passWord->clear();
+        } else {
+            qDebug() << "出错";
+        }
+    }
+}
+// 切换到注册界面
+void landing::on_registerButton_clicked() {
+// 切换到注册界面
+    user_register->show();
+    this->hide();
+}
+
+void landing::on_pushButton_clicked() {
+    exit(0);
+}
+
+void landing::setVisibleSlot() {
+    this->show();
+}
+
+void landing::getDbList() {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
 
     // --1 判断文件夹是否存在
-
-    QString folderPath = dir->path() + "/data";
-    qDebug()<<"folderPath is "<<folderPath;
+    QString folderPath = dir->path() + "/DBMS/data";
     QDir    dbDir(folderPath);
 
     if (!dbDir.exists())
     {
-        QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
+        QMessageBox::critical(this, tr("错误"), tr("数据库文件夹不存在"));
         return;
     }
 
@@ -71,69 +89,10 @@ void landing::getDbList()
     names.removeOne(".");
     names.removeOne("..");
     names.removeOne("sys");
-
     // --4 打印出获取的文件名
     qDebug() << "names: " << names;
 
     for (int i = 0; i < names.size(); i++) {
         ui->dbName->addItem(names[i]);
     }
-}
-
-/*
- * @Brief:  登录按钮
- * @Return: NULL
- */
-void landing::on_logButton_clicked()
-{
-    // 当用户名和密码都输入后，进行如下操作
-    if ((ui->userName->text() != "") && (ui->passWord->text() != "")) {
-        login l;
-
-        // 检查登陆是否成功，成功后切换到主界面
-        if (l.checkLog(ui->dbName->currentText(), ui->userName->text(),
-                       ui->passWord->text())) {
-            qDebug() << "成功";
-
-            name = ui->userName->text();
-            this->hide();
-            qDebug()<<"到目前一切顺利";
-            // 向主界面发射信号，显示主界面
-            emit setVisibleSignal();
-            qDebug()<<"到目前一切顺利";
-            ui->userName->clear();
-            ui->passWord->clear();
-        } else {
-            qDebug() << "出错";
-        }
-    }
-}
-
-/*
- * @Brief:  注册按钮
- * @Return: NULL
- */
-void landing::on_registerButton_clicked()
-{
-    // 切换到注册界面
-    user_register->show();
-    this->hide();
-}
-
-/*
- * @Brief:  退出按钮
- * @Return: NULL
- */
-void landing::on_pushButton_clicked()
-{
-    exit(0);
-}
-
-/*
- * @Brief:  重现界面
- * @Return: NULL
- */
-void landing::setVisibleSlot()
-{
-    this->show();
 }

@@ -2,6 +2,8 @@
 #define LANDING_H
 #include "registerw.h"
 #include <QWidget>
+#include "registerw.h"
+
 extern QString name; // 创建全局变量用户名
 namespace Ui {
     class landing;
@@ -28,6 +30,14 @@ private slots:
     void on_pushButton_clicked();
     void setVisibleSlot();
 
+signals:
+
+    void setVisibleSignal();
+private slots:
+    void on_logButton_clicked();
+    void on_registerButton_clicked();
+    void on_pushButton_clicked();
+    void setVisibleSlot();
 private:
 
     Ui::landing *ui;
