@@ -1,6 +1,3 @@
-//
-// Created by Asus on 2023/4/6.
-//
 
 #ifndef DBMS_SELECTDATABASE_H
 #define DBMS_SELECTDATABASE_H

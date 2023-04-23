@@ -88,9 +88,9 @@ bool privilegemanager::ctb(QString tablename, QString user) {
     if(p1=="1"&&p2=="1"){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     tprivilege.close();//关闭文件
     privilege.close();//关闭文件
 }
@@ -199,9 +199,9 @@ bool privilegemanager::adt(QString tablename, QString user) {
     if(p1=="1"&&p2=="1"){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     tprivilege.close();//关闭文件
     privilege.close();//关闭文件
 
@@ -255,9 +255,9 @@ bool privilegemanager::ddt(QString tablename, QString user) {
     if(p1=="1"&&p2=="1"){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     tprivilege.close();//关闭文件
     privilege.close();//关闭文件
 
@@ -311,9 +311,9 @@ bool privilegemanager::mdt(QString tablename, QString user) {
     if(p1=="1"&&p2=="1"){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     tprivilege.close();//关闭文件
     privilege.close();//关闭文件
 
@@ -499,9 +499,9 @@ bool privilegemanager::isfuserexist(QString tablename, QString user) {
     if(flag==1){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     readFile.close();//关闭文件
 }
 //用户是否存在
@@ -537,9 +537,9 @@ bool privilegemanager::isuserexist(QString user) {
     if(flag==1){
         return true;
     }
-    else{
+    else
         return false;
-    }
+
     readFile.close();//关闭文件
 }
 //初始化用户权限

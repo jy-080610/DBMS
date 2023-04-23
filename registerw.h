@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 注册创建数据库用户
 //
 
 #ifndef DBMS_REGISTERW_H
@@ -24,12 +24,13 @@ signals:
     void setVisibleSignal();
 
 private slots:
-
-
+    void on_registerButton_clicked();
+    void on_quitButton_clicked();
     void createuser(QString name);
 
 private:
     Ui::registerw *ui;
+    void getDbList();
 };
 
 
