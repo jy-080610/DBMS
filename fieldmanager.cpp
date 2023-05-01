@@ -405,3 +405,7 @@ void fieldmanager::removedata(int datacol) {
 
 
 }
+
+void fieldmanager::on_exit_clicked() {
+   this->close();
+}

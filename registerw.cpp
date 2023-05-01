@@ -13,7 +13,7 @@ registerw::registerw(QWidget *parent) :
         QWidget(parent), ui(new Ui::registerw) {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint|windowFlags());
-    setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
+    //setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
     getDbList();//获取数据库列表
 }
 

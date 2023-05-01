@@ -60,8 +60,8 @@
     <rect>
      <x>80</x>
      <y>230</y>
-     <width>161</width>
-     <height>61</height>
+     <width>91</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -71,10 +71,10 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>210</x>
      <y>230</y>
-     <width>131</width>
-     <height>61</height>
+     <width>91</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -95,6 +95,19 @@
    </property>
    <property name="text">
     <string>DBMS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>230</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>退出</string>
    </property>
   </widget>
  </widget>
