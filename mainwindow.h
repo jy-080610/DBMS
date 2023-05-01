@@ -1,6 +1,3 @@
-//
-// Created by YANG on 2023/4/4.
-//
 
 #ifndef DBMS_MAINWINDOW_H
 #define DBMS_MAINWINDOW_H

@@ -1,0 +1,3 @@
+classno,varchar,主键,非空
+classname,varchar,非主键,非空
+credit,number,非主键,非空

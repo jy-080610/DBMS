@@ -1,0 +1,4 @@
+Sno,varchar,主键,非空
+Sname,varchar,非主键,非空
+Sage,number,非主键,非空
+Classno,varchar,非主键,可为空
