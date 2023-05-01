@@ -1,0 +1,64 @@
+Database1|wyx1|2022-05-18 21:20:36|insert into test3 values(aaa,F,aaa);
+Database1|wyx1|2022-05-18 21:20:48|insert into test3 values(bbb,M,bbb);
+revoke
+Database1|wyx1|2022-05-18 21:21:55|insert into test3 values(aaa,F,aaa);
+commit
+Database1|wyx1|2022-05-18 21:23:28|insert into test3 values(bbb,M,bbb);
+Database1|wyx1|2022-05-18 21:24:07|delete from test3 where sex=F;
+revoke
+Database1|wyx1|2022-05-18 21:42:22|insert into test3 values(aaa,f,aaa);
+Database1|wyx1|2022-05-18 21:42:29|insert into test3 values(bbb,f,bbb);
+commit
+Database1|wyx1|2022-05-18 21:43:12|insert into test3 values(ccc,m,ccc);
+Database1|wyx1|2022-05-18 21:43:17|insert into test3 values(ddd,m,ddd);
+Database1|wyx1|2022-05-18 21:43:47|delete from test3 where sex=f;
+commit
+commit
+commit
+commit
+Database1|wyx1|2022-05-18 23:14:36|insert into test4 values(1,1,1);
+Database1|wyx1|2022-05-18 23:14:40|insert into test4 values(2,2,2);
+commit
+Database1|wyx1|2022-05-18 23:14:49|insert into test4 values(3,3,3);
+revoke
+commit
+commit
+commit
+Database1|wyx1|2022-05-18 23:29:29|insert into test4 values(4,4,4);
+revoke
+Database1|wyx1|2022-05-18 23:33:13|insert into test4 values(5,5,5);
+revoke
+Database1|wyx1|2022-05-18 23:34:36|insert into test4 values(5,5,5);
+revoke
+Database1|wyx1|2022-05-18 23:35:59|insert into test4 values(6,6,6);
+revoke
+commit
+Database1|wyx1|2022-05-18 23:41:05|delete from test4 where sno>4;
+revoke
+Database1|wyx1|2022-05-18 23:43:31|insert into test4 values(6,6,6);
+Database1|wyx1|2022-05-18 23:43:37|insert into test4 values(5,5,5);
+commit
+Database1|wyx1|2022-05-18 23:46:31|delete from test4 where sno>4;
+Database1|wyx1|2022-05-18 23:46:49|delete from test4 where sno>4;
+Database1|wyx1|2022-05-18 23:47:33|delete from test4 where sno=5;
+Database1|wyx1|2022-05-18 23:47:40|delete from test4 where sno<5;
+Database1|wyx1|2022-05-18 23:49:53|delete from test4 where sno<5;
+commit
+Database1|wyx1|2022-05-18 23:52:32|delete from test4 where sno<5;
+Database1|wyx1|2022-05-18 23:53:39|delete from test4 where sno=3;
+commit
+Database1|wyx1|2022-05-18 23:54:59|delete from test4 where sno=6;
+revoke
+revoke
+revoke
+commit
+commit
+commit
+commit
+commit
+commit
+commit
+commit
+commit
+commit
+commit
