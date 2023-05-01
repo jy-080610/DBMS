@@ -18,13 +18,14 @@ deletedatabase::~deletedatabase() {
 }
 
 void deletedatabase::on_pushButton_clicked() {
-    QString str=ui->lineEdit->text();
-    dbmanager *userdata=new dbmanager();
-    userdata->myDeteleDataBase(str);
+    //关闭当前窗口
+    this->close();
 }
 
 void deletedatabase::on_pushButton_2_clicked() {
-        close();//关闭当前窗口
+    QString str = ui->lineEdit->text();
+    dbmanager *userdata = new dbmanager();
+    userdata->myDeteleDataBase(str);
 }
 
 void deletedatabase::on_pushButton_3_clicked() {

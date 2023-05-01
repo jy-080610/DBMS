@@ -25,6 +25,9 @@
      <height>411</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -61,6 +64,9 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>登录</string>
     </property>
@@ -74,6 +80,9 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>注册</string>
     </property>
@@ -86,6 +95,9 @@
       <width>131</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>退出</string>
@@ -120,14 +132,15 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>60</x>
       <y>100</y>
       <width>111</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;</string>
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>身份：</string>
@@ -143,7 +156,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;</string>
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>用户名：</string>
@@ -159,7 +173,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;</string>
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>密码：</string>
@@ -175,7 +190,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 30pt &quot;华文隶书&quot;;</string>
+     <string notr="true">font: 30pt &quot;华文隶书&quot;;
+</string>
     </property>
     <property name="text">
      <string>DBMS</string>
