@@ -18,7 +18,7 @@ Indexmanager::Indexmanager(QString tablename) {
     QDir *dir = new QDir(QDir::currentPath());//获取当前路径
     searesult="未查找到相应结果";
     dir->cdUp();//返回上一级目录
-    QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");//打开索引文件
+    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");//打开索引文件
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
     {
         qDebug()<<"打开失败";
@@ -32,9 +32,9 @@ Indexmanager::Indexmanager(QString tablename) {
     QString dbName=list[1];//获取数据库名
     dirPath=dir->path()+"DBMS/data/"+list[1];
     file.close();
-    tablefile =dirPath+"/table/"+tablename+"/"+".tdf";//字段文件
+    tablefile=dirPath+"/table/"+tablename+"/"+tablename+".tdf";//字段文件
     recordfile=dirPath+"/table/"+tablename+"/"+tablename+".trd";//记录文件
-    indexrecordfile=dirPath+"table/"+tablename+"/"+tablename+".tid";//索引记录文件
+    indexrecordfile=dirPath+"/table/"+tablename+"/"+tablename+".tid";//索引记录文件
     dirPath=dirPath+"/table/"+tablename+"/";//表文件夹路径
 
 }
@@ -129,10 +129,6 @@ void Indexmanager::newRoot(unit head_pos, ull key, _data data, unit ap) {
     upFileHead(pos);
     FREE_NODE( rootNodeBuf );//释放节点空间
 }
-
-
-
-
 unit Indexmanager::split(BTNode *NodeBuf, unit node_pos, sint s) {
     sint i,j;
     sint n=NodeBuf->keyNum;//关键字数
@@ -163,11 +159,7 @@ unit Indexmanager::split(BTNode *NodeBuf, unit node_pos, sint s) {
     FREE_NODE( apNodeBuf );//释放节点空间
     FREE_NODE( apNodeBufChild );//释放节点空间
     return ap;
-
-
     }
-
-
 BTNode Indexmanager::Insert(unit node_pos, sint i, ull key, uint ap, _data data) {
     BTNode  buf;
     BTNode  * NodeBuf = &buf;

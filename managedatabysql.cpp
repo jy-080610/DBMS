@@ -31,7 +31,7 @@ void managedatabysql::initDir() {
     list=str.split(",");
     userName=list[0];//获取当前用户名
     dbName=list[1];//获取当前数据库名
-    dirPath=dir->path()+"/DBMS/data/"+dbName;//获取当前数据库路径
+    dirPath = dir->path() + "/DBMS/data/" + list[1];//获取当前数据库路径
     qDebug()<<dirPath;
     file.close();
 }
@@ -48,8 +48,7 @@ void managedatabysql::insertData(QStringList keywordList) {
             return;
         }
         //表路径
-        tablePath = dirPath + "/table/" + keywordList[2] + "/" + keywordList[2] + ".trd";//获取表路径
-        qDebug() << "表路径" << tablePath;
+        tablePath = dirPath + "/table/" + keywordList[2] + "/" +keywordList[2] + ".trd";        qDebug() << "表路径" << tablePath;
         QFile file(tablePath);
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text | QIODevice::Append)) {
             qDebug() << "文件打开失败";
@@ -75,7 +74,7 @@ void managedatabysql::insertData(QStringList keywordList) {
         qDebug() << "data" << data;
         if (datalist.size() == countfield(keywordList[2])) {//字段数目相同
             dataoperation dto;
-            QString tablePath = dirPath + "/table/" + keywordList[2] + "/" + keywordList[2] + ".tdf";
+            QString tablePath=dirPath+"/table/"+keywordList[2]+"/"+keywordList[2]+".tdf";
             qDebug() << "表路径" << tablePath;
             QFile tablefile(tablePath);
             if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -136,15 +135,13 @@ void managedatabysql::deleteData(QStringList  keywordList) {
                                   QMessageBox::Cancel | QMessageBox::Escape, 0);
             return;
         }
-        QString fieldPath= dirPath + "/table/" + keywordList[1] + "/" + keywordList[1] + ".tdf";
-        /*
+        QString fieldPath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";        /*
          * classno,varchar,主键,非空
             classname,varchar,非主键,非空
             credit,number,非主键,非空
          */
         qDebug()<<"字段路径"<<fieldPath;
-        tablePath = dirPath + "/table/" + keywordList[1] + "/" + keywordList[1] + ".trd";//获取表数据路径
-        /*
+        tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";        /*
          *111111,Java,3
             222222,C++,3
             333333,数据库,3
@@ -162,7 +159,7 @@ void managedatabysql::deleteData(QStringList  keywordList) {
         }
         QTextStream read(&readFile);
         QTextStream readfield(&fieldFile);
-        QString afterDelPath=dirPath + "/table/"+keywordList[1]+"/del.trd";
+        QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/del.trd";
         QFile writeFile(afterDelPath);
         if (!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败！";
@@ -177,32 +174,36 @@ void managedatabysql::deleteData(QStringList  keywordList) {
         delfield=keywordList[2];
 
         int deleColId=0;//删除列的id
-        while(!readfield.atEnd()){
-            str=readfield.readLine();
-            list=str.split(",");//逐行读取找要删除的字段
-            if(list[0]==delfield){//list[0]为字段名,diefield为要删除的字段名
-                qDebug()<<"找到删除列"<<"deleColId="<<deleColId;
-                while(!read.atEnd()){
-                    data=read.readLine();
-                    datalist=data.split(",");
-                    if(datalist[deleColId]==keywordList[4]){
-                        delline=datalist;
+        while (!readfield.atEnd()) {
+            str = readfield.readLine();
+            list = str.split(",");
+
+            if (list[0] == delfield) {
+                qDebug() << "delecolid=" << deleColId;
+                while (!read.atEnd()) {
+                    data = read.readLine();
+                    datalist = data.split(",");
+                    if (datalist[deleColId] == keywordList[4]) {
+                        delline = datalist;
+
                         for (int i = 0; i < delline.size(); i++) {
-                            if (i < delline.size() - 1) {//如果不是最后一个元素
-                                delInfo += delline[i] + ",";
-                            } else if (i == delline.size() - 1) {//如果是最后一个元素
-                                delInfo += delline[i];
+                            if (i < delline.size() - 1) {
+                                delInfo = delline[i] + ",";
+                            }
+                            else if (i == delline.size() - 1) {
+                                delInfo = delline[i];
                             }
                         }
-
-                        }else{
-                            write<<data+"\n";
-                        }
                     }
-                }else{
-                    deleColId++;
+                    else {
+                        write << data + "\n";
+                    }
                 }
             }
+            else {
+                deleColId++;
+            }
+        }
         writeintoLOG(1,keywordList);
         fieldFile.close();
         readFile.close();
@@ -227,14 +228,14 @@ void managedatabysql::updateData(QStringList keywordList) {
                                   QMessageBox::Cancel | QMessageBox::Escape, 0);
             return;
         }
-        QString fieldPath= dirPath + "/table/" + keywordList[1] + "/" + keywordList[1] + ".tdf";
+        QString fieldPath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";
         /*
          * classno,varchar,主键,非空
             classname,varchar,非主键,非空
             credit,number,非主键,非空
          */
         qDebug()<<"字段路径"<<fieldPath;
-        tablePath = dirPath + "/table/" + keywordList[1] + "/" + keywordList[1] + ".trd";//获取表数据路径
+        tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
         /*
          *111111,Java,3
             222222,C++,3
@@ -269,7 +270,7 @@ void managedatabysql::updateData(QStringList keywordList) {
         fieldFile.close();
         QTextStream read(&readFile);
         QTextStream readfield(&fieldFile);
-        QString afterDelPath=dirPath + "/table/"+keywordList[1]+"/del.trd";
+        QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/del.trd";
         QFile writeFile(afterDelPath);
         if (!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败！";
@@ -357,8 +358,8 @@ void managedatabysql::writeintoLOG(int i, QStringList keywordList) {
 }
 
 //计算属性个数
-int managedatabysql::countfield(QString tableName) {
-    QString tableP=dirPath + "/table/" + tableName + "/" + tableName + ".tdf";
+int managedatabysql::countfield(QString tablename) {
+    QString tableP = dirPath + "/table/" + tablename + "/" + tablename + ".tdf";
     QFile tablef(tableP);
     if (!tablef.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败！";
