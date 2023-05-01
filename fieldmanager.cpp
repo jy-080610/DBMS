@@ -269,7 +269,7 @@ void fieldmanager::display() {
     ui->tableWidget->clear();
     //判断输入的表是否存在，存在时进行展示
     if(isTableExist()){
-        tablePath=dirPath+"/table/"+this->ui->path->text()+"/"+this->ui->path->text()+".tdf";
+        tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
         QFile readFile(tablePath);
         if (!readFile.open(QIODevice::ReadOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败";
@@ -280,20 +280,18 @@ void fieldmanager::display() {
         QString info;
         QStringList strlist;
         QStringList headlist;
-
         //表头
         headlist<<"字段名"<<"数据类型"<<"是否为主键"<<"可否为空";
-
         int rownum=0;
         int colnum=4;
         ui->tableWidget->setColumnCount(colnum);
-        while(!read.atEnd()){
-            str=read.readLine();
-            if(str!=""){
-                ui->tableWidget->setRowCount(rownum+1);//设置行数
-                strlist=str.split(",");
-                for(int i=0;i<colnum;i++){
-                    ui->tableWidget->setItem(rownum,i,new QTableWidgetItem(strlist[i]));
+        while (!read.atEnd()) {
+            str = read.readLine();
+            if (str != "") {
+                ui->tableWidget->setRowCount(rownum + 1);
+                strlist = str.split(",");
+                for (int i = 0; i < colnum; i++) {
+                    ui->tableWidget->setItem(rownum, i,new QTableWidgetItem(strlist[i]));
                 }
                 rownum++;
             }

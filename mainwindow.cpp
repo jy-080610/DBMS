@@ -297,7 +297,7 @@ void MainWindow::displayField(QString tableName) {//在进行字段操作之后�
 void MainWindow::displayDir() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/data";
+    QString dirPath = dir->path() + "/DBMS/data";
     auto *model = new QDirModel();
     ui->treeView->setModel(model);
     ui->treeView->setRootIndex(model->index(dirPath));
@@ -339,21 +339,17 @@ void MainWindow::on_fieldmanage_clicked() {//字段管理
 
 void MainWindow::on_datamanage_clicked() {//数据管理
     QDir *dir = new QDir(QDir::currentPath());
-
     dir->cdUp();
     QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
     QFile file(dirPath);
-
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
     QTextStream read(&file);
     QStringList list;
     QString     str = read.readLine();
-
     list = str.split(",");
     file.close();
-
     if (list.length() == 2) {
         dataoperation *dp = new dataoperation();
         dp->show();

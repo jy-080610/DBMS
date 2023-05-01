@@ -1,6 +1,4 @@
-//
-// Created by lx on 2023/4/6.
-//
+
 //登录注册界面需要wjx实现
 
 /**
@@ -191,6 +189,27 @@ int login::checkError(QString dbname, QString username, QString psd1, QString ps
 
 }
 //注册好后插入数据信息
-void login::insert2File(QString, QString, QString) {
+void login::insert2File(QString dbname, QString username, QString psd)
+{
+    // 将密码转换为md5格式
+    QString pw =
+            QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
 
+    // 以追加方式打开用户文件
+    QFile file(path + "/" + dbname + "/userinfo.txt");
+
+    file.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream out(&file);
+
+    // 写入新注册的用户名和密码
+    out << username + "," + pw + "\n";
+    file.close();
+    // 更新用户权限文件
+    QFile privilege(path + "/" + dbname + "/userprivilege.txt");
+
+    privilege.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream outp(&privilege);
+
+    outp << username + ",0,0,0,0,0\n";
+    privilege.close();
 }

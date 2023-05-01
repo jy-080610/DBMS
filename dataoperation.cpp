@@ -29,21 +29,22 @@ dataoperation::~dataoperation() {
 //初始化文件夹
 void dataoperation::initDir() {
         QDir *dir = new QDir(QDir::currentPath());
-        dir->cdUp();
-        QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            qDebug() << "文件打开失败";
-        }
-        QTextStream read(&file);
-        QStringList list;
-        QString str = read.readLine();
-        list = str.split(" ");
-        user=list[0];
-        dirPath= dir->path() + "/DBMS/data/" + list[1];
-        qDebug() << dirPath;
-        file.close();
+    dir->cdUp();
+    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+    }
+    QTextStream read(&file);
+    QStringList list;
+    QString     str = read.readLine();
+    list = str.split(",");
+    user=list[0];
+    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    qDebug() << dirPath;
+    file.close();
 }
-bool dataoperation::isDigitString(const QString src) {
+bool dataoperation::isDigitString(const QString& src) {
     const char *s=src.toUtf8().data();//将QString转char*
     while (*s && *s >= '0' && *s <= '9') s++;
     return !bool (*s);//如果是数字返回true
@@ -74,9 +75,9 @@ void dataoperation::on_pushButton_clicked() {
     qDebug()<<"fileName:"<<fileName;
     filename =fileName;
     //字段文件
-    QString tablePath=dirPath+"/table/"+
-            this->ui->path->text()+"/"+
-            this->ui->path->text()+".tdf";
+    QString tablePath = dirPath + "/table/" +
+            this->ui->path->text() + "/" +
+            this->ui->path->text() + ".tdf";
     qDebug()<<"tablePath:"<<tablePath;
     QFile tablefile(tablePath);
     if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -94,9 +95,9 @@ void dataoperation::on_pushButton_clicked() {
     }
 
     //列数，属性数目
-    QString tableP=dirPath+"/table/"+
-            this->ui->path->text()+"/"+
-            this->ui->path->text()+".tdf";
+    QString tableP = dirPath + "/table/" +
+            this->ui->path->text() + "/" +
+            this->ui->path->text() + ".tdf";
     qDebug()<<"tableP:"<<tableP;
     QFile tablef(tableP);
     if (!tablef.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -146,41 +147,33 @@ void dataoperation::on_pushButton_clicked() {
     int row=qv2.size();//行数
     qDebug()<<"row="<<row;
     qDebug()<<"col="<<col;
-    this->ui->tableWidget->setRowCount(row);//设置行数
-    this->ui->tableWidget->setColumnCount(col);//设置列数
-    this->ui->tableWidget->setHorizontalHeaderLabels(headlist);//设置表头
-    this->ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//设置表头自适应
-    this->ui->tableWidget->setItem(0,0,new QTableWidgetItem("1"));
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            this->ui->tableWidget->setItem(i, j, new QTableWidgetItem(qv2[i][j]));
-        }
+    this->ui->tableWidget->setRowCount(row);                    // 设置行数
+    this->ui->tableWidget->setColumnCount(col);                 // 设置列数
+    this->ui->tableWidget->setHorizontalHeaderLabels(headlist); // 表头
+    this->ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    this->ui->tableWidget->setItem(0, 0, new QTableWidgetItem("1"));
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++) this->ui->tableWidget->setItem(i,j,new QTableWidgetItem(qv2[i][j]));
     }
-
     }
-
-
 //插入
 void dataoperation::on_pushButton_insert_clicked() {
     privilegemanager ifmdt;
-    if(ifmdt.adt(this->ui->path->text(),user)){
-        int row=ui->tableWidget->rowCount();//获取行数
-        ui->tableWidget->insertRow(row);//插入一行
-        for(int j=0;j<col;j++){
-            this->ui->tableWidget->setItem(row,j,new QTableWidgetItem(""));
-        }
-    } else{
-        QMessageBox::critical(0,"警告","您没有权限向此表插入数据",QMessageBox::Ok|QMessageBox::Default,
+    if(ifmdt.adt(this->ui->path->text(), user)){
+        int row = ui->tableWidget->rowCount();
+        ui->tableWidget->insertRow(row);
+        for (int j = 0; j < col; j++) this->ui->tableWidget->setItem(row,j,new QTableWidgetItem(""));
+    }
+    else{QMessageBox::critical(0,"警告","您没有权限向此表插入数据",QMessageBox::Ok|QMessageBox::Default,
                               QMessageBox::Cancel|QMessageBox::Escape,0);
     }
-
 }
 //删除一行
 void dataoperation::on_pushButton_delete_clicked() {
     privilegemanager ifmdt;
     if(ifmdt.ddt(this->ui->path->text(),user)){
         int i = ui->tableWidget->currentRow();//获取当前行
-
         ui->tableWidget->removeRow(i);//删除一行
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);//设置焦点
     }
