@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);
     // 初始化用户目录，读取当前的用户和所使用的数据库
+    //设置文本框不可编辑
+    ui->text->setReadOnly(true);
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
     QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
