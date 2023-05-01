@@ -59,12 +59,9 @@ MainWindow::MainWindow(QWidget *parent) :
     l->setVisible(true);
     connect(l, SIGNAL(setVisibleSignal()), this, SLOT(setVisibleSlot()));
     this->hide();
-
     // 初始化正则表达式处理语句
     dealwithSql = new AnalysisSQL();
     displayDir();
-
-
 }
 
 MainWindow::~MainWindow() {
@@ -78,9 +75,7 @@ void MainWindow::setVisibleSlot()
 void MainWindow::on_run_clicked() {//运行SQL代码
 // 获取关键字列表
     QStringList keywordList = dealwithSql->resolveSql(ui->sqllineEdit->text());
-
     qDebug() << "list大小为：" + QString::number(keywordList.size());
-
     // 容错判断
     if (keywordList.size() == 0) {
         QMessageBox::critical(nullptr, "错误", "请检查SQL语句！",
@@ -91,20 +86,16 @@ void MainWindow::on_run_clicked() {//运行SQL代码
 
     // 根据返回的操作类型，进行相关的操作
     switch (keywordList[0].toInt()) {
-
         // -----数据库管理-----
         case 0:
-        {
-            auto *userdata = new dbmanager();
+        { dbmanager *userdata = new dbmanager();
             userdata->myCreateDataBase(keywordList[1]);
             break; }
 
         case 1:
-        {
-            auto *userdata = new dbmanager();
+        { dbmanager *userdata = new dbmanager();
             userdata->myDeteleDataBase(keywordList[1]);
             break; }
-
             // -----表管理-----
             // 创建表
         case 2:
@@ -171,6 +162,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
             displayData(keywordList[1]);
             break;
         }
+
             // -----数据查询-----
         case 10:
         case 11:
@@ -191,6 +183,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
                  selectData(keywordList);
 
                  break;*/
+
             // -----创建索引-----
         case 13:
         {  qDebug() << "main没问题";
@@ -206,6 +199,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
             my_index->deleteIndex(keywordList[1]);
 
             break; }
+
             // -----导入sql脚本-----
         case 15:
             importScript(keywordList[1]);
@@ -232,12 +226,11 @@ void MainWindow::on_run_clicked() {//运行SQL代码
     }
     displayDir();
 }
-
 void MainWindow::displayField(QString tableName) {//在进行字段操作之后，展示出表定义文件信息
 
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QFile file(dir->path() + "/data/sys/curuse.txt");
+    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "初始化文件打开失败";
     }
@@ -247,14 +240,12 @@ void MainWindow::displayField(QString tableName) {//在进行字段操作之后�
 
     list = str.split(",");
     QString dbName = list[1];
-    QString dirPath = dir->path() + "/data/" + list[1];
+    QString dirPath = dir->path() + "/DBMS/data/" + list[1];
 
     file.close();
-
     ui->tableWidget->clear();
     QString tablePath = dirPath + "/table/" + tableName + "/" +
                         tableName + ".tdf";
-
     QFile tempFile(tablePath);
     bool  isTableExist = tempFile.exists();
 
@@ -277,7 +268,6 @@ void MainWindow::displayField(QString tableName) {//在进行字段操作之后�
 
         while (!read.atEnd()) {
             str = read.readLine();
-
             if (str != "") {
                 ui->tableWidget->setRowCount(rownum + 1);
                 strlist = str.split(",");
@@ -311,7 +301,7 @@ void MainWindow::displayDir() {
 void MainWindow::on_fieldmanage_clicked() {//字段管理
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
     QFile file(dirPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -354,7 +344,7 @@ void MainWindow::on_datamanage_clicked() {//数据管理
         dataoperation *dp = new dataoperation();
         dp->show();
     } else {
-        QMessageBox::critical(0, "critical message", "请新建或选择数据库",
+        QMessageBox::critical(0, "错误", "请新建或选择数据库",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
@@ -363,8 +353,7 @@ void MainWindow::on_datamanage_clicked() {//数据管理
 void MainWindow::on_tablemanage_clicked() {//表管理
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/data/sys/curuse.txt";
-
+    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
     QFile file(dirPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";

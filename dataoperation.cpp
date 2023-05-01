@@ -84,14 +84,13 @@ void dataoperation::on_pushButton_clicked() {
         qDebug() << "文件打开失败";
     }
     QTextStream readtable(&tablefile);
-    QStringList tablelist;
-    QStringList headlist;
+    QStringList headlist, tablelist;
     QString readinfo;
     //表头
-    while(!readtable.atEnd()) {
-        readinfo = readtable.readLine();//读取一行
-        tablelist = readinfo.split(",");//分割
-        headlist.append(tablelist[0]);//表头
+    while (!readtable.atEnd()) {
+        readinfo = readtable.readLine();
+        tablelist = readinfo.split(",");
+        headlist.append(tablelist[0]);
     }
 
     //列数，属性数目
@@ -212,9 +211,7 @@ void dataoperation::save() {
     else{
         QTextStream stream(&file2);
         QString conTents;
-        QString tablePath=dirPath+"/table/"+
-                this->ui->path->text()+"/"+
-                this->ui->path->text()+".tdf";
+        QString tablePath=dirPath+"/table/"+this->ui->path->text()+"/"+this->ui->path->text()+".tdf";
         QFile tablefile(tablePath);
         if(!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)){
             qDebug()<<"文件打开失败";
@@ -236,14 +233,13 @@ void dataoperation::save() {
                 if(conlist[1]=="number" && !isDigitString(item->text()) ){
                     flag=1;
                 }
-
                 else if(conlist[1]=="date" && !isDateString(item->text()) ){
                     flag=1;
                 }
                 else if(conlist[3]=="非空" && item->text()==NULL ){
-                    flag=3;//非空
+                    flag=3;
                 }
-                collist.append(item->text());//添加到列表
+                collist.append(item->text());
             }
             if (conlist[2]=="主键" && hasSame(collist)){
                 flag=2;//主键重复
@@ -317,8 +313,5 @@ bool dataoperation::hasSame(QStringList list) {
         else
             qDebug()<<"有重复";
             return true;
-
-
-
 
 }

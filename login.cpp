@@ -17,7 +17,7 @@
 login::login() {//构造函数
     QDir *dir = new QDir(QDir::currentPath());//获取当前路径
     dir->cdUp();//返回上一级目录
-    path =dir->path()+"/DBMS/data";//用户信息文件路径
+    path = dir->path() + "/DBMS/data";//用户信息文件路径
 }
 
 /**
@@ -151,12 +151,10 @@ int login::checkError(QString dbname, QString username, QString psd1, QString ps
     if ((username.length() < 4) || (psd1.length() < 4)) {//用户名和密码长度小于4
         return 3;
     }
-
     if (username.contains(",") || username.contains("，") || psd1.contains(",") ||
         psd1.contains("，")) {//用户名和密码中不能包含逗号
         return 2;
     }
-
     // 目标文件路径
     QString cpath = path + "/" + dbname + "/userinfo.txt";
     QFile   file;

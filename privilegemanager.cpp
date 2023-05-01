@@ -448,8 +448,6 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
 
     qDebug() << "isfuserexist当前表权限文件的路径为：" + tPath;
     QFile readFile(tPath);
-
-
     if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -468,7 +466,6 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
             flag=1;
         }
     }
-    qDebug()<<"isfuserexist flag="<<flag;
     if(flag==1){
         return true;
     }
@@ -478,11 +475,8 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
 
 bool privilegemanager::isuserexist(QString user){
     QString Path = dirPath + "/userprivilege.txt";
-
-    qDebug() << "isuserexist权限文件的路径为：" + Path;
+    qDebug() << "权限文件的路径为：" + Path;
     QFile readFile(Path);
-
-
     if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -501,7 +495,6 @@ bool privilegemanager::isuserexist(QString user){
             flag=1;
         }
     }
-    qDebug()<<"isuserexist flag="<<flag;
     if(flag==1){
         return true;
     }
@@ -514,14 +507,10 @@ void privilegemanager::initPrivilege(QString tablename,QString user){
         tPath = dirPath + "/table/" + tablename + "/privilege.txt";
         qDebug() << "init当前表权限文件的路径为：" + tPath;
         QFile writeFile(tPath);
-
-
         if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Append)) {
             qDebug() << "文件打开失败";
         }
-
         QTextStream outp(&writeFile);
-
         outp << user + ",0,0,0,0,0\n";
         writeFile.close();
     }
@@ -545,10 +534,7 @@ void privilegemanager::grant(QStringList keywordList){
         qDebug()<<"grant init user:"<<userlist[i];
         initPrivilege(keywordList[2],userlist[i]);
     }
-
-    //
     tPath = dirPath + "/table/" + keywordList[2] + "/privilege.txt";
-
     qDebug() << "当前表权限文件的路径为：" + tPath;
     QFile readFile(tPath);
 
@@ -556,12 +542,9 @@ void privilegemanager::grant(QStringList keywordList){
         qDebug() << "文件打开失败";
         return;
     }
-
     QTextStream read(&readFile);
-
     QString afterDelPath = dirPath + "/table/" + keywordList[2]+"/temp.txt";
     QFile writeFile(afterDelPath);
-
     if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
         return;
@@ -569,18 +552,15 @@ void privilegemanager::grant(QStringList keywordList){
     QTextStream write(&writeFile);
     QStringList privilegelist,list;
     QString privilege,str,str1;
-
     privilege = keywordList[1];
     privilegelist=privilege.split(",");
     qDebug()<<"privilegelist="<<privilegelist;
-
     int flag;
     while (!read.atEnd()) {
         flag=0;
         str = read.readLine();
         list = str.split(",");
         qDebug()<<"grant:list="<<list;
-
         for(int i=0;i<userlist.size();i++){
             for(int i=0;i<privilegelist.size();i++){
                 if(privilegelist[i]=="create"){

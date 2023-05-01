@@ -68,3 +68,6 @@ Database1|liuxiao|2023-04-05 11:48:54|insert into student values(111,Ð¡ºì,18);
 Database1|liuxiao|2023-04-05 11:50:03|insert into student values(222,orange,19);
 Database1|liuxiao|2023-04-20 15:48:41|insert into class values(111111,Java,3);
 Database1|liuxiao|2023-04-20 15:49:30|insert into class values(222222,C++,3);
+revoke
+revoke
+revoke

@@ -5,7 +5,6 @@
 #include <QMessageBox>
 #include "landing.h"
 #include "ui_landing.h"
-
 #include "login.h"
 #include "QDebug"
 #include "mainwindow.h"
@@ -92,7 +91,7 @@ void landing::getDbList() {
     // --4 打印出获取的文件名
     qDebug() << "names: " << names;
 
-    for (int i = 0; i < names.size(); i++) {
+     for (int i = 0; i < names.size(); i++) {
         ui->dbName->addItem(names[i]);
     }
 }

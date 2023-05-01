@@ -22,7 +22,7 @@ fieldmanager::~fieldmanager() {
 void fieldmanager::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();//返回上一层目录
-    QFile file (dir->path()+"/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -30,9 +30,9 @@ void fieldmanager::initDir() {
     QStringList list;
     QString str =read.readLine();
     list=str.split(",");
-    userName=list[0];
-    dbName=list[1];
-    dirPath=dir->path()+"/DBMS/data/"+list[1];
+    userName = list[0];
+    dbName = list[1];
+    dirPath = dir->path() + "/DBMS/data/" + list[1];
     file.close();
 
 }
@@ -50,8 +50,7 @@ void fieldmanager::on_add_clicked() {
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
     }
-    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
-                this->ui->path->text() + ".tdf";
+    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     QFile checkFile(tablePath);
     if (!checkFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
@@ -86,9 +85,10 @@ void fieldmanager::on_add_clicked() {
     QTextStream write(&file);
     QString insertInfo="";
     //写入字段约束条件
-    insertInfo = this->ui->fieldNameEdit->text() + "," +
-            this->ui->dataType->currentText() + "," + isPK + "," +
-            isPK+","+isNull+"\n";
+    insertInfo += this->ui->fieldNameEdit->text() + "," +
+                  this->ui->dataType->currentText() + "," +
+                  isPK + "," +
+                  isNull + "\n";
     write << insertInfo;
     file.close();
     QMessageBox::information(0, "提示", "添加成功", QMessageBox::Ok | QMessageBox::Default,
@@ -108,8 +108,7 @@ void fieldmanager::on_modify_clicked() {
 
     return ;
     }
-    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
-                this->ui->path->text() + ".tdf";
+    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     QFile checkFile(tablePath);
     if (!checkFile.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
@@ -126,7 +125,7 @@ void fieldmanager::on_modify_clicked() {
         }
     }
     checkFile.close();
-    QString afterDelPath=dirPath+"/"+this->ui->path->text()+"/modify.tdf";//修改后的表结构文件
+    QString afterDelPath = dirPath + "/table/" + this->ui->path->text() +"/modify.tdf";
     QFile writeFile(afterDelPath);
     if (!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
@@ -186,8 +185,7 @@ void fieldmanager::on_dele_clicked() {
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
     }
-    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
-                this->ui->path->text() + ".tdf";
+    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     QFile readFile(tablePath);
     if (!readFile.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
@@ -209,10 +207,8 @@ void fieldmanager::on_dele_clicked() {
     while (!read.atEnd()) {
         str = read.readLine();
         list = str.split(",");
-
         if (list[0] == delInfo) {
             qDebug() << "delecolid=" << deleColId;
-
             // 删除相应的数据
             removedata(deleColId - 1);
         }
@@ -233,8 +229,10 @@ void fieldmanager::on_dele_clicked() {
 }
 
 void fieldmanager::on_display_clicked() {
-    if(this->ui->path->text().isEmpty()||this->ui->path->text()==""){
-        QMessageBox::critical(0, "错误", "表名不能为空", QMessageBox::Ok | QMessageBox::Default,
+    if (this->ui->path->text().isEmpty() ||
+        (this->ui->path->text() == "")) {
+        QMessageBox::critical(0, "错误", "表名不能为空",
+                              QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
     }
@@ -260,44 +258,48 @@ void fieldmanager::on_isNull_clicked() {
 
 //表是否是已经存在
 bool fieldmanager::isTableExist() {
-    tablePath=dirPath+"/"+this->ui->path->text()+"/"+this->ui->path->text()+".tdf";
+    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     QFile tempFile(tablePath);
     return tempFile.exists();
 }
 
 void fieldmanager::display() {
     ui->tableWidget->clear();
-    //判断输入的表是否存在，存在时进行展示
-    if(isTableExist()){
-        tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
+    // 当指定的表存在时，进行展示操作
+    if (isTableExist()) {
+        // 以只读方式打开对应文件
+        tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +
+                    this->ui->path->text() + ".tdf";
         QFile readFile(tablePath);
-        if (!readFile.open(QIODevice::ReadOnly|QIODevice::Text)){
-            qDebug()<<"文件打开失败";
+        if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "文件打开失败";
             return;
         }
         QTextStream read(&readFile);
-        QString str;
-        QString info;
-        QStringList strlist;
-        QStringList headlist;
-        //表头
-        headlist<<"字段名"<<"数据类型"<<"是否为主键"<<"可否为空";
-        int rownum=0;
-        int colnum=4;
+        QString     str, info;
+        QStringList strlist, headlist;
+
+        // 表头赋值
+        headlist << "字段名" << "数据类型" << "是否为主键" << "可否为空";
+
+        // 定义行号和列号
+        int rownum = 0, colnum = 4;
         ui->tableWidget->setColumnCount(colnum);
+        // 逐行读取文件信息并给UI赋值
         while (!read.atEnd()) {
             str = read.readLine();
             if (str != "") {
                 ui->tableWidget->setRowCount(rownum + 1);
                 strlist = str.split(",");
                 for (int i = 0; i < colnum; i++) {
-                    ui->tableWidget->setItem(rownum, i,new QTableWidgetItem(strlist[i]));
+                    ui->tableWidget->setItem(rownum, i,
+                                             new QTableWidgetItem(strlist[i]));
                 }
                 rownum++;
             }
         }
         readFile.close();
-        //设置表头
+        // 添加表头
         ui->tableWidget->setHorizontalHeaderLabels(headlist);
     }
 
@@ -305,7 +307,7 @@ void fieldmanager::display() {
 //判断字段是否重复
 bool fieldmanager::isDuplicate(QString fieldName) {
 
-    tablePath=dirPath+"/table/"+this->ui->path->text()+"/"+this->ui->path->text()+".tdf";
+    tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     qDebug()<<"tablePath:"<<tablePath;
     QFile file(tablePath);
     if (!file.open(QIODevice::ReadOnly|QIODevice::Text)){
@@ -362,8 +364,9 @@ void fieldmanager::removedata(int datacol) {
         return;
     }
     QTextStream read(&readFile);
-    QString afterDelPath = dirPath + "/table/" + this->ui->path->text() + "/modify.trd";
-    QFile writeFile(afterDelPath);
+    QString     afterDeletePath = dirPath + "/table/" + this->ui->path->text() +
+                                  "/modify.trd";
+    QFile writeFile(afterDeletePath);
     if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }

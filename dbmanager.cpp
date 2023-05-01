@@ -115,7 +115,7 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
         //
 
         //创建基本信息文件
-        QFile file01(dataPath+"/"+dataname+".db");//创建QFile对象
+        QFile file01(dataPath + "/" + dataname + ".db");//创建QFile对象
         if(!file01.open(QIODevice::WriteOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败, 基本信息文件创建失败！";
             return;
@@ -178,8 +178,6 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
 
     streamFile << endl;
     extern QString name;
-
-
     streamFile << name << "create " << my_database.daname << " dataBase ";
     streamFile << "filepath: " << my_database.filename << " " <<
                my_database.crtime.toString() << endl;

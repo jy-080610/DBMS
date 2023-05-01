@@ -22,9 +22,9 @@
  *  删除数据：delete from tablename where condition;
  *  更新数据：update tablename set column1=value1 where condition;
  *4.字段操作：
- * 添加字段：alter table tablename add column columnname datatype;？
+ * 添加字段：alter table tablename add  columnname datatype;？
  * 删除字段：alter table tablename drop column columnname;
- * 修改字段：alter table tablename modify column columnname datatype;
+ * 修改字段：alter table tablename modify  columnname datatype;
  * 5.查询操作：
  * 查询全部：select * from tablename;
  *
@@ -44,44 +44,50 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
     //1.数据库
     //创建数据库：create database 数据库名称;
     //删除数据库：drop database 数据库名称;
-    sqlList.push_back("(?:create|CREATE)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
-    sqlList.push_back("(?:drop|DROP)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
+    sqlList.push_back( "(?:create|CREATE)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
+    sqlList.push_back( "(?:drop|DROP)(?:\\s*)(?:database|DATABASE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
 
     //2.表：
-    sqlList.push_back("(?:create|CREATE)(?:\\s*)(?:table|TABLE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
-    sqlList.push_back("(?:drop|DROP)(?:\\s*)(?:table|TABLE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
-
-    //3.对表的数据操作：
-    //()表示分组，\\b表示单词边界，\\w表示单词字符，+表示一个或多个
-    //\\w+表示一个或多个单词字符
-    //\\s*表示0个或多个空白字符
-    sqlList.push_back("((?:insert into)|(?:INSERT INTO))(\\w+)(?:values)(?:\\s*)\\((.+)\\(?:\\s*);");
-    sqlList.push_back(
-            "(?:delete|DELETE)\\s*(?:from|FROM)\\s*(\\w+)\\s*(?:where|WHERE)\\s*(\\w+)\\s*(<|>|=)\\s*(\\w+)(?:\\s*);");
-    sqlList.push_back(
-            "(?:update|UPDATE)(?:\\s*)(\\w+)(?:\\s*)(?:set|SET)(?:\\s*)(\\w+)(?:\\s*)=(\\w+)(?:\\s*)(?:where|WHERE)(?:\\s*)(\\w+)(?:\\s*)(<|=|>)(?:\\s*)(\\w+)(?:\\s*);");
-
-    //4.字段操作：
+    sqlList.push_back( "(?:create|CREATE)(?:\\s*)(?:table|TABLE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
+    sqlList.push_back( "(?:drop|DROP)(?:\\s*)(?:table|TABLE)(?:\\s*)(\\b\\w+\\b)(?:\\s*);");
+    //3.字段操作：
     sqlList.push_back(
             "(?:alter|ALTER)\\s*(?:table|TABLE)\\s*(\\w+)\\s*(?:add|ADD)\\s*(\\w+)\\s*(number|char|varchar|date|NUMBER|CHAR|VARCHAR|DATE)\\s*(primary key|PRIMARY KEY)?\\s*(not null|NOT NULL)?;");
     sqlList.push_back(
-            "(?:alter|ALTER)\\s*(?:table|TABLE)\\s*(\\w+)\\s*(?:drop|DROP)\\s*(?:column|COLUMN)\\s*(\\w+)(?:\\s*);");
+            "(?:alter|ALTER)\\s*(?:table|TABLE)\\s*(\\w+)\\s*(?:drop|DROP)\\s*column\\s*(\\w+);");
     sqlList.push_back(
             "(?:alter|ALTER)\\s*(?:table|TABLE)\\s*(\\w+)\\s*(?:modify|MODIFY)\\s*(\\w+)\\s*(primary key|PRIMARY KEY)?\\s*(not null|NOT NULL)?;");
+
+    //4.对表的数据操作：
+    //()表示分组，\\b表示单词边界，\\w表示单词字符，+表示一个或多个
+    //\\w+表示一个或多个单词字符
+    //\\s*表示0个或多个空白字符
+    sqlList.push_back( "((?:insert into )|(?:INSERT INTO ))(\\w+)(?: values)(?:\\s*)\\((.+)\\)(?:\\s*);");
+    sqlList.push_back(
+            "(?:delete|DELETE)\\s*(?:FROM|from)\\s*(\\w+)\\s*(?:WHERE|where)\\s*(\\w+)\\s*(<|=|>)\\s*(\\w+);");
+    sqlList.push_back(
+            "(?:update|UPDATE)(?:\\s*)(\\w+)(?:\\s*)(?:set|SET)(?:\\s*)(\\w+)(?:\\s*)=(\\w+)(?:\\s*)where(?:\\s*)(\\w+)(?:\\s*)(<|=|>)(\\w+)(?:\\s*);");
+
 
     //5.查询操作：
     //[\\*]表示*，\\w表示单词字符，+表示一个或多个
     //((.+)\\)表示括号中的任意字符
     //(?:\\s*)表示0个或多个空白字符
-    sqlList.push_back("(?:select|SELECT)(?:\\s*)([\\*])(?:\\s*)(?:from|FROM)(?:\\s*)(\\w+)(?:\\s*);");
-    sqlList.push_back("(?:select|SELECT)(?:\\s*)\\((.+)\\)(?:\\s*)(?:FROM|from)(?:\\s*)(\\w+)(?:\\s*);");
+    sqlList.push_back(
+            "(?:select|SELECT)(?:\\s*)([\\*])(?:\\s*)(?:FROM|from)(?:\\s*)(\\w+)(?:\\s*);");
+    sqlList.push_back(
+            "(?:select|SELECT)(?:\\s*)\\((.+)\\)(?:\\s*)(?:FROM|from)(?:\\s*)(\\w+)(?:\\s*);");
     sqlList.push_back(
             "(?:select|SELECT)(?:\\s+)\\((.+)\\)(?:\\s*)(?:FROM|from)(?:\\s*)(\\w+)(?:\\s*)where(?:\\s*)(\\w+)(?:\\s*)(<|=|>)(\\w+)(?:\\s*);");
 
     //6.索引：
     sqlList.push_back(
             "(?:create|CREATE)(?:\\s*)(?:index|INDEX)(?:\\s*)(\\w+)(?:\\s*)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*)\\((.+)\\);");
-    sqlList.push_back("(?:drop|DROP)(?:\\s*)(?:index|INDEX)(?:\\s*)(\\w+)(?:\\s*)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*);");
+    sqlList.push_back(
+            "(?:drop|DROP)(?:\\s*)(?:index|INDEX)(?:\\s*)(\\w+)(?:\\s*)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*);");
+    // 导入sql脚本
+    sqlList.push_back(
+            "(?:import|IMPORT)(?:\\s*)(?:script|SCRIPT)(?:\\s*) ([a-zA-Z]:(?:.(?:[a-zA-Z0-9_]+.[a-zA-Z0-9_]{1,16}))+);");
 
     //7.权限：
     //（?:\\s)与(?:\\s*)的不同：\\s表示空白字符，\\s*表示0个或多个空白字符
@@ -89,15 +95,13 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
     //(.+)表示任意字符
     sqlList.push_back(
             "(?:grant|Grant)(?:\\s)+(.+)(?:\\s+)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*)(?:to|TO)(?:\\s)+(.+)(?:\\s*);");
+
     sqlList.push_back(
             "(?:revoke|REVOKE)(?:\\s)+(.+)(?:\\s+)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*)(?:from|FROM)(?:\\s)+(.+)(?:\\s*);");
 }
-    /*
-     * 通过正则表达式匹配sql语句
-     * @param sql sql语句
-     * @return 含有关键字的sql语句
-     */
 
+
+//注意：：上述sql解析式的顺序不可随意更改，否则会出现匹配错误的情况
     QStringList AnalysisSQL::resolveSql(QString sql) {
         qDebug() << "sql语句为:" << sql;
         //通过分析SQL语句得到有用的SQL的列表
