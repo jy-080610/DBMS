@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // 去窗口边框
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);
+                 //设置文本框不可编辑
+    ui->text->setReadOnly(true);
     // 初始化用户目录，读取当前的用户和所使用的数据库
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
