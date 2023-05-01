@@ -72,3 +72,7 @@ void creattable::on_pushButton_clicked() {
 creattable::~creattable() {
     delete ui;
 }
+
+void creattable::on_pushButton_2_clicked() {
+   close();
+}

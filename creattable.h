@@ -19,13 +19,14 @@ public:
     explicit creattable(QWidget *parent = nullptr);
 
     ~creattable() override;
-
+private slots:
+    void on_add_clicked();
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 private:
     Ui::creattable *ui;
 
-    void on_add_clicked();
 
-    void on_pushButton_clicked();
 };
 
 

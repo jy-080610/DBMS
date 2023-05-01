@@ -1,0 +1,4 @@
+bookno,varchar,主键,非空
+bookname,varchar,非主键,非空
+num,number,非主键,非空
+price,varchar,非主键,非空
