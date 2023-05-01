@@ -37,7 +37,7 @@ private slots:
     void on_logButton_clicked();
     void on_registerButton_clicked();
     void on_pushButton_clicked();
-    void setVisibleSlot();
+    void setVisibleSlot();//设置可见
 private:
 
     Ui::landing *ui;

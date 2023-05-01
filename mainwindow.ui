@@ -90,7 +90,7 @@
    <widget class="QPushButton" name="rollback">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>390</x>
       <y>120</y>
       <width>111</width>
       <height>51</height>
