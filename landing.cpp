@@ -16,7 +16,7 @@ landing::landing(QWidget *parent) :
     // 去窗口边框
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
     // 把窗口背景设置为透明;
-    setAttribute(Qt::WA_TranslucentBackground);
+    //    setAttribute(Qt::WA_TranslucentBackground);
     // 建立注册界面与登陆界面的信道槽
     user_register = new registerw();
     user_register->hide();
@@ -55,7 +55,7 @@ void landing::on_logButton_clicked() {
 void landing::on_registerButton_clicked() {
 // 切换到注册界面
     user_register->show();
-    this->hide();
+    this->hide();// 隐藏登陆界面
 }
 
 void landing::on_pushButton_clicked() {

@@ -18,6 +18,7 @@ privilegemanager::~privilegemanager() {
 }
 void privilegemanager::initDir() {
      QDir *dir=new QDir(QDir::currentPath());//获取当前路径
+    qDebug()<<"privilegemanager当前目录路径："<<dir->path();
         dir->cdUp();//返回上一级目录
         QFile file(dir->path()+"/data/sys/curuse.txt");//打开当前使用的数据库
         if(!file.open(QIODevice::ReadOnly|QIODevice::Text))

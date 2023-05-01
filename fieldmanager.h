@@ -28,7 +28,7 @@ private slots:
     void on_isPK_clicked();
 
     void on_isNull_clicked();
-
+    void on_exit_clicked();
 private:
 
     Ui::FieldManager *ui;

@@ -563,3 +563,7 @@ void FieldManager::on_isNull_clicked()
         ui->isNull->setChecked(false);
     }
 }
+
+void fieldmanager::on_exit_clicked() {
+   this->close();
+}
