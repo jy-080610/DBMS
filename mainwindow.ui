@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>591</height>
+    <width>1111</width>
+    <height>676</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,35 +19,15 @@
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>10</y>
-     <width>911</width>
+     <width>1091</width>
      <height>651</height>
     </rect>
    </property>
-   <widget class="QLineEdit" name="sqllineEdit">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>60</y>
-      <width>581</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>请输入SQL命令</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>120</y>
-      <width>591</width>
-      <height>211</height>
-     </rect>
-    </property>
-   </widget>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -64,262 +44,316 @@
      <string>DBMS</string>
     </property>
    </widget>
-   <widget class="QTreeView" name="treeView">
+   <widget class="QGroupBox" name="groupBox_5">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>430</y>
+      <width>561</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_5">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="rollback">
+          <property name="text">
+           <string>回滚</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="commit">
+          <property name="text">
+           <string>提交</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exit">
+          <property name="text">
+           <string>退出</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="selectAction">
+          <property name="text">
+           <string>选择数据库</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="newAction">
+          <property name="text">
+           <string>创建数据库</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="deleteAction">
+          <property name="text">
+           <string>删除数据库</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="tablemanage">
+          <property name="text">
+           <string>表管理</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="datamanage">
+          <property name="text">
+           <string>数据管理</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="fieldmanage">
+          <property name="text">
+           <string>字段管理</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="rland">
+          <property name="text">
+           <string>重新登陆</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="psw">
+          <property name="text">
+           <string>修改密码</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="privilege">
+          <property name="text">
+           <string>权限管理</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>50</y>
+      <width>561</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>30</y>
+       <width>31</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;方正粗黑宋简体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>结</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;方正粗黑宋简体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>果</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;方正粗黑宋简体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>显</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;方正粗黑宋简体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>示</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>521</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>501</width>
+        <height>301</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="sqllineEdit">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>501</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>请输入SQL命令</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QTextEdit" name="text">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>50</y>
+      <width>281</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'方正粗黑宋简体'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;SQL&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;语句：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;创建数据库：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;create database &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;数据库名称&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除数据库：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;drop database &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;数据库名称&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立表&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt; create table tablename;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除表&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt; drop table tablename;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;对表的数据操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;插入数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;insert into tablename &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;   values (value1,value2,value3,...);&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;delete from tablename where condition;&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;更新数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;update tablename set column1=value1 where condition;&lt;br /&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;字段操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;添加字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename add  columnname datatype;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename drop colume columnname;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;修改字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename modify  columnname datatype;&lt;br /&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询全部：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select * from tablename;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询指定字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;column1,column2,column3&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;）&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;  from tablename;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询指定字段以及&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;where&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;条件：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;column1,column2）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;   from tablename where &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;属性名&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;=XXX;&lt;br /&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;create index indexname on tablename(columnname);&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;drop index indexname;&lt;br /&gt;7.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;权限设置：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  授予权限：grank on tablename to username;&lt;br /&gt;  撤回权限：revoke on tablename from username;&lt;br /&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_8">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
-      <width>191</width>
-      <height>371</height>
+      <y>50</y>
+      <width>221</width>
+      <height>601</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QPushButton" name="log">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>191</width>
-      <height>51</height>
-     </rect>
+    <property name="title">
+     <string/>
     </property>
-    <property name="text">
-     <string>日志</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="exit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>500</y>
-      <width>191</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>退出</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="newAction">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>420</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>创建数据库</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="deleteAction">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>500</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>删除数据库</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="selectAction">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>340</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>选择数据库</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="tablemanage">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>340</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>表管理</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="datamanage">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>500</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>数据管理</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="fieldmanage">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>420</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>字段管理</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="privilege">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>500</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>权限管理</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rland">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>420</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>重新登陆</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="psw">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>340</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>修改密码</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="commit">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>420</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>提交</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rollback">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>340</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>回滚</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="run">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>500</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>运行</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>60</y>
-      <width>72</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SQL语句</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>140</y>
-      <width>72</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>结</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>200</y>
-      <width>72</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>果</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>250</y>
-      <width>72</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>显</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>310</y>
-      <width>72</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>示</string>
-    </property>
+    <widget class="QPushButton" name="run">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>201</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>运行</string>
+     </property>
+    </widget>
+    <widget class="QTreeView" name="treeView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>201</width>
+       <height>461</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="log">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>540</y>
+       <width>201</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>日志</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
