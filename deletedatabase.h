@@ -1,5 +1,5 @@
 //
-// Created by Asus on 2023/4/17.
+// 删除数据库
 //
 
 #ifndef DBMS_DELETEDATABASE_H
@@ -20,9 +20,9 @@ public:
 
     ~deletedatabase() override;
 private slots:
-
     void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
+    void on_pushButton_2_clicked();//选择
+    void on_pushButton_3_clicked();//退出
 
 private:
     Ui::deletedatabase *ui;
