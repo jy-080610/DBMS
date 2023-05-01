@@ -15,7 +15,7 @@ landing::landing(QWidget *parent) :
     // 去窗口边框
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
     // 把窗口背景设置为透明;
-    //    setAttribute(Qt::WA_TranslucentBackground);
+//      setAttribute(Qt::WA_TranslucentBackground);
     // 建立注册界面与登陆界面的信道槽
     user_register = new registerw();
     user_register->hide();
@@ -24,6 +24,7 @@ landing::landing(QWidget *parent) :
     // 获取目录下存在的数据库名称
     getDbList();
     this->show();
+
 }
 
 landing::~landing() {
