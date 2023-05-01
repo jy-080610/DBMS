@@ -2,8 +2,6 @@
 // 字段约束条件管理
 //
 
-// You may need to build the project (run Qt uic code generator) to get "ui_fieldmanager.h" resolved
-
 #include "fieldmanager.h"
 #include "ui_fieldmanager.h"
 #include "QFileDialog"

@@ -1,7 +1,7 @@
 //
 // 属性管理-主键，非空，NULL值，数据类型
 //
-
+//字段管理类
 #ifndef DBMS_FIELDMANAGER_H
 #define DBMS_FIELDMANAGER_H
 

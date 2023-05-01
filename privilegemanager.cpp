@@ -209,7 +209,7 @@ bool privilegemanager::adt(QString tablename, QString user) {
 }
 //删除表
 bool privilegemanager::ddt(QString tablename, QString user) {
-    privilegePath=dirPath+"/userprivilege.txt";//用户权限文件路径
+    privilegePath=dirPath+"/userprivilege.txt";
     qDebug()<<"privilegePath="<<privilegePath;//输出用户权限文件路径
     QFile privilege(privilegePath);//打开用户权限文件
     if(!privilege.open(QIODevice::ReadOnly|QIODevice::Text))

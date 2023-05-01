@@ -24,10 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-//    landing *l = new landing();
-//    l->setVisible(true);
-//    connect(l, SIGNAL(setVisibleSignal()), this, SLOT(setVisibleSlot()));
-//    this->hide();
     // 去窗口边框
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);

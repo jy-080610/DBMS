@@ -2,7 +2,6 @@
 // 删除数据库文件
 //
 
-// You may need to build the project (run Qt uic code generator) to get "ui_deletedatabase.h" resolved
 
 #include "deletedatabase.h"
 #include "dbmanager.h"

@@ -1,6 +1,3 @@
-//
-// Created by 52750 on 2023/4/15.
-//
 
 #ifndef DBMS_LANDING_H
 #define DBMS_LANDING_H
