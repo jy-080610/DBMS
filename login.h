@@ -1,7 +1,4 @@
-//
-// Created by wjx on 2023/4/6.
-//
-
+//注册
 #ifndef DBMS_LOGIN_H
 #define DBMS_LOGIN_H
 #include "qstring.h"
