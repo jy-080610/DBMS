@@ -10,7 +10,6 @@
 privilegemanager::privilegemanager(QWidget *parent) :
         QWidget(parent), ui(new Ui::privilegemanager) {
     ui->setupUi(this);
-    initDir();
 }
 
 privilegemanager::~privilegemanager() {
@@ -20,7 +19,7 @@ void privilegemanager::initDir() {
      QDir *dir=new QDir(QDir::currentPath());//获取当前路径
     qDebug()<<"privilegemanager当前目录路径："<<dir->path();
         dir->cdUp();//返回上一级目录
-        QFile file(dir->path()+"/data/sys/curuse.txt");//打开当前使用的数据库
+        QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");//打开当前使用的数据库
         if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
         {
             qDebug()<<"文件打开失败";
@@ -35,7 +34,7 @@ void privilegemanager::initDir() {
         qDebug()<<"list="<<list;
         userName=list[0];//获取当前用户名
         dbName=list[1];//获取当前数据库名
-        dirPath=dir->path()+"/data/"+list[1];//当前数据库的路径
+        dirPath=dir->path()+"/DBMS/data/"+list[1];//当前数据库的路径
         qDebug()<<"dirPath="<<dirPath;//输出当前数据库的路径
         file.close();//关闭文件
 
@@ -325,7 +324,7 @@ bool privilegemanager::mdt(QString tablename, QString user) {
 //查询
 void privilegemanager::on_querry_clicked() {
         if(this->ui->user->text().isEmpty()||this->ui->user->text()==""){
-            QMessageBox::critical(nullptr,"错误","请输入用户名",
+            QMessageBox::critical(0,"错误","请输入用户名",
                                 QMessageBox::Ok|QMessageBox::Default,
                                 QMessageBox::Cancel|QMessageBox::Escape,0);
         qDebug()<<"请输入用户名(查询时用户名不能为空)";
@@ -426,7 +425,6 @@ void privilegemanager::display() {
     p << "创建表：" << "删除表：" << "增加数据：" << "删除数据：" << "修改数据：";
     qDebug()<<"p="<<p;//输出p
     privilegePath=dirPath+"/userprivilege.txt";//用户权限文件路径
-    qDebug()<<"dirPath="<<dirPath;
     qDebug()<<"privilegePath="<<privilegePath;//输出用户权限文件路径
     QFile privilege(privilegePath);//打开用户权限文件
     if(!privilege.open(QIODevice::ReadOnly|QIODevice::Text))
@@ -462,7 +460,7 @@ void privilegemanager::display() {
     }
 
     if(flag==0){
-        QMessageBox::critical(nullptr,"错误","用户不存在",
+        QMessageBox::critical(0,"错误","用户不存在",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
         qDebug()<<"用户不存在";
@@ -567,7 +565,7 @@ void privilegemanager::initPrivilege(QString tablename, QString user) {
 //授权
 void privilegemanager::grant(QStringList keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")){
-        QMessageBox::critical(nullptr,"错误","用户名或表名不能为空,请检查信息是否正确",
+        QMessageBox::critical(0,"错误","用户名或表名不能为空,请检查信息是否正确",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
     }
@@ -646,7 +644,7 @@ void privilegemanager::grant(QStringList keywordList) {
             write<<str<<"\n";
         }
     }
-    QMessageBox::information(nullptr,"提示","授权成功",
+    QMessageBox::information(0,"提示","授权成功",
                         QMessageBox::Ok|QMessageBox::Default,
                         QMessageBox::Cancel|QMessageBox::Escape,0);
     readFile.close();//关闭文件
@@ -658,7 +656,7 @@ void privilegemanager::grant(QStringList keywordList) {
 //回收权限
 void privilegemanager::revoke(QStringList keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")){
-        QMessageBox::critical(nullptr,"错误","用户名或表名不能为空,请检查信息是否正确",
+        QMessageBox::critical(0,"错误","用户名或表名不能为空,请检查信息是否正确",
                             QMessageBox::Ok|QMessageBox::Default,
                             QMessageBox::Cancel|QMessageBox::Escape,0);
     }
@@ -737,7 +735,7 @@ void privilegemanager::revoke(QStringList keywordList) {
             write<<str<<"\n";
         }
     }
-    QMessageBox::information(nullptr,"提示","回收成功",
+    QMessageBox::information(0,"提示","回收成功",
                         QMessageBox::Ok|QMessageBox::Default,
                         QMessageBox::Cancel|QMessageBox::Escape,0);
     readFile.close();//关闭文件

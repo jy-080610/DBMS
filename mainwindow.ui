@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Mainwindow</class>
- <widget class="QWidget" name="Mainwindow">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -90,7 +90,7 @@
    <widget class="QPushButton" name="rollback">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>410</x>
       <y>120</y>
       <width>111</width>
       <height>51</height>
@@ -145,9 +145,9 @@
    <widget class="QTreeView" name="treeView">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>120</y>
-      <width>201</width>
+      <width>191</width>
       <height>371</height>
      </rect>
     </property>
@@ -169,7 +169,7 @@
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>190</y>
+      <y>180</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -178,7 +178,7 @@
      <string>结果显示</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="log">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -191,7 +191,7 @@
      <string>日志</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="rland">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -204,7 +204,7 @@
      <string>重新登陆</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="psw">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -217,7 +217,7 @@
      <string>修改密码</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="privilege">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -230,30 +230,56 @@
      <string>权限管理</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="create">
+   <widget class="QPushButton" name="newAction">
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>270</y>
+      <y>220</y>
       <width>93</width>
-      <height>28</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>创建数据库</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="del">
+   <widget class="QPushButton" name="deleteAction">
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>320</y>
+      <y>280</y>
       <width>93</width>
-      <height>28</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>删除数据库</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="selectAction">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>340</y>
+      <width>93</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>选择数据库</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exit">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>410</y>
+      <width>93</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>退出</string>
     </property>
    </widget>
   </widget>
