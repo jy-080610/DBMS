@@ -11,7 +11,7 @@
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     MainWindow w;
-    w.show();
+    w.show();// 显示窗口
     return QApplication::exec();
     //test by fu
     //test

@@ -28,7 +28,7 @@ private slots:
     void on_display_clicked();
     void on_isPK_clicked();
     void on_isNull_clicked();
-    void on_exit_clicked();
+    void on_exit_clicked();//退出
 private:
     Ui::fieldmanager *ui;
     void initDir();

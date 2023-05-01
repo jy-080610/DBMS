@@ -21,8 +21,8 @@ public:
     ~deletedatabase() override;
 private slots:
     void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
+    void on_pushButton_2_clicked();//选择
+    void on_pushButton_3_clicked();//退出
 
 private:
     Ui::deletedatabase *ui;

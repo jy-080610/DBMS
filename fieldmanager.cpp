@@ -57,7 +57,7 @@ void fieldmanager::on_add_clicked() {
         qDebug() << "文件打开失败";
         return;
     }
-    QTextStream read(&checkFile);
+    QTextStream read(&checkFile);//读取文件内容
     QString isPK;
     QString isNull;
     //判断是否是主键且是否有主键存在

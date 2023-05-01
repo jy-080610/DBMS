@@ -24,7 +24,7 @@ void deletedatabase::on_pushButton_clicked() {
 }
 
 void deletedatabase::on_pushButton_2_clicked() {
-        close();
+        close();//关闭当前窗口
 }
 
 void deletedatabase::on_pushButton_3_clicked() {

@@ -14,7 +14,7 @@ registerw::registerw(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint|windowFlags());
     //setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
-    getDbList();
+    getDbList();//获取数据库文件夹下的所有数据库
 }
 
 registerw::~registerw() {

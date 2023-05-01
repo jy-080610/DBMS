@@ -66,7 +66,7 @@ private:
     QString dbname;
 
 
-    void        displayField(QString);
+    void        displayField(QString);//显示字段
     void        displayData(QString);
     void        displayDir();
     void        importScript(QString);
