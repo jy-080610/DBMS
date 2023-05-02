@@ -1,3 +1,0 @@
-Tno,varchar,主键,主键,非空
-Tname,varchar,非主键,非主键,非空
-cid,varchar,非主键,非主键,非空
