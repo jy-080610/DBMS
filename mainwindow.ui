@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1111</width>
-    <height>676</height>
+    <height>679</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,8 +50,11 @@
       <x>230</x>
       <y>430</y>
       <width>561</width>
-      <height>231</height>
+      <height>221</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(235, 240, 255);</string>
     </property>
     <property name="title">
      <string/>
@@ -59,6 +62,9 @@
     <layout class="QGridLayout" name="gridLayout_5">
      <item row="0" column="0">
       <widget class="QGroupBox" name="groupBox">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(229, 254, 255);</string>
+       </property>
        <property name="title">
         <string/>
        </property>
@@ -89,6 +95,9 @@
      </item>
      <item row="0" column="1">
       <widget class="QGroupBox" name="groupBox_2">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(228, 255, 242);</string>
+       </property>
        <property name="title">
         <string/>
        </property>
@@ -119,6 +128,9 @@
      </item>
      <item row="0" column="2">
       <widget class="QGroupBox" name="groupBox_3">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 252, 240);</string>
+       </property>
        <property name="title">
         <string/>
        </property>
@@ -149,6 +161,9 @@
      </item>
      <item row="0" column="3">
       <widget class="QGroupBox" name="groupBox_4">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 244, 238);</string>
+       </property>
        <property name="title">
         <string/>
        </property>
@@ -187,6 +202,9 @@
       <width>561</width>
       <height>381</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(235, 240, 255);</string>
     </property>
     <property name="title">
      <string/>
@@ -303,7 +321,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;对表的数据操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;插入数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;insert into tablename &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;   values (value1,value2,value3,...);&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;delete from tablename where condition;&lt;br /&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;更新数据：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;update tablename set column1=value1 where condition;&lt;br /&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;字段操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;添加字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename add  columnname datatype;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename drop colume columnname;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;修改字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;alter table tablename modify  columnname datatype;&lt;br /&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询操作：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询全部：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select * from tablename;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询指定字段：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;column1,column2,column3&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;）&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;  from tablename;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;查询指定字段以及&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;where&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;条件：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;select &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;column1,column2）&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;   from tablename where &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;属性名&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;=XXX;&lt;br /&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;create index indexname on tablename(columnname);&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;drop index indexname;&lt;br /&gt;7.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;权限设置：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  授予权限：grank on tablename to username;&lt;br /&gt;  撤回权限：revoke on tablename from username;&lt;br /&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;   from tablename where &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;属性名&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;=XXX;&lt;br /&gt;6.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;建立索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;create index indexname on tablename(columnname);&lt;br /&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;删除索引：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;drop index indexname;&lt;br /&gt;7.&lt;/span&gt;&lt;span style=&quot; font-family:'宋体','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;权限设置：&lt;/span&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;&lt;br /&gt;  授予权限：grant on tablename to username;&lt;br /&gt;  撤回权限：revoke on tablename from username;&lt;br /&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_8">
