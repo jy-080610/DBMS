@@ -5,12 +5,3 @@ Database1|liuxiao|2023-04-20 15:49:30|insert into class values(222222,C++,3);
 revoke
 revoke
 revoke
-Database1|liuxiao|2023y-05-01 23:09:17|insert into fruitvalues 001,apple,2);
-Database1|liuxiao|2023y-05-01 23:09:27|insert into fruitvalues 002,banana,2);
-Database1|liuxiao|2023y-05-01 23:09:36|insert into fruitvalues 003,pine,5);
-Database1|liuxiao|2023y-05-01 23:09:48|insert into fruitvalues 004,pear,3);
-Database1|liuxiao|2023y-05-01 23:10:06|insert into fruitvalues 005,grape,3);
-DBMS4|liuxiao|2023y-05-01 23:23:00|insert into coursevalues 111,C++,1);
-DBMS4|liuxiao|2023y-05-01 23:23:11|insert into coursevalues 222,C,2);
-DBMS4|liuxiao|2023y-05-01 23:23:20|insert into coursevalues 333,java,3);
-DBMS4|liuxiao|2023y-05-01 23:23:33|insert into coursevalues 444,math,4);
