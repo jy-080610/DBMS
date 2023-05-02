@@ -1,0 +1,3 @@
+no,varchar,主键,非空
+name,varchar,非主键,非空
+price,varchar,非主键,非空
