@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // 去窗口边框
-    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
+    //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);
     // 初始化用户目录，读取当前的用户和所使用的数据库
     //设置文本框不可编辑

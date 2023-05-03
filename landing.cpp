@@ -13,7 +13,7 @@ landing::landing(QWidget *parent) :
         QWidget(parent), ui(new Ui::landing) {
     ui->setupUi(this);
     // 去窗口边框
-    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
+   // setWindowFlags(Qt::FramelessWindowHint | windowFlags());
     // 把窗口背景设置为透明;
 //      setAttribute(Qt::WA_TranslucentBackground);
     // 建立注册界面与登陆界面的信道槽
