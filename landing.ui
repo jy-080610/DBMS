@@ -68,7 +68,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(229, 254, 255);
+     <string notr="true">
 background-image: url(:/picture/b1.jpg);</string>
     </property>
     <property name="text">
