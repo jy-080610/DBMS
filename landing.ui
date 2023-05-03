@@ -38,10 +38,13 @@
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>90</y>
+      <y>100</y>
       <width>281</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(229, 254, 255);</string>
     </property>
     <property name="editable">
      <bool>false</bool>
@@ -65,7 +68,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(229, 254, 255);
+background-image: url(:/picture/b1.jpg);</string>
     </property>
     <property name="text">
      <string>登录</string>
@@ -81,7 +85,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(228, 255, 242);
+background-image: url(:/picture/b1.jpg);</string>
     </property>
     <property name="text">
      <string>注册</string>
@@ -97,7 +102,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-image: url(:/picture/b1.jpg);
+background-color: rgb(254, 255, 239);</string>
     </property>
     <property name="text">
      <string>退出</string>
@@ -107,10 +113,13 @@
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>160</y>
+      <y>170</y>
       <width>281</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(228, 255, 242);</string>
     </property>
     <property name="text">
      <string>请输入用户名</string>
@@ -120,10 +129,13 @@
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>240</y>
+      <y>250</y>
       <width>281</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(254, 255, 239);</string>
     </property>
     <property name="text">
      <string>请输入密码</string>
@@ -140,6 +152,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+background-color: rgb(229, 254, 255);
 </string>
     </property>
     <property name="text">
@@ -157,6 +170,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+background-color: rgb(228, 255, 242);
 </string>
     </property>
     <property name="text">
@@ -174,6 +188,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+background-color: rgb(254, 255, 239);
 </string>
     </property>
     <property name="text">
@@ -199,6 +214,8 @@
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>
