@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // 去窗口边框
-    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
+    //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);
                  //设置文本框不可编辑
     ui->text->setReadOnly(true);
