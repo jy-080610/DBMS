@@ -40,7 +40,7 @@ private:
     void initDir();//初始化目录
     void display();//显示权限
     bool isfuserexist(QString,QString);
-    bool isuserexist(QString);
+    bool isuserexist(QString);//判断用户是否存在
     void initPrivilege(QString,QString);//初始化权限
 
 

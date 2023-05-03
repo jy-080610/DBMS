@@ -25,6 +25,12 @@
 #include"deletedatabase.h"
 #include"managetablebysql.h"
 
+#include <QStandardItemModel>
+#include "landing.h"
+#include <QMainWindow>
+#include "selectdatabase.h"
+#include <QPainter>
+#include <QPixmap>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
 QT_END_NAMESPACE
@@ -39,24 +45,41 @@ public:
 private slots:
     void setVisibleSlot();
 
-    void on_run_clicked();
-    void on_fieldmanage_clicked();
-    void on_datamanage_clicked();
-    void on_tablemanage_clicked();
+    void on_run_clicked();//运行
+    void on_rollback_clicked();//回滚
+    void on_commit_clicked();//提交
 
-    void on_create_clicked();
+    void on_fieldmanage_clicked();//字段管理
+    void on_datamanage_clicked();//数据管理
+    void on_tablemanage_clicked();//表管理
+    void on_log_clicked();//日志
+    void on_privilege_clicked();//权限管理
+    void on_rland_clicked();//重新登陆
+    void on_psw_clicked();//修改密码
+    void on_exit_clicked();//退出
+    void on_selectAction_clicked();//选择
+    void on_deleteAction_clicked();//删除
+    void on_newAction_clicked();//新建
 
-    void on_del_clicked();
 private:
-    Ui::Mainwindow *ui;
+    Ui::MainWindow *ui;
+    QStandardItemModel *model;
+    landing *l;
     AnalysisSQL *dealwithSql;
     QString dirPath;
     QString dbname;
-    void    displayField(QString);
-    void    displayDir();
-    //登录界面类的对象作为指针
-    //landing * m_log;
 
+
+    void        displayField(QString);//显示字段
+    void        displayData(QString);
+    void        displayDir();
+    void        importScript(QString);
+    void        parseSql(QString);
+    void        selectData(QStringList);
+    bool        selectByIndex(QStringList);
+    bool        bakeupFile();
+    bool        isLogExists();
+    QStringList gettablelist();
 };
 
 

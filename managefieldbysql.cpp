@@ -14,7 +14,7 @@ ManageFieldBySql::ManageFieldBySql() {
 void ManageFieldBySql::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();//返回上一层目录
-   QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -39,8 +39,7 @@ void ManageFieldBySql::addField2tdf(QStringList keywordList) {
         return;
     }
 
-    tablePath=dirPath+"/table/"+keywordList[1]+"/"+keywordList[1]+".tdf";
-    QFile checkFile(tablePath);
+    tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";    QFile checkFile(tablePath);
     if(!checkFile.open(QIODevice::Append|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -86,14 +85,14 @@ void ManageFieldBySql::deleFileFromtdf(QStringList keywordList) {
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;
     }
-    tablePath=dirPath+"/table/"+keywordList[1]+"/"+keywordList[1]+".tdf";
+    tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";
     qDebug()<<tablePath;
     QFile readFile(tablePath);
     if(!readFile.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
     QTextStream read(&readFile);
-    QString afterDelPath= dirPath + "/table/" + keywordList[1] +"/del.tdf";
+    QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/del.tdf";
     QFile writeFile(afterDelPath);
     if(!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
@@ -131,7 +130,7 @@ void ManageFieldBySql::modifyInfo2tb(QStringList  keywordList) {
         QMessageBox::critical(0,"错误","输入不能为空",QMessageBox::Ok|QMessageBox::Default,QMessageBox::Cancel|QMessageBox::Escape,0);
         return;
     }
-    tablePath=dirPath+"/table/"+keywordList[1]+"/"+keywordList[1]+".tdf";
+    tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";
     QFile checkFile(tablePath);
     if(!checkFile.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
@@ -151,7 +150,7 @@ void ManageFieldBySql::modifyInfo2tb(QStringList  keywordList) {
     }
     checkFile.close();
     QString afterModifyPath = dirPath + "/table/" + keywordList[1] +"/modify.tdf";
-        QFile writeFile(afterModifyPath);
+    QFile writeFile(afterModifyPath);
         if(!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败";
         }

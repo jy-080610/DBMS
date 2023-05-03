@@ -55,7 +55,7 @@ void landing::on_logButton_clicked() {
 void landing::on_registerButton_clicked() {
 // 切换到注册界面
     user_register->show();
-    this->hide();
+    this->hide();// 隐藏登陆界面
 }
 
 void landing::on_pushButton_clicked() {
@@ -91,7 +91,7 @@ void landing::getDbList() {
     // --4 打印出获取的文件名
     qDebug() << "names: " << names;
 
-    for (int i = 0; i < names.size(); i++) {
+     for (int i = 0; i < names.size(); i++) {
         ui->dbName->addItem(names[i]);
     }
 }

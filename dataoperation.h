@@ -23,7 +23,7 @@ Q_OBJECT
 public:
     explicit dataoperation(QWidget *parent = nullptr);
     ~dataoperation() override;
-    bool isDigitString(const QString src);//判断是否为数字
+    bool isDigitString(const QString& src);//判断是否为数字
     bool isDateString(QString str);//判断是否为日期
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>496</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,14 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>-1</x>
-     <y>-1</y>
-     <width>401</width>
-     <height>301</height>
+     <x>0</x>
+     <y>0</y>
+     <width>491</width>
+     <height>411</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -34,10 +37,10 @@
    <widget class="QComboBox" name="dbName">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>60</y>
-      <width>111</width>
-      <height>22</height>
+      <x>180</x>
+      <y>90</y>
+      <width>281</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="editable">
@@ -55,11 +58,14 @@
    <widget class="QPushButton" name="logButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>240</y>
-      <width>75</width>
-      <height>23</height>
+      <x>20</x>
+      <y>330</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>登录</string>
@@ -68,11 +74,14 @@
    <widget class="QPushButton" name="registerButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>240</y>
-      <width>75</width>
-      <height>23</height>
+      <x>180</x>
+      <y>330</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>注册</string>
@@ -81,11 +90,14 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>240</y>
-      <width>75</width>
-      <height>23</height>
+      <x>340</x>
+      <y>330</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>退出</string>
@@ -94,31 +106,41 @@
    <widget class="QLineEdit" name="userName">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>113</width>
-      <height>20</height>
+      <x>180</x>
+      <y>160</y>
+      <width>281</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>请输入用户名</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="passWord">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>140</y>
-      <width>113</width>
-      <height>20</height>
+      <x>180</x>
+      <y>240</y>
+      <width>281</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>请输入密码</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>60</y>
-      <width>54</width>
-      <height>20</height>
+      <y>100</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>身份：</string>
@@ -128,10 +150,14 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>100</y>
-      <width>54</width>
-      <height>21</height>
+      <y>170</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>用户名：</string>
@@ -140,11 +166,15 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>140</y>
-      <width>54</width>
-      <height>21</height>
+      <x>60</x>
+      <y>250</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
+</string>
     </property>
     <property name="text">
      <string>密码：</string>
@@ -153,14 +183,15 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>281</x>
-      <y>30</y>
-      <width>111</width>
-      <height>71</height>
+      <x>0</x>
+      <y>0</y>
+      <width>141</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
+     <string notr="true">font: 30pt &quot;华文隶书&quot;;
+</string>
     </property>
     <property name="text">
      <string>DBMS</string>

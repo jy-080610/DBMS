@@ -1,0 +1,25 @@
+Database1|liuxiao|2023-04-05 11:48:54|insert into student values(111,Ð¡ºì,18);
+Database1|liuxiao|2023-04-05 11:50:03|insert into student values(222,orange,19);
+Database1|liuxiao|2023-04-20 15:48:41|insert into class values(111111,Java,3);
+Database1|liuxiao|2023-04-20 15:49:30|insert into class values(222222,C++,3);
+revoke
+revoke
+revoke
+Database1|liuxiao|2023y-05-01 23:09:17|insert into fruitvalues 001,apple,2);
+Database1|liuxiao|2023y-05-01 23:09:27|insert into fruitvalues 002,banana,2);
+Database1|liuxiao|2023y-05-01 23:09:36|insert into fruitvalues 003,pine,5);
+Database1|liuxiao|2023y-05-01 23:09:48|insert into fruitvalues 004,pear,3);
+Database1|liuxiao|2023y-05-01 23:10:06|insert into fruitvalues 005,grape,3);
+DBMS4|liuxiao|2023y-05-01 23:23:00|insert into coursevalues 111,C++,1);
+DBMS4|liuxiao|2023y-05-01 23:23:11|insert into coursevalues 222,C,2);
+DBMS4|liuxiao|2023y-05-01 23:23:20|insert into coursevalues 333,java,3);
+DBMS4|liuxiao|2023y-05-01 23:23:33|insert into coursevalues 444,math,4);
+DBMS2|liuxiao|2023y-05-02 10:33:11|insert into studentvalues 111,A,2101);
+DBMS2|liuxiao|2023y-05-02 10:33:26|insert into studentvalues 222,B,2102);
+DBMS2|liuxiao|2023y-05-02 10:33:36|insert into studentvalues 333,C,2103);
+DBMS2|liuxiao|2023y-05-02 10:33:45|insert into studentvalues 444,D,2104);
+DBMS2|liuxiao|2023y-05-02 10:34:01|insert into studentvalues 555,E,2105);
+DBMS2|liuxiao|2023y-05-02 10:34:10|insert into studentvalues 666,F,2106);
+DBMS4|liuxiao|2023y-05-02 10:46:17|insert into studentvalues 1,AAA,18,F);
+DBMS4|liuxiao|2023y-05-02 10:46:24|insert into studentvalues 2,BBB,18,F);
+DBMS4|liuxiao|2023y-05-02 10:46:35|insert into studentvalues 3,CCC,18,M);
