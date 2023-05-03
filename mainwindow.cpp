@@ -1,6 +1,6 @@
 
 #include "mainwindow.h"
-#include "ui_Mainwindow.h"
+#include "ui_mainwindow.h"
 #include "tablemanager.h"
 #include "login.h"
 #include "qdialog.h"
@@ -20,7 +20,7 @@
 #include "qdirmodel.h"
 #include "indexmanager.h"
 using namespace std;
-MainWindow::MainWindow(QWidget *parent) :
+Mainwindow::Mainwindow(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // 初始化用户目录，读取当前的用户和所使用的数据库
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
     // 以只读方式打开信息文件
     QFile file(dirPath);
 
@@ -66,15 +66,15 @@ MainWindow::MainWindow(QWidget *parent) :
     displayDir();
 }
 
-MainWindow::~MainWindow() {
+Mainwindow::~Mainwindow() {
     delete ui;
 }
 
-void MainWindow::setVisibleSlot()
+void Mainwindow::setVisibleSlot()
 {
     this->setVisible(true);
 }
-void MainWindow::on_run_clicked() {//运行SQL代码
+void Mainwindow::on_run_clicked() {//运行SQL代码
 // 获取关键字列表
     QStringList keywordList = dealwithSql->resolveSql(ui->sqllineEdit->text());
     qDebug() << "list大小为：" + QString::number(keywordList.size());
@@ -118,7 +118,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
             // -----字段管理-----
             // 增加字段并展示
         case 4: {
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.addField2tdf(keywordList);
             displayField(keywordList[1]);
             break;
@@ -126,7 +126,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
 
             // 删除字段并展示
         case 5: {
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.deleFileFromtdf(keywordList);
             displayField(keywordList[1]);
             break;
@@ -134,7 +134,7 @@ void MainWindow::on_run_clicked() {//运行SQL代码
 
             // 修改字段并展示
         case 6: {
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.modifyInfo2tb(keywordList);
             displayField(keywordList[1]);
             break;
@@ -228,11 +228,11 @@ void MainWindow::on_run_clicked() {//运行SQL代码
     }
     displayDir();
 }
-void MainWindow::displayField(QString tableName) {//在进行字段操作之后，展示出表定义文件信息
+void Mainwindow::displayField(QString tableName) {//在进行字段操作之后，展示出表定义文件信息
 
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "初始化文件打开失败";
     }
@@ -242,7 +242,7 @@ void MainWindow::displayField(QString tableName) {//在进行字段操作之后�
 
     list = str.split(",");
     QString dbName = list[1];
-    QString dirPath = dir->path() + "/DBMS/data/" + list[1];
+    QString dirPath = dir->path() + "/data/" + list[1];
 
     file.close();
     ui->tableWidget->clear();
@@ -286,7 +286,7 @@ void MainWindow::displayField(QString tableName) {//在进行字段操作之后�
 }
 
 
-void MainWindow::displayDir() {
+void Mainwindow::displayDir() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
     QString dirPath = dir->path() + "/data";
@@ -300,10 +300,10 @@ void MainWindow::displayDir() {
     }
 }
 
-void MainWindow::on_fieldmanage_clicked() {//字段管理
+void Mainwindow::on_fieldmanage_clicked() {//字段管理
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
     QFile file(dirPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -320,7 +320,7 @@ void MainWindow::on_fieldmanage_clicked() {//字段管理
     file.close();
 
     if (list.length() == 2) {
-        fieldmanager *fm = new fieldmanager();
+        FieldManager *fm = new FieldManager();
         fm->show();
     } else {
         QMessageBox::critical(0, "错误", "请新建或选择数据库",
@@ -329,11 +329,11 @@ void MainWindow::on_fieldmanage_clicked() {//字段管理
     }
 }
 
-void MainWindow::on_datamanage_clicked() {//数据管理
+void Mainwindow::on_datamanage_clicked() {//数据管理
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
     QFile file(dirPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -356,10 +356,10 @@ void MainWindow::on_datamanage_clicked() {//数据管理
     }
 }
 
-void MainWindow::on_tablemanage_clicked() {//表管理
+void Mainwindow::on_tablemanage_clicked() {//表管理
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
     QFile file(dirPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
@@ -383,14 +383,14 @@ void MainWindow::on_tablemanage_clicked() {//表管理
     }
 }
 
-void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回滚到上一次提交的结构
+void Mainwindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回滚到上一次提交的结构
     if (!isLogExists()) {// 若系统文件目录不存在，则返回，否则继续执行
         return;
     }
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString logPath = dir->path() + "/DBMS/log/sys.txt";    // 获取日志文件的路径
-    QFile readLog(dir->path() + "/DBMS/log/sys.txt"); // 打开日志文件
+    QString logPath = dir->path() + "/log/sys.txt";    // 获取日志文件的路径
+    QFile readLog(dir->path() + "/log/sys.txt"); // 打开日志文件
     if (!readLog.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
         return;
@@ -431,7 +431,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
 
             case 7: {  // 插入撤回
                 // 定位文件路径，以只读方式打开
-                QString tablePath = dir->path() + "/DBMS/data/" + dbname + "/table/" +keywordList[2] + "/" +keywordList[2] + ".trd";
+                QString tablePath = dir->path() + "/data/" + dbname + "/table/" +keywordList[2] + "/" +keywordList[2] + ".trd";
                 QFile readFile(tablePath);
                 if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败";
@@ -439,7 +439,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                 }
                 QTextStream read(&readFile);
                 // 创建新文件，来存储修改后的文件内容
-                QString afterDelPath = dir->path() + "/DBMS/data/" + dbname +"/table/" + keywordList[2] +"/del.trd";
+                QString afterDelPath = dir->path() + "/data/" + dbname +"/table/" + keywordList[2] +"/del.trd";
                 QFile writeFile(afterDelPath);
                 if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败";
@@ -470,7 +470,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                 // 删除
             case 8: {
                 // 字段文件
-                QString tdfPath = dir->path() + "/DBMS/temp/" + dbname + "/table/" +keywordList[1] + "/" +keywordList[1] + ".tdf";
+                QString tdfPath = dir->path() + "/temp/" + dbname + "/table/" +keywordList[1] + "/" +keywordList[1] + ".tdf";
                 QFile tdffile(tdfPath);
                 if (!tdffile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败！";
@@ -495,7 +495,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                     }
                 }
                 // 定位文件路径，以只读方式打开
-                QString tablePath = dir->path() + "/DBMS/temp/" +keywordList[1] + "/" +keywordList[1] + ".trd";
+                QString tablePath = dir->path() + "/temp/" +keywordList[1] + "/" +keywordList[1] + ".trd";
                 QFile readFile(tablePath);
                 if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败";
@@ -503,7 +503,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                 }
                 QTextStream read(&readFile);
                 // 创建新文件，来存储修改后的文件内容
-                QString afterDelPath = dir->path() + "/DBMS/data/" + dbname +"/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
+                QString afterDelPath = dir->path() + "/data/" + dbname +"/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
                 QFile writeFile(afterDelPath);
                 if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text |
                                     QIODevice::Append)) {
@@ -539,7 +539,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
             }
             case 9: {  // 更新
                 // 字段文件
-                QString tdfPath = dir->path() + "/DBMS/data/" + dbname + "/table/" +keywordList[1] + "/" +keywordList[1] + ".tdf";
+                QString tdfPath = dir->path() + "/data/" + dbname + "/table/" +keywordList[1] + "/" +keywordList[1] + ".tdf";
                 QFile tdffile(tdfPath);
                 if (!tdffile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败！";
@@ -563,7 +563,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                     }
                 }
                 // 定位文件路径，以只读方式打开
-                QString tablePath = dir->path() + "/DBMS/temp/" +keywordList[1] + "/" +keywordList[1] + ".trd";
+                QString tablePath = dir->path() + "/temp/" +keywordList[1] + "/" +keywordList[1] + ".trd";
                 QFile readFile(tablePath);
                 if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "文件打开失败";
@@ -571,7 +571,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                 }
                 QTextStream read(&readFile);
                 // 新文件，来存储修改后的文件内容
-                QString afterDelPath = dir->path() + "/DBMS/data/" + dbname +"/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
+                QString afterDelPath = dir->path() + "/data/" + dbname +"/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
                 QFile writeFile(afterDelPath);
                 if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text |
                                     QIODevice::Append)) {
@@ -611,7 +611,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
                 break;
         }
     }
-    QFile logFile(dir->path() + "/DBMS/log/sys.txt");
+    QFile logFile(dir->path() + "/log/sys.txt");
     if (!logFile.open(QIODevice::WriteOnly | QIODevice::Text |
                       QIODevice::Append)) {
         qDebug() << "文件打开失败";
@@ -628,7 +628,7 @@ void MainWindow::on_rollback_clicked() {// 回滚按钮，点击后将文件回�
 
 }
 
-void MainWindow::on_commit_clicked() {// 进行commit后，将原来的备份文件删除，然后更新最新版本,
+void Mainwindow::on_commit_clicked() {// 进行commit后，将原来的备份文件删除，然后更新最新版本,
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
@@ -636,7 +636,7 @@ void MainWindow::on_commit_clicked() {// 进行commit后，将原来的备份文
     if (dbname == "") return;
     // 若数据备份成功，则说明提交成功
     if (bakeupFile()) {
-        QFile logFile(dir->path() + "/DBMS/log/sys.txt");
+        QFile logFile(dir->path() + "/log/sys.txt");
 
         if (!logFile.open(QIODevice::WriteOnly | QIODevice::Text |
                           QIODevice::Append)) {
@@ -652,56 +652,56 @@ void MainWindow::on_commit_clicked() {// 进行commit后，将原来的备份文
     }
 }
 
-void MainWindow::on_log_clicked() {//查看日志
+void Mainwindow::on_log_clicked() {//查看日志
     logdialog *log = new logdialog();
     log->show();
     log->showlog();
 
 }
 
-void MainWindow::on_privilege_clicked() {
+void Mainwindow::on_privilege_clicked() {
     privilegemanager *plg = new privilegemanager();
     plg->show();
 }
 
-void MainWindow::on_rland_clicked() {
+void Mainwindow::on_rland_clicked() {
     l->setVisible(true);
     l->show();
 }
 
-void MainWindow::on_exit_clicked() {
+void Mainwindow::on_exit_clicked() {
     on_commit_clicked();//退出时提交
     exit(0);
 }
 
-void MainWindow::on_psw_clicked() {// 重新设置密码
+void Mainwindow::on_psw_clicked() {// 重新设置密码
     resetpassword *rp = new resetpassword();
     rp->show();
 }
 
-void MainWindow::on_selectAction_clicked() {//选择项目
+void Mainwindow::on_selectAction_clicked() {//选择项目
     selectdatabase *sdb = new selectdatabase();
     sdb->show();
 
 }
 
-void MainWindow::on_deleteAction_clicked() {//删除项目
+void Mainwindow::on_deleteAction_clicked() {//删除项目
     deletedatabase *ddb = new deletedatabase();
     ddb->show();
 }
 
-void MainWindow::on_newAction_clicked() {//创建新项目
+void Mainwindow::on_newAction_clicked() {//创建新项目
     createdatabase *cdb = new createdatabase();
     cdb->show();
 
 
 }
 
-void MainWindow::displayData(QString tableName) {
+void Mainwindow::displayData(QString tableName) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
@@ -713,7 +713,7 @@ void MainWindow::displayData(QString tableName) {
     QStringList list;
     QString     str = read.readLine();
     list = str.split(",");
-    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    dirPath = dir->path() + "/data/" + list[1];
     qDebug() << dirPath;
     file.close();
     QString fileName = dirPath + "/table/" +tableName + "/" +tableName + ".trd";
@@ -804,7 +804,7 @@ void MainWindow::displayData(QString tableName) {
     }
 }
 
-void MainWindow::importScript(QString scriptPath) {//通过导入sql脚本，解析并批量执行
+void Mainwindow::importScript(QString scriptPath) {//通过导入sql脚本，解析并批量执行
     QString fileName = scriptPath;// 根据导入的路径打开脚本文件
     QFile   file(fileName);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -830,7 +830,7 @@ void MainWindow::importScript(QString scriptPath) {//通过导入sql脚本，解
     file.close();
 }
 
-void MainWindow::parseSql(QString sqlText) {
+void Mainwindow::parseSql(QString sqlText) {
     QStringList keywordList = dealwithSql->resolveSql(sqlText);// 获取关键字列表
     qDebug() << "list大小为：" + QString::number(keywordList.size());
     // 容错判断
@@ -866,19 +866,19 @@ void MainWindow::parseSql(QString sqlText) {
 
             // -----字段管理-----
         case 4: {            // 增加字段并展示
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.addField2tdf(keywordList);
             displayField(keywordList[1]);
             break;
         }
         case 5: {// 删除字段并展示
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.deleFileFromtdf(keywordList);
             displayField(keywordList[1]);
             break;
         }
         case 6: { // 修改字段并展示
-            managefieldbysql mfbs;
+            ManageFieldBySql mfbs;
             mfbs.modifyInfo2tb(keywordList);
             displayField(keywordList[1]);
             break;
@@ -929,14 +929,14 @@ void MainWindow::parseSql(QString sqlText) {
             break;
     }
 }
-void MainWindow::selectData(QStringList keywordList) {// 根据查询条件显示出对应的数据
+void Mainwindow::selectData(QStringList keywordList) {// 根据查询条件显示出对应的数据
     ui->tableWidget->clear();
     // 判断关键字列表的大小，若长度大于3则说明存在筛选条件
-    bool isWhere = keywordList.size() > 3 ? true : false;
+    bool isWhere = keywordList.size() > 3;
     // 打开用户信息文件
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -946,7 +946,7 @@ void MainWindow::selectData(QStringList keywordList) {// 根据查询条件显�
     QString     tableName = keywordList[2];
     // 划分用户名和密码
     list = str.split(",");
-    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    dirPath = dir->path() + "/data/" + list[1];
     file.close();
     // 字段文件
     QString tablePath = dirPath + "/table/" + tableName + "/" +tableName + ".tdf";
@@ -1105,7 +1105,7 @@ void MainWindow::selectData(QStringList keywordList) {// 根据查询条件显�
     }
 }
 
-bool MainWindow::selectByIndex(QStringList keywordList) {//通过索引查询
+bool Mainwindow::selectByIndex(QStringList keywordList) {//通过索引查询
     /* 查询语句使用时
    1.  Indexmanager* idmg=new Indexmanager(QString tablename)
    2.  idmg.checkindex(QString finame1,QString finame2)
@@ -1145,10 +1145,10 @@ bool MainWindow::selectByIndex(QStringList keywordList) {//通过索引查询
     return false;
 }
 
-bool MainWindow::bakeupFile() {//// 对文件进行备份
+bool Mainwindow::bakeupFile() {//// 对文件进行备份
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");//获取当前使用的数据库
+    QFile file(dir->path() + "/data/sys/curuse.txt");//获取当前使用的数据库
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "初始化文件打开失败";
         QMessageBox::critical(0,
@@ -1170,7 +1170,7 @@ bool MainWindow::bakeupFile() {//// 对文件进行备份
     }
     // 对所有表进行备份
     for (int i = 0; i < tablenameList.size(); i++) {
-        QString dirPath = dir->path() + "/DBMS/data/" + dbName + "/table/" +tablenameList[i] + "/";
+        QString dirPath = dir->path() + "/data/" + dbName + "/table/" +tablenameList[i] + "/";
         QDir tableDir(dirPath);//tableDir()为表所在目录
         qDebug() << tableDir.exists();
         if (!tableDir.exists()) // 如果目标目录不存在
@@ -1178,7 +1178,7 @@ bool MainWindow::bakeupFile() {//// 对文件进行备份
             return false;
         }
         // 获取要操作的表路径
-        QDir targetDir(dir->path() + "/DBMS/temp/" + tablenameList[i] + "/");
+        QDir targetDir(dir->path() + "/temp/" + tablenameList[i] + "/");
 
         if (!targetDir.exists()) // 如果目标目录不存在，则进行创建
         {
@@ -1195,7 +1195,7 @@ bool MainWindow::bakeupFile() {//// 对文件进行备份
             QString sCurrentPath = dirPath + tablenameList[i] + postfixList[j];
 
             // 备份文件 包含路径 文件名
-            QString sBachUpPath = dir->path() + "/DBMS/temp/" +
+            QString sBachUpPath = dir->path() + "/temp/" +
                                   tablenameList[i] + "/" +
                                   tablenameList[i] + postfixList[j];
             QFile currenFile(sCurrentPath);
@@ -1209,11 +1209,11 @@ bool MainWindow::bakeupFile() {//// 对文件进行备份
     return true;
 }
 
-bool MainWindow::isLogExists() {
+bool Mainwindow::isLogExists() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString logPath = dir->path() + "/DBMS/log/sys.txt"; // 获取日志文件的路径
-    QFile readLog(dir->path() + "/DBMS/log/sys.txt");// 打开日志文件
+    QString logPath = dir->path() + "/log/sys.txt"; // 获取日志文件的路径
+    QFile readLog(dir->path() + "/log/sys.txt");// 打开日志文件
     if (!readLog.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
         QMessageBox::critical(0, "错误", "日志文件打开失败！",
@@ -1278,7 +1278,7 @@ bool MainWindow::isLogExists() {
         // 备份文件
         QDir *dir = new QDir(QDir::currentPath());
         dir->cdUp();
-        QString dirPath = dir->path() + "/DBMS/temp/" + distList[i] + "/";
+        QString dirPath = dir->path() + "/temp/" + distList[i] + "/";
         qDebug() << "一层循环";
 
         for (int j = 0; j < postfixList.size(); j++) {
@@ -1286,7 +1286,7 @@ bool MainWindow::isLogExists() {
             // 原文件 包含路径 文件名
             QString sCurrentPath = dirPath + distList[i] + postfixList[j];
             // 要覆盖的文件 包含路径 文件名
-            QString sBachUpPath = dir->path() + "/DBMS/data/" +
+            QString sBachUpPath = dir->path() + "/data/" +
                                   dbname + "/table/" +
                                   distList[i] + "/" + distList[i] +
                                   postfixList[j];
@@ -1297,7 +1297,7 @@ bool MainWindow::isLogExists() {
             currenFile.copy(sBachUpPath); // copy函数不能直接创建文件夹,所有需要先把文件夹创建出来再进行拷贝
         }
     }
-    QFile logFile(dir->path() + "/DBMS/log/sys.txt");
+    QFile logFile(dir->path() + "/log/sys.txt");
 
     if (!logFile.open(QIODevice::WriteOnly | QIODevice::Text |
                       QIODevice::Append)) {
@@ -1315,13 +1315,13 @@ bool MainWindow::isLogExists() {
     return false;
 }
 
-QStringList MainWindow::gettablelist() {
+QStringList Mainwindow::gettablelist() {
     QStringList names;
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
 
     // --1 判断文件夹是否存在
-    QString folderPath = dir->path() + "/DBMS/data/" + dbname + "/table/";
+    QString folderPath = dir->path() + "/data/" + dbname + "/table/";
     QDir    dbDir(folderPath);
     if (!dbDir.exists())
     {

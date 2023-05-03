@@ -14,7 +14,7 @@ ManageFieldBySql::ManageFieldBySql() {
 void ManageFieldBySql::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();//返回上一层目录
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -25,7 +25,7 @@ void ManageFieldBySql::initDir() {
     list=str.split(",");
     userName=list[0];
     dbName=list[1];
-    dirPath=dir->path()+"/DBMS/data/"+list[1];
+    dirPath=dir->path()+"/data/"+list[1];
     file.close();
 }
 //向文件中添加属性字段，格式: 表名，列名，数据类型，是否为主键，是否非空

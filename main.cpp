@@ -9,6 +9,7 @@
 #include "dataoperation.h"
 #include"createdatabase.h"
 int main(int argc, char *argv[]) {
+    QApplication::addLibraryPath("E:/DBMS/plugins");
     QApplication a(argc, argv);
     //dataoperation d;
     //d.show();

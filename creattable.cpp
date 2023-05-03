@@ -27,7 +27,7 @@ void creattable::on_pushButton_clicked() {
 
     QDir *dir=new QDir(QDir::currentPath());//获取当前路径
     dir->cdUp();//返回上一级目录
-    QString dirPath=dir->path()+"/DBMS/data/sys/curuse.txt";//获取当前使用的数据库
+    QString dirPath=dir->path()+"/data/sys/curuse.txt";//获取当前使用的数据库
 
 
     QFile file(dirPath);//打开当前使用的数据库

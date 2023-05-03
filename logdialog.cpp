@@ -21,7 +21,7 @@ logdialog::~logdialog() {
 void logdialog::showlog() {
     QDir * dir = new QDir(QDir::currentPath());//获取当前路径
     dir->cdUp();//返回上一级目录
-    QString path = dir->path() + "/DBMS/log/sys.txt";//获取日志文件路径
+    QString path = dir->path() + "/log/sys.txt";//获取日志文件路径
     QFile file(path);
     if(!file.open(QIODevice::ReadWrite))return;
     QTextStream out(&file);//文本流

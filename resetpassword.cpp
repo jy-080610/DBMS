@@ -15,7 +15,7 @@ resetpassword::resetpassword(QWidget *parent) :
 
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    path = dir->path() + "/DBMS/data";
+    path = dir->path() + "/data";
     getDbList();
 }
 
@@ -141,7 +141,7 @@ void resetpassword::getDbList() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
     // --1 判断文件夹是否存在
-    QString folderPath = dir->path() + "/DBMS/data";
+    QString folderPath = dir->path() + "/data";
     QDir    dbDir(folderPath);
     if (!dbDir.exists())
     {

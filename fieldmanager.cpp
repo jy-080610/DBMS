@@ -10,19 +10,19 @@
 #include "qmessagebox.h"
 #include "dataoperation.h"
 
-fieldmanager::fieldmanager(QWidget *parent) :
-        QWidget(parent), ui(new Ui::fieldmanager) {
+FieldManager::FieldManager(QWidget *parent) :
+        QWidget(parent), ui(new Ui::FieldManager) {
     ui->setupUi(this);
     initDir();
 }
 
-fieldmanager::~fieldmanager() {
+FieldManager::~FieldManager() {
     delete ui;
 }
-void fieldmanager::initDir() {
+void FieldManager::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();//返回上一层目录
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -32,12 +32,12 @@ void fieldmanager::initDir() {
     list=str.split(",");
     userName = list[0];
     dbName = list[1];
-    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    dirPath = dir->path() + "/data/" + list[1];
     file.close();
 
 }
 //增加字段
-void fieldmanager::on_add_clicked() {
+void FieldManager::on_add_clicked() {
     if ((this->ui->path->text() == "") || this->ui->fieldNameEdit->text().isEmpty() ||
         (this->ui->fieldNameEdit->text() == "")) {
         QMessageBox::critical(0, "错误", "字段名不能为空", QMessageBox::Ok | QMessageBox::Default,
@@ -99,7 +99,7 @@ void fieldmanager::on_add_clicked() {
     TM.tableModifier(this->ui->path->text(),1);
 }
 
-void fieldmanager::on_modify_clicked() {
+void FieldManager::on_modify_clicked() {
     if (this->ui->path->text().isEmpty()||
             ( this->ui->fieldNameEdit->text().isEmpty())||
             (this->ui->fieldNameEdit->text()=="")){
@@ -177,7 +177,7 @@ void fieldmanager::on_modify_clicked() {
     TM.tableModifier(this->ui->path->text(),3);
 }
 
-void fieldmanager::on_dele_clicked() {
+void FieldManager::on_dele_clicked() {
     if(this->ui->path->text().isEmpty()||
             ( this->ui->fieldNameEdit->text().isEmpty())||
             (this->ui->fieldNameEdit->text()=="")){
@@ -228,7 +228,7 @@ void fieldmanager::on_dele_clicked() {
 
 }
 
-void fieldmanager::on_display_clicked() {
+void FieldManager::on_display_clicked() {
     if (this->ui->path->text().isEmpty() ||
         (this->ui->path->text() == "")) {
         QMessageBox::critical(0, "错误", "表名不能为空",
@@ -239,13 +239,13 @@ void fieldmanager::on_display_clicked() {
     display();
 }
 
-void fieldmanager::on_isPK_clicked() {
+void FieldManager::on_isPK_clicked() {
     if (ui->isPK->isChecked()) {
         ui->isNull->setChecked(false);
     }
 }
 
-void fieldmanager::on_isNull_clicked() {
+void FieldManager::on_isNull_clicked() {
     if (ui->isPK->isChecked()) {
         ui->isNull->setChecked(false);
     } else if (ui->isNull->isChecked()) {
@@ -257,13 +257,13 @@ void fieldmanager::on_isNull_clicked() {
 
 
 //表是否是已经存在
-bool fieldmanager::isTableExist() {
+bool FieldManager::isTableExist() {
     tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     QFile tempFile(tablePath);
     return tempFile.exists();
 }
 
-void fieldmanager::display() {
+void FieldManager::display() {
     ui->tableWidget->clear();
     // 当指定的表存在时，进行展示操作
     if (isTableExist()) {
@@ -305,7 +305,7 @@ void fieldmanager::display() {
 
 }
 //判断字段是否重复
-bool fieldmanager::isDuplicate(QString fieldName) {
+bool FieldManager::isDuplicate(QString fieldName) {
 
     tablePath = dirPath + "/table/" + this->ui->path->text() + "/" +this->ui->path->text() + ".tdf";
     qDebug()<<"tablePath:"<<tablePath;
@@ -327,7 +327,7 @@ bool fieldmanager::isDuplicate(QString fieldName) {
       return false;
 }
 //添加字段后保证字段数据的一致性
-void fieldmanager::addComma2trd() {
+void FieldManager::addComma2trd() {
     QString trdPath=dirPath+"/table/"+this->ui->path->text()+"/"+this->ui->path->text()+".trd";
     QFile readFile(trdPath);
     if (!readFile.open(QIODevice::ReadOnly|QIODevice::Text)){
@@ -355,7 +355,7 @@ void fieldmanager::addComma2trd() {
     writeFile.rename(trdPath);
 }
 //根据删除的字段列号来删除对应的数据列
-void fieldmanager::removedata(int datacol) {
+void FieldManager::removedata(int datacol) {
     QString trdPath = dirPath + "/table/" + this->ui->path->text() + "/" +
                       this->ui->path->text() + ".trd";
     QFile readFile(trdPath);
@@ -405,6 +405,6 @@ void fieldmanager::removedata(int datacol) {
 
 }
 
-void fieldmanager::on_exit_clicked() {
+void FieldManager::on_exit_clicked() {
    this->close();
 }

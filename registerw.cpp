@@ -28,7 +28,7 @@ void registerw::createuser(QString name) {
     QDir   *dir = new QDir(QDir::currentPath());
     QString path;
     dir->cdUp();
-    path = dir->path() + "/DBMS/data/" + name;
+    path = dir->path() + "/data/" + name;
     QDir dir1(path);
     // 若当前目录存在，则创建失败；否则创建新目录
     if (dir1.exists()) {
@@ -89,28 +89,28 @@ void registerw::getDbList() {
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
 
-    // --1 判断文件夹是否存在
-    QString folderPath = dir->path() + "/DBMS/data";
-    QDir    dbDir(folderPath);
+        // --1 判断文件夹是否存在
+        QString folderPath = dir->path() + "/data";
+        QDir dbDir(folderPath);
 
-    if (!dbDir.exists())
-    {
-        QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
-        return;
+        if (!dbDir.exists()) {
+            QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
+            return;
+        }
+
+        // --2 获取当前路径下所有的文件夹名字
+        // -- 注：QDir::Dirs 为获取所有文件夹名称，获取文件名称需要修改
+        QStringList names = dbDir.entryList(QDir::Dirs);
+
+        // --3 删除当前文件夹和上级文件夹（温馨提示：隐藏的文件夹获取不了）
+        names.removeOne(".");
+        names.removeOne("..");
+        names.removeOne("sys");
+
+        // --4 将数据库名称添加到组件中
+        for (int i = 0; i < names.size(); i++) {
+            ui->dbName->addItem(names[i]);
+        }
+
     }
-
-    // --2 获取当前路径下所有的文件夹名字
-    // -- 注：QDir::Dirs 为获取所有文件夹名称，获取文件名称需要修改
-    QStringList names = dbDir.entryList(QDir::Dirs);
-
-    // --3 删除当前文件夹和上级文件夹（温馨提示：隐藏的文件夹获取不了）
-    names.removeOne(".");
-    names.removeOne("..");
-    names.removeOne("sys");
-
-    // --4 将数据库名称添加到组件中
-    for (int i = 0; i < names.size(); i++) {
-        ui->dbName->addItem(names[i]);
-    }
-
 }

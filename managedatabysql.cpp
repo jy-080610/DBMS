@@ -21,7 +21,7 @@ managedatabysql::managedatabysql() {
 void managedatabysql::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();
-    QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");//打开当前用户文件
+    QFile file(dir->path()+"/data/sys/curuse.txt");//打开当前用户文件
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"文件打开失败";
     }
@@ -31,7 +31,7 @@ void managedatabysql::initDir() {
     list=str.split(",");
     userName=list[0];//获取当前用户名
     dbName=list[1];//获取当前数据库名
-    dirPath = dir->path() + "/DBMS/data/" + list[1];//获取当前数据库路径
+    dirPath = dir->path() + "/data/" + list[1];//获取当前数据库路径
     qDebug()<<dirPath;
     file.close();
 }
@@ -341,7 +341,7 @@ void managedatabysql::writeintoLOG(int i, QStringList keywordList) {
 
     QDir * dir =new QDir(QDir::currentPath());
     dir->cdUp();
-    QString fileNmae=dir->path()+"/DBMS/log/sys.txt";
+    QString fileNmae=dir->path()+"/log/sys.txt";
     QFile file(fileNmae);
     QDateTime dateTime = QDateTime::currentDateTime();//获取系统现在的时间
     if (!file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){

@@ -30,7 +30,7 @@ void deletetable::on_quitButtton_clicked() {
 void deletetable::on_deleButton_clicked() {
         QDir *dir=new QDir(QDir::currentPath());
         dir->cdUp();//返回上一层目录
-       QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+       QString dirPath = dir->path() + "/data/sys/curuse.txt";
         QFile file(dirPath);
         if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
             qDebug()<<"文件打开失败";

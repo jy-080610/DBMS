@@ -29,6 +29,7 @@
 #include "landing.h"
 #include <QMainWindow>
 #include "selectdatabase.h"
+#include "ui_mainwindow.h"
 #include <QPainter>
 #include <QPixmap>
 QT_BEGIN_NAMESPACE

@@ -43,7 +43,7 @@ void dataoperation::initDir() {
         qDebug() << dirPath;
         file.close();
 }
-bool dataoperation::isDigitString(const QString src) {
+bool dataoperation::isDigitString(const QString& src) {
     const char *s=src.toUtf8().data();//将QString转char*
     while (*s && *s >= '0' && *s <= '9') s++;
     return !bool (*s);//如果是数字返回true

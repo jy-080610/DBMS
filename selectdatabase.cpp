@@ -24,7 +24,7 @@ selectdatabase::~selectdatabase()
 void selectdatabase::on_pushButton_clicked() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString path=dir->path()+"/DBMS/data/sys";
+    QString path=dir->path()+"/data/sys";
     QFile *file = new QFile(path+ "/curuse.txt");//若文件不存在，则创建文件
     if(!file->open(QIODevice::WriteOnly))
     {QMessageBox::critical(nullptr, "错误", "文件打开失败！");
