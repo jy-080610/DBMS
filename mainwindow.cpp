@@ -60,7 +60,7 @@ void Mainwindow::on_run_clicked() {
             // 创建表
         case 2:
         {
-            ManageTableBySql mtbs;
+            managetablebysql mtbs;
             mtbs.createTable(keywordList[1]);
             break;
         }
@@ -68,7 +68,7 @@ void Mainwindow::on_run_clicked() {
             // 删除表
         case 3:
         {
-            ManageTableBySql mtbs;
+            managetablebysql mtbs;
             mtbs.deleteTable(keywordList[1]);
             break;
         }

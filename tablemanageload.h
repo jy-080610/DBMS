@@ -6,7 +6,7 @@
 #define DBMS_TABLEMANAGELOAD_H
 
 #include <QWidget>
-
+#include "fieldmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class tablemanageload; }

@@ -14,9 +14,9 @@ landing::landing(QWidget *parent) :
         QWidget(parent), ui(new Ui::landing) {
     ui->setupUi(this);
     // 去窗口边框
-    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
+    //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
     // 把窗口背景设置为透明;
-    setAttribute(Qt::WA_TranslucentBackground);
+    //setAttribute(Qt::WA_TranslucentBackground);
     // 建立注册界面与登陆界面的信道槽
     user_register = new registerw();
     user_register->hide();
@@ -72,9 +72,8 @@ void landing::getDbList() {
     dir->cdUp();
 
     // --1 判断文件夹是否存在
-    QString folderPath = dir->path() + "/DBMS/data";
+    QString folderPath = dir->path() + "/data";
     QDir    dbDir(folderPath);
-
     if (!dbDir.exists())
     {
         QMessageBox::critical(this, tr("错误"), tr("数据库文件夹不存在"));

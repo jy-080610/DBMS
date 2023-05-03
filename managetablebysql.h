@@ -9,7 +9,7 @@
 class managetablebysql {
 public:
     managetablebysql();
-   void createTable(QString);
+    void createTable(QString);
     void deleteTable(QString);
 };
 

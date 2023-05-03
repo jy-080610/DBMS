@@ -112,7 +112,7 @@ bool login::checkLog(QString dbname, QString username, QString psd)
 
         // 只读方式打开用户信息文件
         if (!userFile.open(QIODevice::ReadOnly)) {
-            QMessageBox::critical(0, "错误", "userinfo文件打开失败",
+            QMessageBox::critical(nullptr, "错误", "userinfo文件打开失败",
                                   QMessageBox::Ok | QMessageBox::Default,
                                   QMessageBox::Cancel | QMessageBox::Escape, 0);
             return false;
@@ -131,7 +131,7 @@ bool login::checkLog(QString dbname, QString username, QString psd)
                 QFile useFile(path + "/sys/curuse.txt");
 
                 if (!useFile.open(QIODevice::WriteOnly)) {
-                    QMessageBox::critical(0,
+                    QMessageBox::critical(nullptr,
                                           "错误",
                                           "curuse文件打开失败",
                                           QMessageBox::Ok | QMessageBox::Default,

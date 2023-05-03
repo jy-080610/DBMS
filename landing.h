@@ -18,20 +18,6 @@ public:
     ~landing();
 
 signals:
-
-    void setVisibleSignal();
-
-private slots:
-
-    void on_logButton_clicked();
-
-    void on_registerButton_clicked();
-
-    void on_pushButton_clicked();
-    void setVisibleSlot();
-
-signals:
-
     void setVisibleSignal();
 private slots:
     void on_logButton_clicked();

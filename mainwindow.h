@@ -23,6 +23,7 @@
 #include"tablemanageload.h"
 #include"createdatabase.h"
 #include"deletedatabase.h"
+#include"managetablebysql.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }

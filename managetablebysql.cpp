@@ -15,7 +15,7 @@ managetablebysql::managetablebysql() {
 void managetablebysql::createTable(QString tableName) {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
     QFile file(dirPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -29,13 +29,13 @@ void managetablebysql::createTable(QString tableName) {
     if (tableName != "") {
         TableManager TM(list[0], list[1]);
         TM.tableCreator(tableName);
-        QMessageBox::information(0,
+        QMessageBox::information(nullptr,
                                  "通知",
-                                 "表已经创建",
+                                 "表创建成功",
                                  QMessageBox::Ok | QMessageBox::Default,
                                  QMessageBox::Cancel | QMessageBox::Escape, 0);
     } else {
-        QMessageBox::critical(0, "错误", "表名不能为空",
+        QMessageBox::critical(nullptr, "错误", "表名不能为空",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
@@ -45,7 +45,7 @@ void managetablebysql::createTable(QString tableName) {
 void managetablebysql::deleteTable(QString tableName) {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/DBMS/data/sys/curuse.txt";
+    QString dirPath = dir->path() + "/data/sys/curuse.txt";
 
     QFile file(dirPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -60,13 +60,13 @@ void managetablebysql::deleteTable(QString tableName) {
     if (tableName != "") {
         TableManager TM(list[0], list[1]);
         TM.tableDelete(tableName);
-        QMessageBox::information(0,
+        QMessageBox::information(nullptr,
                                  "通知",
-                                 "表已经删除",
+                                 "表删除成功",
                                  QMessageBox::Ok | QMessageBox::Default,
                                  QMessageBox::Cancel | QMessageBox::Escape, 0);
     } else {
-        QMessageBox::critical(0, "错误", "表名不能为空",
+        QMessageBox::critical(nullptr, "错误", "表名不能为空",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }

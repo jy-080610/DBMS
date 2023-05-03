@@ -7,11 +7,11 @@
 #include "qdebug.h"
 #include "tablemanager.h"
 
-managefieldbysql::managefieldbysql() {
+ManageFieldBySql::ManageFieldBySql() {
     initDir();//初始化目录
 
 }
-void managefieldbysql::initDir() {
+void ManageFieldBySql::initDir() {
     QDir *dir=new QDir(QDir::currentPath());
     dir->cdUp();//返回上一层目录
    QFile file(dir->path()+"/DBMS/data/sys/curuse.txt");
@@ -29,7 +29,7 @@ void managefieldbysql::initDir() {
     file.close();
 }
 //向文件中添加属性字段，格式: 表名，列名，数据类型，是否为主键，是否非空
-void managefieldbysql::addField2tdf(QStringList keywordList) {
+void ManageFieldBySql::addField2tdf(QStringList keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")||(keywordList[3]=="")){
         QMessageBox::critical(0,"错误","输入不能为空",QMessageBox::Ok|QMessageBox::Default,QMessageBox::Cancel|QMessageBox::Escape,0);
         return;
@@ -77,7 +77,7 @@ void managefieldbysql::addField2tdf(QStringList keywordList) {
     TM.tableModifier(keywordList[1],1);
 }
 //keywordList为删除的属性字段信息
-void managefieldbysql::deleFileFromtdf(QStringList keywordList) {
+void ManageFieldBySql::deleFileFromtdf(QStringList keywordList) {
 
     if ((keywordList[1] == "") ||
         (keywordList[2] == "")) {
@@ -126,7 +126,7 @@ void managefieldbysql::deleFileFromtdf(QStringList keywordList) {
     TM.tableModifier(keywordList[1],4);
 }
 //根据指定的信息修改表的字段信息
-void managefieldbysql::modifyInfo2tb(QStringList  keywordList) {
+void ManageFieldBySql::modifyInfo2tb(QStringList  keywordList) {
     if((keywordList[1]=="")||(keywordList[2]=="")){
         QMessageBox::critical(0,"错误","输入不能为空",QMessageBox::Ok|QMessageBox::Default,QMessageBox::Cancel|QMessageBox::Escape,0);
         return;
@@ -203,7 +203,7 @@ void managefieldbysql::modifyInfo2tb(QStringList  keywordList) {
 
 
 //是否有重复属性
-bool managefieldbysql::isDuplicate(QStringList keywordList) {
+bool ManageFieldBySql::isDuplicate(QStringList keywordList) {
 
     tablePath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".tdf";
     QFile file(tablePath);
@@ -226,7 +226,7 @@ bool managefieldbysql::isDuplicate(QStringList keywordList) {
     return false;
 }
 
-void managefieldbysql::removedata(int datacol, QString tablename) {//根据删字段列号来删除对应的数据列除的
+void ManageFieldBySql::removedata(int datacol, QString tablename) {//根据删字段列号来删除对应的数据列除的
     QString trdPath = dirPath + "/table/" + tablename + "/" +tablename + ".trd";
     QFile readFile(trdPath);
 
@@ -276,7 +276,7 @@ void managefieldbysql::removedata(int datacol, QString tablename) {//根据删�
 }
 
 //添加字段后调用此函数保证字段和数据的列数相同
-void managefieldbysql::addComma2trd(QStringList keywordList) {
+void ManageFieldBySql::addComma2trd(QStringList keywordList) {
     QString trdPath = dirPath + "/table/" + keywordList[1] + "/" +keywordList[1] + ".trd";
     QFile readFile(trdPath);
     if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {

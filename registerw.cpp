@@ -74,11 +74,11 @@ void registerw::getDbList() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
     //获取数据库文件夹路径
-    QString folderPath = dir->path() + "/DBMS/data";
+    QString folderPath = dir->path() + "/data";
     QDir dbDir(folderPath);
     if (!dbDir.exists()) {
         qDebug() << "数据库文件夹不存在";
-        QMessageBox::critical(0, "错误", "数据库文件夹不存在",
+        QMessageBox::critical(nullptr, "错误", "数据库文件夹不存在",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
         return;

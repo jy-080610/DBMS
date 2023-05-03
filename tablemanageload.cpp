@@ -20,7 +20,7 @@ tablemanageload::~tablemanageload() {
 }
 
 void tablemanageload::on_updatetable_clicked() {
-  fieldmanager *fieldmanager1 = new fieldmanager();
+  FieldManager *fieldmanager1 = new FieldManager();
   fieldmanager1->show();
   close();
 }
