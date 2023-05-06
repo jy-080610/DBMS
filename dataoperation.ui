@@ -14,21 +14,9 @@
    <string>dataoperation</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;
+background-image: url(:/picture/88.jpg);</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>571</width>
-     <height>451</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="path">
    <property name="geometry">
     <rect>
@@ -37,6 +25,17 @@
      <width>321</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+
+	background-image: url(:/picture/b3.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
    </property>
    <property name="text">
     <string>请输入表名</string>
@@ -51,6 +50,16 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+   </property>
    <property name="text">
     <string>打开</string>
    </property>
@@ -58,11 +67,21 @@
   <widget class="QPushButton" name="pushButton_insert">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>140</y>
-     <width>61</width>
-     <height>101</height>
+     <width>91</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>插入行</string>
@@ -71,11 +90,21 @@
   <widget class="QPushButton" name="pushButton_delete">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>280</y>
-     <width>61</width>
-     <height>91</height>
+     <x>10</x>
+     <y>290</y>
+     <width>91</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>删除行</string>
@@ -90,6 +119,9 @@
      <height>241</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/picture/88.jpg);</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_save">
    <property name="geometry">
@@ -99,6 +131,16 @@
      <width>141</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>保存修改</string>
@@ -113,6 +155,16 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+   </property>
    <property name="text">
     <string>退出</string>
    </property>
@@ -122,8 +174,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>121</width>
-     <height>81</height>
+     <width>131</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -134,6 +186,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>
