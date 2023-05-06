@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>559</width>
-    <height>446</height>
+    <width>501</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>0</y>
-     <width>411</width>
-     <height>351</height>
+     <width>501</width>
+     <height>431</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/picture/p3.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -32,21 +35,41 @@
   <widget class="QComboBox" name="dbName">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>240</x>
      <y>60</y>
      <width>251</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="username">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>240</x>
      <y>120</y>
      <width>251</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
    </property>
    <property name="text">
     <string>用户名</string>
@@ -55,11 +78,21 @@
   <widget class="QLineEdit" name="psw1">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>240</x>
      <y>190</y>
      <width>251</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
    </property>
    <property name="text">
     <string>密码</string>
@@ -68,11 +101,21 @@
   <widget class="QLineEdit" name="psw2">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>240</x>
      <y>250</y>
      <width>251</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
    </property>
    <property name="text">
     <string>确认密码</string>
@@ -83,8 +126,8 @@
     <rect>
      <x>30</x>
      <y>60</y>
-     <width>241</width>
-     <height>221</height>
+     <width>201</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -103,6 +146,15 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }</string>
+   </property>
    <property name="text">
     <string>注册</string>
    </property>
@@ -110,17 +162,28 @@
   <widget class="QPushButton" name="quitButton">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>310</x>
      <y>320</y>
      <width>171</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>退出</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>
