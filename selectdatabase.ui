@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
-    <height>307</height>
+    <width>566</width>
+    <height>295</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>561</width>
-     <height>291</height>
+     <x>0</x>
+     <y>0</y>
+     <width>571</width>
+     <height>301</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/picture/88.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -46,10 +49,20 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>80</y>
+     <y>90</y>
      <width>421</width>
-     <height>51</height>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
    </property>
    <property name="text">
     <string>请输入数据库名称</string>
@@ -59,10 +72,19 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>210</y>
+     <y>200</y>
      <width>141</width>
-     <height>41</height>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>选择</string>
@@ -72,10 +94,19 @@
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>210</y>
+     <y>200</y>
      <width>141</width>
-     <height>41</height>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>退出</string>
@@ -86,8 +117,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>101</width>
-     <height>61</height>
+     <width>111</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -98,6 +129,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>
