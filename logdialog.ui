@@ -14,7 +14,8 @@
    <string>logdialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;
+background-image: url(:/picture/88.jpg);</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -26,7 +27,15 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }
+font: 10pt &quot;方正粗黑宋简体&quot;;</string>
    </property>
    <property name="text">
     <string>退出</string>
@@ -35,11 +44,14 @@
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>411</width>
-     <height>381</height>
+     <x>20</x>
+     <y>20</y>
+     <width>401</width>
+     <height>371</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/picture/88.jpg);</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -52,13 +64,26 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
+    <string notr="true">QLabel {
+  
+  border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   font: 24pt &quot;华文隶书&quot;;
+ background-image: url(:/picture/p2.jpg);
+    }
+
+
+
+</string>
    </property>
    <property name="text">
     <string>DBMS</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>
