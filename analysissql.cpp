@@ -95,9 +95,13 @@ AnalysisSQL::AnalysisSQL() {//初始化构造器
     //(.+)表示任意字符
     sqlList.push_back(
             "(?:grant|Grant)(?:\\s)+(.+)(?:\\s+)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*)(?:to|TO)(?:\\s)+(.+)(?:\\s*);");
-
     sqlList.push_back(
             "(?:revoke|REVOKE)(?:\\s)+(.+)(?:\\s+)(?:on|ON)(?:\\s*)(\\w+)(?:\\s*)(?:from|FROM)(?:\\s)+(.+)(?:\\s*);");
+    sqlList.push_back(
+            "(?:grant|Grant)(?:\\s)+(.+)(?:\\s+)(?:to|TO)(?:\\s)+(.+)(?:\\s*);");
+
+    sqlList.push_back(
+            "(?:revoke|REVOKE)(?:\\s)+(.+)(?:\\s+)(?:from|FROM)(?:\\s)+(.+)(?:\\s*);");
 }
 
 

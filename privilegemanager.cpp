@@ -94,17 +94,23 @@ void privilegemanager::on_finish_clicked() {
     } else {
         isADT = "0";
     }
+
     if (this->ui->deldata->isChecked()) {
         isDDT = "1";
     } else {
         isDDT = "0";
     }
+
     if (this->ui->modifydata->isChecked()) {
         isMDT = "1";
     } else {
         isMDT = "0";
     }
+
+
+
     modUser = this->ui->user->text();
+
     while (!read.atEnd()) {
         str = read.readLine();
         list = str.split(",");
@@ -117,6 +123,8 @@ void privilegemanager::on_finish_clicked() {
             write << str + "\n";
         }
     }
+
+
     privilege.close();
     privilege.remove();
     writeFile.close();
@@ -124,9 +132,11 @@ void privilegemanager::on_finish_clicked() {
     this->ui->textBrowser->clear();
     display();
 }
+
 void privilegemanager::on_exit_clicked() {
     this->close();
 }
+
 void privilegemanager::display() {
     QStringList p;
 
@@ -134,7 +144,9 @@ void privilegemanager::display() {
     qDebug() << "p=" << p;
     privilegePath = dirPath + "/userprivilege.txt";
     qDebug() << "privilegepath=" << privilegePath;
+
     QFile privilege(privilegePath);
+
     if (!privilege.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -142,6 +154,7 @@ void privilegemanager::display() {
     QStringList list;
     QString     str, showstr;
     int flag = 0;
+
     while (!read.atEnd()) {
         str = read.readLine();
         list = str.split(",");
@@ -197,9 +210,13 @@ bool privilegemanager::ctb(QString tablename,QString user) {
             p1 = list[1];
         }
     }
+
+
     tPath = dirPath + "/table/" + tablename + "/privilege.txt";
     qDebug() << "tpath=" << tPath;
+
     QFile tprivilege(privilegePath);
+
     if (!tprivilege.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -448,6 +465,8 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
 
     qDebug() << "isfuserexist当前表权限文件的路径为：" + tPath;
     QFile readFile(tPath);
+
+
     if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -466,6 +485,7 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
             flag=1;
         }
     }
+    qDebug()<<"isfuserexist flag="<<flag;
     if(flag==1){
         return true;
     }
@@ -475,8 +495,11 @@ bool privilegemanager::isfuserexist(QString tablename, QString user){
 
 bool privilegemanager::isuserexist(QString user){
     QString Path = dirPath + "/userprivilege.txt";
-    qDebug() << "权限文件的路径为：" + Path;
+
+    qDebug() << "isuserexist权限文件的路径为：" + Path;
     QFile readFile(Path);
+
+
     if (!readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
     }
@@ -495,6 +518,7 @@ bool privilegemanager::isuserexist(QString user){
             flag=1;
         }
     }
+    qDebug()<<"isuserexist flag="<<flag;
     if(flag==1){
         return true;
     }
@@ -507,10 +531,14 @@ void privilegemanager::initPrivilege(QString tablename,QString user){
         tPath = dirPath + "/table/" + tablename + "/privilege.txt";
         qDebug() << "init当前表权限文件的路径为：" + tPath;
         QFile writeFile(tPath);
+
+
         if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Append)) {
             qDebug() << "文件打开失败";
         }
+
         QTextStream outp(&writeFile);
+
         outp << user + ",0,0,0,0,0\n";
         writeFile.close();
     }
@@ -534,7 +562,10 @@ void privilegemanager::grant(QStringList keywordList){
         qDebug()<<"grant init user:"<<userlist[i];
         initPrivilege(keywordList[2],userlist[i]);
     }
+
+    //
     tPath = dirPath + "/table/" + keywordList[2] + "/privilege.txt";
+
     qDebug() << "当前表权限文件的路径为：" + tPath;
     QFile readFile(tPath);
 
@@ -542,9 +573,12 @@ void privilegemanager::grant(QStringList keywordList){
         qDebug() << "文件打开失败";
         return;
     }
+
     QTextStream read(&readFile);
+
     QString afterDelPath = dirPath + "/table/" + keywordList[2]+"/temp.txt";
     QFile writeFile(afterDelPath);
+
     if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
         return;
@@ -552,15 +586,18 @@ void privilegemanager::grant(QStringList keywordList){
     QTextStream write(&writeFile);
     QStringList privilegelist,list;
     QString privilege,str,str1;
+
     privilege = keywordList[1];
     privilegelist=privilege.split(",");
     qDebug()<<"privilegelist="<<privilegelist;
+
     int flag;
     while (!read.atEnd()) {
         flag=0;
         str = read.readLine();
         list = str.split(",");
         qDebug()<<"grant:list="<<list;
+
         for(int i=0;i<userlist.size();i++){
             for(int i=0;i<privilegelist.size();i++){
                 if(privilegelist[i]=="create"){
@@ -625,6 +662,8 @@ void privilegemanager::revoke(QStringList keywordList){
         qDebug()<<"grant init user:"<<userlist[i];
         initPrivilege(keywordList[2],userlist[i]);
     }
+
+    //
     tPath = dirPath + "/table/" + keywordList[2] + "/privilege.txt";
 
     qDebug() << "当前表权限文件的路径为：" + tPath;
@@ -704,4 +743,113 @@ void privilegemanager::revoke(QStringList keywordList){
     writeFile.close();
     writeFile.rename(tPath);
 
+}
+
+void privilegemanager::sysgrant(QStringList keywordList) {
+    tablePath=dirPath+"/userprivilege.txt";
+    //keywordlist:16,"create,delete...",username;
+    QStringList userlist;
+    QString user;
+    user=keywordList[2];
+    userlist=user.split(",");
+    QString username;
+    username=userlist[0];//用户名
+    qDebug()<<"grant:userlist="<<userlist;
+
+    QStringList privilegelist;
+    QString privilege;
+    privilege=keywordList[1];
+
+    privilegelist=privilege.split(",");
+    qDebug()<<"grant:privilegelist="<<privilegelist;
+    QStringList list={"0","0","0","0","0","0"};
+    for (int i = 0; i < privilegelist.size(); ++i) {
+        if(privilegelist[i]=="create"){
+            list[1]="1";
+        }
+        else if(privilegelist[i]=="drop"){
+            list[2]="1";
+        }
+        else if(privilegelist[i]=="insert"){
+            list[3]="1";
+        }
+        else if(privilegelist[i]=="delete"){
+            list[4]="1";
+        }
+        else if(privilegelist[i]=="update"){
+            list[5]="1";
+        }
+    }
+    QString str=username+","+list[1]+","+list[2]+","+list[3]+","+list[4]+","+list[5];
+    qDebug()<<"grant:str="<<str;
+    //重写userprivilege.txt，覆盖原来的
+    QFile writeFile(tablePath);
+    if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+        return;
+    }
+    QTextStream write(&writeFile);
+    write <<str+"\n";
+    QMessageBox::information(0,
+                             "通知",
+                             "授予系统权限成功",
+                             QMessageBox::Ok | QMessageBox::Default,
+                             QMessageBox::Cancel | QMessageBox::Escape, 0);
+    writeFile.close();
+
+
+}
+
+void privilegemanager::sysrevoke(QStringList keywordList) {
+
+    tablePath=dirPath+"/userprivilege.txt";
+    //keywordlist:16,"create,delete...",username;
+    QStringList userlist;
+    QString user;
+    user=keywordList[2];
+    userlist=user.split(",");
+    QString username;
+    username=userlist[0];//用户名
+    qDebug()<<"grant:userlist="<<userlist;
+
+    QStringList privilegelist;
+    QString privilege;
+    privilege=keywordList[1];
+
+    privilegelist=privilege.split(",");
+    qDebug()<<"grant:privilegelist="<<privilegelist;
+    QStringList list={"0","0","0","0","0","0"};
+    for (int i = 0; i < privilegelist.size(); ++i) {
+        if(privilegelist[i]=="create"){
+            list[1]="0";
+        }
+        else if(privilegelist[i]=="drop"){
+            list[2]="0";
+        }
+        else if(privilegelist[i]=="insert"){
+            list[3]="0";
+        }
+        else if(privilegelist[i]=="delete"){
+            list[4]="0";
+        }
+        else if(privilegelist[i]=="update"){
+            list[5]="0";
+        }
+    }
+    QString str=username+","+list[1]+","+list[2]+","+list[3]+","+list[4]+","+list[5];
+    qDebug()<<"grant:str="<<str;
+    //重写userprivilege.txt，覆盖原来的
+    QFile writeFile(tablePath);
+    if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "文件打开失败";
+        return;
+    }
+    QTextStream write(&writeFile);
+    write <<str+"\n";
+    QMessageBox::information(0,
+                             "通知",
+                             "回收系统权限成功",
+                             QMessageBox::Ok | QMessageBox::Default,
+                             QMessageBox::Cancel | QMessageBox::Escape, 0);
+    writeFile.close();
 }

@@ -1,6 +1,3 @@
-//
-// Created by Asus on 2023/4/17.
-//
 
 #ifndef DBMS_INDEXMANAGER_H
 #define DBMS_INDEXMANAGER_H
@@ -66,7 +63,7 @@ typedef struct {
     char NAME[128];//表名
     bool unique;//是否唯一
     bool asc;//是否升序
-    int file_num;//文件数目
+    int filed_num;//文件数目
     char fields[128][2];//字段名
     char record_file[256];//记录文件名
     char index_file[256];//索引文件名
