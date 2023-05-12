@@ -19,11 +19,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>481</width>
-     <height>271</height>
+     <x>0</x>
+     <y>0</y>
+     <width>501</width>
+     <height>311</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/picture/p3.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -51,6 +54,16 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+  
+ background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+   </property>
    <property name="text">
     <string>请输入数据库名称</string>
    </property>
@@ -64,6 +77,16 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+   </property>
    <property name="text">
     <string>创建</string>
    </property>
@@ -76,6 +99,16 @@
      <width>121</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
    </property>
    <property name="text">
     <string>退出</string>
@@ -98,6 +131,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>

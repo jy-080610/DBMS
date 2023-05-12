@@ -6,15 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
-    <height>538</height>
+    <width>642</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>privilegemanager</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;</string>
+   <string notr="true">font: 10pt &quot;方正粗黑宋简体&quot;;
+background-image: url(:/picture/88.jpg);</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -29,192 +30,360 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>10</y>
-     <width>81</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>641</width>
+     <height>531</height>
     </rect>
    </property>
-   <property name="text">
-    <string>权限</string>
+   <property name="title">
+    <string/>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="user">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>80</y>
-     <width>461</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>请输入用户名</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="querry">
-   <property name="geometry">
-    <rect>
-     <x>570</x>
-     <y>77</y>
-     <width>101</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>查询</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textBrowser">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>150</y>
-     <width>561</width>
-     <height>181</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="finish">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>480</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>完成</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="exit">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>480</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>退出</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>340</y>
-     <width>551</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>创建表</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>删除表</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>增加数据</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>删除数据</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>修改数据</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="widget_2" native="true">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>410</y>
-     <width>551</width>
-     <height>38</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QCheckBox" name="createtb">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="deltb">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="adddata">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="deldata">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="modifydata">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>121</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
-   </property>
-   <property name="text">
-    <string>DBMS</string>
-   </property>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 24pt &quot;华文隶书&quot;;</string>
+    </property>
+    <property name="text">
+     <string>DBMS</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>10</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>权限</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>591</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLineEdit" name="user">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>461</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+     </property>
+     <property name="text">
+      <string>请输入用户名</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>561</width>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="querry">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>10</y>
+       <width>101</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+     </property>
+     <property name="text">
+      <string>查询</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>330</y>
+      <width>591</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string>创建表</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string>删除表</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string>增加数据</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string>删除数据</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string>修改数据</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>400</y>
+      <width>591</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="createtb">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="deltb">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="adddata">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="deldata">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="modifydata">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox {
+  
+	background-image: url(:/picture/b5.jpg);
+ border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="finish">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>470</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+    </property>
+    <property name="text">
+     <string>完成</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exit">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>470</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  
+ border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+ 
+ background-image: url(:/picture/b3.jpg);
+    }</string>
+    </property>
+    <property name="text">
+     <string>退出</string>
+    </property>
+   </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="dbms.qrc"/>
+ </resources>
  <connections/>
 </ui>

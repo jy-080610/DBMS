@@ -21,12 +21,12 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>491</width>
-     <height>411</height>
+     <width>501</width>
+     <height>421</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">background-image: url(:/picture/p3.jpg);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -44,7 +44,14 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(229, 254, 255);</string>
+     <string notr="true">QComboBox {
+  
+	background-image: url(:/picture/b5.jpg);
+	border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    };</string>
     </property>
     <property name="editable">
      <bool>false</bool>
@@ -61,15 +68,22 @@
    <widget class="QPushButton" name="logButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>330</y>
       <width>131</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-background-image: url(:/picture/b1.jpg);</string>
+     <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+	
+	background-image: url(:/picture/b3.jpg);
+    }
+</string>
     </property>
     <property name="text">
      <string>登录</string>
@@ -85,8 +99,16 @@ background-image: url(:/picture/b1.jpg);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(228, 255, 242);
-background-image: url(:/picture/b1.jpg);</string>
+     <string notr="true">
+QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }
+
+</string>
     </property>
     <property name="text">
      <string>注册</string>
@@ -102,8 +124,13 @@ background-image: url(:/picture/b1.jpg);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/picture/b1.jpg);
-background-color: rgb(254, 255, 239);</string>
+     <string notr="true">QPushButton {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+   background-image: url(:/picture/p2.jpg);
+    }</string>
     </property>
     <property name="text">
      <string>退出</string>
@@ -119,7 +146,14 @@ background-color: rgb(254, 255, 239);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(228, 255, 242);</string>
+     <string notr="true">QLineEdit {
+  
+	background-image: url(:/picture/b5.jpg);
+	border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
     </property>
     <property name="text">
      <string>请输入用户名</string>
@@ -135,7 +169,14 @@ background-color: rgb(254, 255, 239);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(254, 255, 239);</string>
+     <string notr="true">QLineEdit {
+  
+	background-image: url(:/picture/b5.jpg);
+	border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }</string>
     </property>
     <property name="text">
      <string>请输入密码</string>
@@ -151,9 +192,18 @@ background-color: rgb(254, 255, 239);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
-background-color: rgb(229, 254, 255);
-</string>
+     <string notr="true">
+QLabel {
+  
+	
+	border-color: rgb(40, 20, 68);
+	background-image: url(:/picture/b5.jpg);
+	
+    border-radius: 10px;
+    border-style: outset;
+  
+    }
+font: 13pt &quot;方正粗黑宋简体&quot;;</string>
     </property>
     <property name="text">
      <string>身份：</string>
@@ -169,9 +219,15 @@ background-color: rgb(229, 254, 255);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
-background-color: rgb(228, 255, 242);
-</string>
+     <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+	border-color: rgb(93, 171, 255);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }
+font: 13pt &quot;方正粗黑宋简体&quot;;</string>
     </property>
     <property name="text">
      <string>用户名：</string>
@@ -187,8 +243,16 @@ background-color: rgb(228, 255, 242);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;方正粗黑宋简体&quot;;
-background-color: rgb(254, 255, 239);
+     <string notr="true">QLabel {
+  
+	background-image: url(:/picture/b5.jpg);
+	
+	border-color: rgb(40, 20, 68);
+    border-radius: 10px;
+    border-style: outset;
+  
+    }
+font: 13pt &quot;方正粗黑宋简体&quot;;
 </string>
     </property>
     <property name="text">
@@ -205,8 +269,17 @@ background-color: rgb(254, 255, 239);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 30pt &quot;华文隶书&quot;;
-</string>
+     <string notr="true">
+QLabel {
+  
+	border-color: rgb(93, 171, 255);
+    border-radius: 20px;
+    border-style: outset;
+	
+	
+	background-image: url(:/picture/p2.jpg);
+	font: 28pt &quot;华文隶书&quot;;
+    }</string>
     </property>
     <property name="text">
      <string>DBMS</string>
