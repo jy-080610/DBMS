@@ -29,6 +29,8 @@ public:
     //授权与回收权限
     void grant(QStringList);//授权
     void revoke(QStringList);//回收权限
+    void sysgrant(QStringList);//系统授权
+    void sysrevoke(QStringList);//系统回收权限
 
 private slots:
     void on_querry_clicked();//返回

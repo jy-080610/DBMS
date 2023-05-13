@@ -1,5 +1,6 @@
 <RCC>
   <qresource>
+    <file>picture/99.jpg</file>
     <file>picture/88.jpg</file>
     <file>picture/77.jpg</file>
     <file>picture/66.jpg</file>
@@ -16,6 +17,6 @@
     <file>picture/3.jpg</file>
     <file>picture/p3.jpg</file>
     <file>picture/p2.jpg</file>
-    <file>picture/b1.jpg</file>  
+    <file>picture/b1.jpg</file>
   </qresource>
 </RCC>

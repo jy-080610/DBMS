@@ -27,9 +27,9 @@ Mainwindow::Mainwindow(QWidget *parent) :
     // 去窗口边框
     //setWindowFlags(Qt::FramelessWindowHint | windowFlags());
    // setAttribute(Qt::WA_TranslucentBackground);
-                 //设置文本框不可编辑
-    ui->text->setReadOnly(true);
     // 初始化用户目录，读取当前的用户和所使用的数据库
+    //设置文本框不可编辑
+    ui->text->setReadOnly(true);
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
     QString dirPath = dir->path() + "/data/sys/curuse.txt";
@@ -78,6 +78,7 @@ void Mainwindow::on_run_clicked() {//运行SQL代码
 // 获取关键字列表
     QStringList keywordList = dealwithSql->resolveSql(ui->sqllineEdit->text());
     qDebug() << "list大小为：" + QString::number(keywordList.size());
+    qDebug() << "keywordList：" << keywordList;
     // 容错判断
     if (keywordList.size() == 0) {
         QMessageBox::critical(nullptr, "错误", "请检查SQL语句！",
@@ -209,17 +210,28 @@ void Mainwindow::on_run_clicked() {//运行SQL代码
 
             // -----权限赋予和收回-----
 
-            // 授予权限
+            // 授予系统权限
         case 16: {
             privilegemanager pmgrant;
             pmgrant.grant(keywordList);
             break;
         }
 
-            // 收回权限
         case 17: {
             privilegemanager pmrevoke;
             pmrevoke.revoke(keywordList);
+            break;
+        }
+            // 授予系统权限
+        case 18: {
+            privilegemanager smgrant;
+            smgrant.sysgrant(keywordList);
+            break;
+        }
+            // 收回系统权限
+        case 19: {
+            privilegemanager smrevoke;
+            smrevoke.sysrevoke(keywordList);
             break;
         }
 
@@ -289,7 +301,7 @@ void Mainwindow::displayField(QString tableName) {//在进行字段操作之后�
 void Mainwindow::displayDir() {
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString dirPath = dir->path() + "/data";
+    QString dirPath = dir->path() + "/DBMS/data";
     auto *model = new QDirModel();
     ui->treeView->setModel(model);
     ui->treeView->setRootIndex(model->index(dirPath));
@@ -930,6 +942,10 @@ void Mainwindow::parseSql(QString sqlText) {
     }
 }
 void Mainwindow::selectData(QStringList keywordList) {// 根据查询条件显示出对应的数据
+//select (sname,sex) from course;
+void MainWindow::selectData(QStringList keywordList) {// 根据查询条件显示出对应的数据
+    QElapsedTimer mstimer; // 定义对象
+    mstimer.start();       // 开始计时
     ui->tableWidget->clear();
     // 判断关键字列表的大小，若长度大于3则说明存在筛选条件
     bool isWhere = keywordList.size() > 3;
@@ -1101,6 +1117,9 @@ void Mainwindow::selectData(QStringList keywordList) {// 根据查询条件显�
 
         // 添加表头
         ui->tableWidget->setHorizontalHeaderLabels(fieldList);
+        float time = (double)mstimer.nsecsElapsed() / (double)1000000;
+        this->ui->time->setText(QString::number(time) + " ms");
+        qDebug() << "搜索用时:" << time << " ms";
         return;
     }
 }
@@ -1118,6 +1137,9 @@ bool Mainwindow::selectByIndex(QStringList keywordList) {//通过索引查询
 
     QStringList fieldList = keywordList[1].split(",");
     if (fieldList.size() == 2) {//判断是否为两个字段
+        QElapsedTimer mstimer; // 定义对象
+        mstimer.start();       // 开始计时
+
         Indexmanager *idmg = new Indexmanager(keywordList[2]);
         //判断是否有该索引,若索引存在，则返回索引名，否则返回NULL
         QString indexname = idmg->checkindex(fieldList[0], fieldList[1]);
@@ -1138,6 +1160,10 @@ bool Mainwindow::selectByIndex(QStringList keywordList) {//通过索引查询
                     ui->tableWidget->setItem(0, i,
                                              new QTableWidgetItem(resultList[i]));
                 }
+                // 毫秒计时
+                float time = (double)mstimer.nsecsElapsed() / (double)1000000;
+                this->ui->time->setText(QString::number(time) + " ms");
+                qDebug() << "搜索用时:" << time << " ms";
                 return true;
             }
         }
@@ -1342,13 +1368,9 @@ QStringList Mainwindow::gettablelist() {
     return names;
 }
 
-//void MainWindow::on_create_clicked() {
-//    auto *cdb = new createdatabase();
-//    cdb->show();
-//}
-//
-//void MainWindow::on_del_clicked() {
-//    auto *ddb = new deletedatabase();
-//    ddb->show();
-//}
-//
+
+
+
+
+
+
