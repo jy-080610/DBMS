@@ -124,7 +124,7 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
         out<<"NAME:"+dataname+"\n";
         out<<"TYPE:用户\n";
         out<<"FILENAME:"+dataPath+"\n";
-        out<<"CREATETIME:"+(my_database.crtime).toString("yyyy-mm-dd hh.mm.ss")+"\n";
+        out<<"CREATETIME:"+(my_database.crtime).toString("yyyy-MM-dd hh.mm.ss")+"\n";
         file01.close();//关闭文件
 
 

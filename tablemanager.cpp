@@ -48,7 +48,7 @@ void TableManager::tableCreator(QString tableName)
 
     // 设置时间格式
     QDateTime time = QDateTime::currentDateTime();
-    QString   datetime = time.toString("yyyy-mm-dd hh.mm.ss");
+    QString   datetime = time.toString("yyyy-MM-dd hh.mm.ss");
     QFile file(tablePath + "/" + tableName + ".tb");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "文件打开失败";
@@ -95,7 +95,7 @@ void TableManager::tableModifier(QString tableName, int type)
 {
     // 修改时间
     QDateTime time = QDateTime::currentDateTime();
-    QString   datetime = time.toString("yyyy-mm-dd hh.mm.ss");
+    QString   datetime = time.toString("yyyy-MM-dd hh.mm.ss");
 
     // 修改文件的路径
     QString targetPath = dirPath + "/table/" + tableName + "/" + tableName +".tb";
@@ -124,8 +124,19 @@ void TableManager::tableModifier(QString tableName, int type)
                     strlist = str.split(":");
                     write <<
                           "field_num:" + QString::number(strlist[1].toInt() + 1) + "\n";
+                    //
+                    while (!read.atEnd()) {
+                        str = read.readLine();
+                        if (str.contains("mtime")) {
+                            write << "mtime:" + datetime + "\n";
+                            break;
+                        } else {
+                            write << str + "\n";
+                        }
+                    }
                     break;
-                } else {
+                }
+                else {
                     write << str + "\n";
                 }
             }
@@ -139,6 +150,15 @@ void TableManager::tableModifier(QString tableName, int type)
                     write <<
                           "record_num:" + QString::number(strlist[1].toInt() + 1) +
                           "\n";
+                    while (!read.atEnd()) {
+                        str = read.readLine();
+                        if (str.contains("mtime")) {
+                            write << "mtime:" + datetime + "\n";
+                            break;
+                        } else {
+                            write << str + "\n";
+                        }
+                    }
                     break;
                 } else {
                     write << str + "\n";
@@ -164,6 +184,15 @@ void TableManager::tableModifier(QString tableName, int type)
                     strlist = str.split(":");
                     write <<
                           "field_num:" + QString::number(strlist[1].toInt() - 1) + "\n";
+                    while (!read.atEnd()) {
+                        str = read.readLine();
+                        if (str.contains("mtime")) {
+                            write << "mtime:" + datetime + "\n";
+                            break;
+                        } else {
+                            write << str + "\n";
+                        }
+                    }
                     break;
                 } else {
                     write << str + "\n";
