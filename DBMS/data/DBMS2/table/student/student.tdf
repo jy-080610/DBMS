@@ -1,3 +1,2 @@
-sno,varchar,非主键,可为空
-sname,varchar,非主键,可为空
-sclass,varchar,非主键,可为空
+Sno,varchar,主键,非空
+Sname,varchar,非主键,非空
