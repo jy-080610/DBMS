@@ -65,7 +65,7 @@ void resetpassword::on_modifyButton_clicked() {
 
     // 获取要更新的对象
     modInfo = this->ui->userName->text();
-    QString pw =QCryptographicHash::hash(ui->passWord_2->text().toLatin1(),QCryptographicHash::Md5).toHex();//加密,Md5加密
+    QString pw =ui->passWord_2->text();//加密,Md5加密
     // 逐行读取数据
     while (!read.atEnd()) {
         str = read.readLine();
@@ -94,7 +94,7 @@ bool resetpassword::checkLog(QString dbname, QString username, QString psd) {
     QString cpath = path + "/" + dbname + "/userinfo.txt";
     QString cname, cpas; // 用户名，密码
     QFile   file;
-    QString pw =QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
+    //QString pw =QCryptographicHash::hash(psd.toLatin1(), QCryptographicHash::Md5).toHex();
 
     // 当文件存在时继续操作
     if (file.exists(cpath)) {
@@ -116,7 +116,7 @@ bool resetpassword::checkLog(QString dbname, QString username, QString psd) {
 
             // 依次将用户名和密码进行匹配
             // 若匹配成功则返回真
-            if ((username == userList[0]) && (pw == userList[1])) {
+            if ((username == userList[0]) && (psd == userList[1])) {
                 userFile.close();
                 QFile useFile(path + "/sys/curuse.txt");
 

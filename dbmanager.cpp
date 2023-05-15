@@ -106,11 +106,11 @@ void dbmanager::myCreateDataBase(QString dataname) {//创建用户数据库
         //数据存入结构体databae中
         database my_database;
         char *pre =dataname.toLatin1().data();//toLatin1()函数的作用：将QString转换为char*,data()函数的作用：将QByteArray转换为char*
-        memcpy(my_database.daname,pre,128);//将数据库名存入结构体中
+        memcpy(my_database.dbname,pre,128);//将数据库名存入结构体中
         my_database.crtime=QDateTime::currentDateTime();//获取当前时间
         char *pre2=dataPath.toLatin1().data();
         //memcpy()函数的作用：将内存区域src中的前count个字节复制到内存区域dest中
-        memcpy(my_database.filename,pre2,256);//将数据库路径存入结构体中
+        memcpy(my_database.dbpath,pre2,256);//将数据库路径存入结构体中
         my_database.type=true;//数据库类型为用户数据库
         //
 
@@ -163,7 +163,7 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
@@ -178,8 +178,8 @@ void dbmanager::writeDBinto(struct dataBase my_database) {
 
     streamFile << endl;
     extern QString name;
-    streamFile << name << "create " << my_database.daname << " dataBase ";
-    streamFile << "filepath: " << my_database.filename << " " <<
+    streamFile << name << "create " << my_database.dbname << " dataBase ";
+    streamFile << "filepath: " << my_database.dbpath << " " <<
                my_database.crtime.toString() << endl;
     file.close();
 
@@ -193,7 +193,7 @@ void dbmanager::writedelDBinto(QString dataname) {
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append)){
         qDebug()<<"打开文件失败";

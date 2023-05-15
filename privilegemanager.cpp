@@ -22,7 +22,7 @@ void privilegemanager::initDir()
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    QFile file(dir->path() + "/DBMS/data/sys/curuse.txt");
+    QFile file(dir->path() + "/data/sys/curuse.txt");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "initDir文件打开失败";
@@ -38,7 +38,7 @@ void privilegemanager::initDir()
 
     userName = list[0];
     dbName = list[1];
-    dirPath = dir->path() + "/DBMS/data/" + list[1];
+    dirPath = dir->path() + "/data/" + list[1];
     qDebug() << "dirpath=" << dirPath;
     file.close();
 }
@@ -131,6 +131,7 @@ void privilegemanager::on_finish_clicked() {
     writeFile.rename(privilegePath);
     this->ui->textBrowser->clear();
     display();
+    QMessageBox::information(0,"通知","权限修改成功",QMessageBox::Ok | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape, 0);
 }
 
 void privilegemanager::on_exit_clicked() {
@@ -138,8 +139,8 @@ void privilegemanager::on_exit_clicked() {
 }
 
 void privilegemanager::display() {
+    this->ui->textBrowser->clear();
     QStringList p;
-
     p << "创建表：" << "删除表：" << "增加数据：" << "删除数据：" << "修改数据：";
     qDebug() << "p=" << p;
     privilegePath = dirPath + "/userprivilege.txt";

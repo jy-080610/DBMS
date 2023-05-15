@@ -73,7 +73,7 @@ void landing::getDbList() {
     dir->cdUp();
 
     // --1 判断文件夹是否存在
-    QString folderPath = dir->path() + "/DBMS/data";
+    QString folderPath = dir->path() + "/data";
     QDir    dbDir(folderPath);
 
     if (!dbDir.exists())

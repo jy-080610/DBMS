@@ -32,6 +32,7 @@
 #include "ui_mainwindow.h"
 #include <QPainter>
 #include <QPixmap>
+#include<QFileInfo>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
 QT_END_NAMESPACE
@@ -69,7 +70,7 @@ private:
     AnalysisSQL *dealwithSql;
     QString dirPath;
     QString dbname;
-
+    QStringList keywordList;
 
     void        displayField(QString);//显示字段
     void        displayData(QString);

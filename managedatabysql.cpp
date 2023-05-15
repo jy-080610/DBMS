@@ -48,77 +48,161 @@ void managedatabysql::insertData(QStringList keywordList) {
             return;
         }
         //表路径
-        tablePath = dirPath + "/table/" + keywordList[2] + "/" +keywordList[2] + ".trd";        qDebug() << "表路径" << tablePath;
-        QFile file(tablePath);
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text | QIODevice::Append)) {
-            qDebug() << "文件打开失败";
-            return;
-        }
-        QTextStream write(&file);
-        QString insertInfo = "";
-        QString data;
-        QStringList datalist;
-        data = keywordList[3];
-        datalist = data.split(",");
-        data = "";
-        for (int i = 0; i < datalist.size(); i++) {
-            if (datalist[i] == "null") {
-                datalist[i] = "";
-            }
-            if (i < datalist.size() - 1) {//如果不是最后一个元素
-                data += datalist[i] + ",";
-            } else if (i == datalist.size() - 1) {//如果是最后一个元素
-                data += datalist[i];
-            }
-        }
-        qDebug() << "data" << data;
-        if (datalist.size() == countfield(keywordList[2])) {//字段数目相同
-            dataoperation dto;
-            QString tablePath=dirPath+"/table/"+keywordList[2]+"/"+keywordList[2]+".tdf";
-            qDebug() << "表路径" << tablePath;
-            QFile tablefile(tablePath);
-            if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        tablePath = dirPath + "/table/" + keywordList[2] + "/" +keywordList[2] + ".trd";
+        QString tablePath1=dirPath + "/table/" + keywordList[2] + "/" + "temp.trd";
+        QFile file1(tablePath1);
+        if(file1.exists()){
+            file1.close();
+            QFile file(tablePath1);
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text | QIODevice::Append)) {
                 qDebug() << "文件打开失败";
                 return;
             }
-            QTextStream readcon(&tablefile);
-            QStringList conlist;
-            QString readinfo;
-            int flag = 0;
-            for (int j = 0; j < datalist.size(); j++) {
-                readinfo = readcon.readLine();
-                conlist = readinfo.split(",");
-                if (conlist[1] == "number" && !dto.isDigitString(datalist[j])) {
-                    flag = 1;
-                } else if (conlist[1] == "date" & !dto.isDateString(datalist[j])) {
-                    flag = 1;
-                } else if (conlist[3] == "非空" && datalist[j] == NULL) {
-                    flag = 3;
-                } else if (conlist[2] == "主键" && hassame(j, datalist[j])) {
-                    flag = 2;
+            QTextStream write(&file);
+            QString insertInfo = "";
+            QString data;
+            QStringList datalist;
+            data = keywordList[3];
+            datalist = data.split(",");
+            data = "";
+            for (int i = 0; i < datalist.size(); i++) {
+                if (datalist[i] == "null") {
+                    datalist[i] = "";
+                }
+                if (i < datalist.size() - 1) {//如果不是最后一个元素
+                    data += datalist[i] + ",";
+                } else if (i == datalist.size() - 1) {//如果是最后一个元素
+                    data += datalist[i];
                 }
             }
-            qDebug() << "flag=" << flag;
-            if (flag == 0) {
-                insertInfo += data + "\n";
-                write << insertInfo;
-                writeintoLOG(0, keywordList);
-                qDebug() << "插入成功";
-            } else if (flag == 1) {
-                QMessageBox::critical(0, "错误", "数据类型不匹配", QMessageBox::Ok | QMessageBox::Default,
-                                      QMessageBox::Cancel | QMessageBox::Escape, 0);
-            } else if (flag == 2) {
-                QMessageBox::critical(0, "错误", "主键重复", QMessageBox::Ok | QMessageBox::Default,
-                                      QMessageBox::Cancel | QMessageBox::Escape, 0);
-            } else if (flag == 3) {
-                QMessageBox::critical(0, "错误", "非空字段不能为空", QMessageBox::Ok | QMessageBox::Default,
-                                      QMessageBox::Cancel | QMessageBox::Escape, 0);
+            qDebug() << "data" << data;
+            if (datalist.size() == countfield(keywordList[2])) {//字段数目相同
+                dataoperation dto;
+                QString tablePath=dirPath+"/table/"+keywordList[2]+"/"+keywordList[2]+".tdf";
+                qDebug() << "表路径" << tablePath;
+                QFile tablefile(tablePath);
+                if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    qDebug() << "文件打开失败";
+                    return;
+                }
+                QTextStream readcon(&tablefile);
+                QStringList conlist;
+                QString readinfo;
+                int flag = 0;
+                for (int j = 0; j < datalist.size(); j++) {
+                    readinfo = readcon.readLine();
+                    conlist = readinfo.split(",");
+                    if (conlist[1] == "number" && !dto.isDigitString(datalist[j])) {
+                        flag = 1;
+                    } else if (conlist[1] == "date" & !dto.isDateString(datalist[j])) {
+                        flag = 1;
+                    } else if (conlist[3] == "非空" && datalist[j] == NULL) {
+                        flag = 3;
+                    } else if (conlist[2] == "主键" && hassame(j, datalist[j])) {
+                        flag = 2;
+                    }
+                }
+                qDebug() << "flag=" << flag;
+                if (flag == 0) {
+                    insertInfo += data + "\n";
+                    write << insertInfo;
+                    writeintoLOG(0, keywordList);
+                    qDebug() << "插入成功";
+                } else if (flag == 1) {
+                    QMessageBox::critical(0, "错误", "数据类型不匹配", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                } else if (flag == 2) {
+                    QMessageBox::critical(0, "错误", "主键重复", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                } else if (flag == 3) {
+                    QMessageBox::critical(0, "错误", "非空字段不能为空", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                }
+            } else {
+                QMessageBox::critical(0, "错误", "字段数目不匹配,请检查插入数据个数！",
+                                      QMessageBox::Ok | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape, 0);
             }
-        } else {
-            QMessageBox::critical(0, "错误", "字段数目不匹配,请检查插入数据个数！",
-                                  QMessageBox::Ok | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape, 0);
+            file.close();
+
+        } else{
+            qDebug() << "表路径" << tablePath;
+            QFile::copy(tablePath,tablePath1);
+            QFile file(tablePath1);
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text | QIODevice::Append)) {
+                qDebug() << "文件打开失败";
+                return;
+            }
+            QTextStream write(&file);
+            QString insertInfo = "";
+            QString data;
+            QStringList datalist;
+            data = keywordList[3];
+            datalist = data.split(",");
+            data = "";
+            for (int i = 0; i < datalist.size(); i++) {
+                if (datalist[i] == "null") {
+                    datalist[i] = "";
+                }
+                if (i < datalist.size() - 1) {//如果不是最后一个元素
+                    data += datalist[i] + ",";
+                } else if (i == datalist.size() - 1) {//如果是最后一个元素
+                    data += datalist[i];
+                }
+            }
+            qDebug() << "data" << data;
+            if (datalist.size() == countfield(keywordList[2])) {//字段数目相同
+                dataoperation dto;
+                QString tablePath=dirPath+"/table/"+keywordList[2]+"/"+keywordList[2]+".tdf";
+                qDebug() << "表路径" << tablePath;
+                QFile tablefile(tablePath);
+                if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    qDebug() << "文件打开失败";
+                    return;
+                }
+                QTextStream readcon(&tablefile);
+                QStringList conlist;
+                QString readinfo;
+                int flag = 0;
+                for (int j = 0; j < datalist.size(); j++) {
+                    readinfo = readcon.readLine();
+                    conlist = readinfo.split(",");
+                    if (conlist[1] == "number" && !dto.isDigitString(datalist[j])) {
+                        flag = 1;
+                    } else if (conlist[1] == "date" & !dto.isDateString(datalist[j])) {
+                        flag = 1;
+                    } else if (conlist[3] == "非空" && datalist[j] == NULL) {
+                        flag = 3;
+                    } else if (conlist[2] == "主键" && hassame(j, datalist[j])) {
+                        flag = 2;
+                    }
+                }
+                qDebug() << "flag=" << flag;
+                if (flag == 0) {
+                    insertInfo += data + "\n";
+                    write << insertInfo;
+                    writeintoLOG(0, keywordList);
+                    qDebug() << "插入成功";
+                } else if (flag == 1) {
+                    QMessageBox::critical(0, "错误", "数据类型不匹配", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                } else if (flag == 2) {
+                    QMessageBox::critical(0, "错误", "主键重复", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                } else if (flag == 3) {
+                    QMessageBox::critical(0, "错误", "非空字段不能为空", QMessageBox::Ok | QMessageBox::Default,
+                                          QMessageBox::Cancel | QMessageBox::Escape, 0);
+                }
+            } else {
+                QMessageBox::critical(0, "错误", "字段数目不匹配,请检查插入数据个数！",
+                                      QMessageBox::Ok | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape, 0);
+            }
+            file.close();
+
         }
-        file.close();
+
+
+
+
     }
     else{
         QMessageBox::critical(0, "错误", "无插入数据权限", QMessageBox::Ok | QMessageBox::Default,
@@ -159,57 +243,120 @@ void managedatabysql::deleteData(QStringList  keywordList) {
         }
         QTextStream read(&readFile);
         QTextStream readfield(&fieldFile);
-        QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/del.trd";
+        QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/temp.trd";
         QFile writeFile(afterDelPath);
-        if (!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
-            qDebug()<<"文件打开失败！";
-            return;
-        }
-        QTextStream write (&writeFile);
-        QStringList list;
-        QStringList datalist;
-        QStringList delline;
-        QString str,delfield,data,delInfo;
+        if(writeFile.exists()){
+            writeFile.close();
+            readFile.close();
+            QFile readFile1(afterDelPath);
+            if(!readFile1.open(QIODevice::ReadOnly|QIODevice::Text)){
+                qDebug()<<"文件打开失败";
+                return;
+            }
+            QTextStream read1(&readFile1);
+            QString afterDelPath1 = dirPath + "/table/" + keywordList[1] +"/temp1.trd";
+            QFile writeFile1(afterDelPath1);
+            if (!writeFile1.open(QIODevice::WriteOnly|QIODevice::Text)){
+                qDebug()<<"文件打开失败！";
+                return;
+            }
+            QTextStream write (&writeFile1);
+            QStringList list;
+            QStringList datalist;
+            QStringList delline;
+            QString str,delfield,data,delInfo;
 
-        delfield=keywordList[2];
+            delfield=keywordList[2];
 
-        int deleColId=0;//删除列的id
-        while (!readfield.atEnd()) {
-            str = readfield.readLine();
-            list = str.split(",");
+            int deleColId=0;//删除列的id
+            while (!readfield.atEnd()) {
+                str = readfield.readLine();
+                list = str.split(",");
 
-            if (list[0] == delfield) {
-                qDebug() << "delecolid=" << deleColId;
-                while (!read.atEnd()) {
-                    data = read.readLine();
-                    datalist = data.split(",");
-                    if (datalist[deleColId] == keywordList[4]) {
-                        delline = datalist;
+                if (list[0] == delfield) {
+                    qDebug() << "delecolid=" << deleColId;
+                    while (!read1.atEnd()) {
+                        data = read1.readLine();
+                        datalist = data.split(",");
+                        if (datalist[deleColId] == keywordList[4]) {
+                            delline = datalist;
 
-                        for (int i = 0; i < delline.size(); i++) {
-                            if (i < delline.size() - 1) {
-                                delInfo = delline[i] + ",";
-                            }
-                            else if (i == delline.size() - 1) {
-                                delInfo = delline[i];
+                            for (int i = 0; i < delline.size(); i++) {
+                                if (i < delline.size() - 1) {
+                                    delInfo = delline[i] + ",";
+                                }
+                                else if (i == delline.size() - 1) {
+                                    delInfo = delline[i];
+                                }
                             }
                         }
-                    }
-                    else {
-                        write << data + "\n";
+                        else {
+                            write << data + "\n";
+                        }
                     }
                 }
+                else {
+                    deleColId++;
+                }
             }
-            else {
-                deleColId++;
+            writeintoLOG(1,keywordList);
+            fieldFile.close();
+            readFile1.close();
+            readFile1.remove();
+            writeFile1.close();
+            writeFile1.rename(afterDelPath);
+        } else{
+            if (!writeFile.open(QIODevice::WriteOnly|QIODevice::Text)){
+                qDebug()<<"文件打开失败！";
+                return;
             }
+            QTextStream write (&writeFile);
+            QStringList list;
+            QStringList datalist;
+            QStringList delline;
+            QString str,delfield,data,delInfo;
+
+            delfield=keywordList[2];
+
+            int deleColId=0;//删除列的id
+            while (!readfield.atEnd()) {
+                str = readfield.readLine();
+                list = str.split(",");
+
+                if (list[0] == delfield) {
+                    qDebug() << "delecolid=" << deleColId;
+                    while (!read.atEnd()) {
+                        data = read.readLine();
+                        datalist = data.split(",");
+                        if (datalist[deleColId] == keywordList[4]) {
+                            delline = datalist;
+
+                            for (int i = 0; i < delline.size(); i++) {
+                                if (i < delline.size() - 1) {
+                                    delInfo = delline[i] + ",";
+                                }
+                                else if (i == delline.size() - 1) {
+                                    delInfo = delline[i];
+                                }
+                            }
+                        }
+                        else {
+                            write << data + "\n";
+                        }
+                    }
+                }
+                else {
+                    deleColId++;
+                }
+            }
+            writeintoLOG(1,keywordList);
+            fieldFile.close();
+            readFile.close();
+            //readFile.remove();
+            writeFile.close();
+            //writeFile.rename(tablePath);
         }
-        writeintoLOG(1,keywordList);
-        fieldFile.close();
-        readFile.close();
-        readFile.remove();
-        writeFile.close();
-        writeFile.rename(tablePath);
+
         }
     else{
         QMessageBox::critical(0, "错误", "无删除数据权限", QMessageBox::Ok | QMessageBox::Default,
@@ -234,7 +381,7 @@ void managedatabysql::updateData(QStringList keywordList) {
         QString fieldPath = dirPath + "/table/" + keywordList[1] + "/" +
                             keywordList[1] + ".tdf";
         /*
-         * classno,varchar,主键,非空
+         *  classno,varchar,主键,非空
             classname,varchar,非主键,非空
             credit,number,非主键,非空
          */
@@ -288,83 +435,156 @@ void managedatabysql::updateData(QStringList keywordList) {
         QTextStream read(&readFile);
         QTextStream readfield(&fieldFile);
 
-        QString afterDelPath = dirPath + "/table/" + keywordList[1] +
-                               "/del.trd";
+        QString afterDelPath = dirPath + "/table/" + keywordList[1] +"/temp.trd";
         QFile writeFile(afterDelPath);
+        if (writeFile.exists()){
+            writeFile.close();
+            readFile.close();
+            QFile readFile1(afterDelPath);
+            if (!readFile1.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << "文件打开失败";
+                return;
+            }
+            QTextStream read1(&readFile1);
+            QString afterDelPath1 = dirPath + "/table/" + keywordList[1] +"/temp1.trd";
+            QFile writeFile1(afterDelPath1);
+            if (!writeFile1.open(QIODevice::WriteOnly|QIODevice::Text)){
+                qDebug()<<"文件打开失败！";
+                return;
+            }
+            QTextStream write(&writeFile1);
+            QStringList list, datalist, updateline;
+            QString str, fofield, data, updateInfo;
 
-        if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            qDebug() << "文件打开失败";
-            return;
-        }
-        QTextStream write(&writeFile);
-        QStringList list, datalist, updateline;
-        QString str, fofield, data, updateInfo;
+            fofield = keywordList[4];
 
-        fofield = keywordList[4];
+            // 要定位行的那一列的列号
+            int foColId = 0;
 
-        // 要定位行的那一列的列号
-        int foColId = 0;
+            while (!readfield.atEnd()) {
+                str = readfield.readLine();
+                list = str.split(",");
 
-        while (!readfield.atEnd()) {
-            str = readfield.readLine();
-            list = str.split(",");
+                if (list[0] == fofield) {
+                    qDebug() << "foid=" << foColId;
 
-            if (list[0] == fofield) {
-                qDebug() << "foid=" << foColId;
+                    while (!read1.atEnd()) {
+                        data = read1.readLine();
+                        datalist = data.split(",");
 
-                while (!read.atEnd()) {
-                    data = read.readLine();
-                    datalist = data.split(",");
+                        if (datalist[foColId] == keywordList[6]) {
+                            updateline = datalist;
+                            updateInfo = "";
 
-                    if (datalist[foColId] == keywordList[6]) {
-                        updateline = datalist;
-                        updateInfo = "";
-
-                        for (int i = 0; i < updateline.size(); i++) {
-                            if (i < updateline.size() - 1) {
-                                if (i == updateColId) {
-                                    updateInfo = updateInfo + keywordList[3] + ",";
-                                } else {
-                                    updateInfo = updateInfo + updateline[i] + ",";
+                            for (int i = 0; i < updateline.size(); i++) {
+                                if (i < updateline.size() - 1) {
+                                    if (i == updateColId) {
+                                        updateInfo = updateInfo + keywordList[3] + ",";
+                                    } else {
+                                        updateInfo = updateInfo + updateline[i] + ",";
+                                    }
+                                } else if (i == updateline.size() - 1) {
+                                    if (i == updateColId) {
+                                        updateInfo = updateInfo + keywordList[3];
+                                    } else {
+                                        updateInfo = updateInfo + updateline[i];
+                                    }
                                 }
-                            } else if (i == updateline.size() - 1) {
-                                if (i == updateColId) {
-                                    updateInfo = updateInfo + keywordList[3];
-                                } else {
-                                    updateInfo = updateInfo + updateline[i];
-                                }
+                                qDebug() << "updateInfo=" << updateInfo;
                             }
                             qDebug() << "updateInfo=" << updateInfo;
+                            write << updateInfo + "\n";
+                        } else {
+                            write << data + "\n";
                         }
-                        qDebug() << "updateInfo=" << updateInfo;
-                        write << updateInfo + "\n";
-                    } else {
-                        write << data + "\n";
                     }
+                } else {
+                    foColId++;
                 }
-            } else {
-                foColId++;
             }
+            writeintoLOG(2, keywordList); //    写入日志
+            fieldFile.close();
+            readFile1.close();
+            readFile1.remove();
+            writeFile1.close();
+            writeFile1.rename(afterDelPath);
+
+        } else{
+            if (!writeFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                qDebug() << "文件打开失败";
+                return;
+            }
+            QTextStream write(&writeFile);
+            QStringList list, datalist, updateline;
+            QString str, fofield, data, updateInfo;
+
+            fofield = keywordList[4];
+
+            // 要定位行的那一列的列号
+            int foColId = 0;
+
+            while (!readfield.atEnd()) {
+                str = readfield.readLine();
+                list = str.split(",");
+
+                if (list[0] == fofield) {
+                    qDebug() << "foid=" << foColId;
+
+                    while (!read.atEnd()) {
+                        data = read.readLine();
+                        datalist = data.split(",");
+
+                        if (datalist[foColId] == keywordList[6]) {
+                            updateline = datalist;
+                            updateInfo = "";
+
+                            for (int i = 0; i < updateline.size(); i++) {
+                                if (i < updateline.size() - 1) {
+                                    if (i == updateColId) {
+                                        updateInfo = updateInfo + keywordList[3] + ",";
+                                    } else {
+                                        updateInfo = updateInfo + updateline[i] + ",";
+                                    }
+                                } else if (i == updateline.size() - 1) {
+                                    if (i == updateColId) {
+                                        updateInfo = updateInfo + keywordList[3];
+                                    } else {
+                                        updateInfo = updateInfo + updateline[i];
+                                    }
+                                }
+                                qDebug() << "updateInfo=" << updateInfo;
+                            }
+                            qDebug() << "updateInfo=" << updateInfo;
+                            write << updateInfo + "\n";
+                        } else {
+                            write << data + "\n";
+                        }
+                    }
+                } else {
+                    foColId++;
+                }
+            }
+            writeintoLOG(2, keywordList); //    写入日志
+            fieldFile.close();
+            readFile.close();
+            //readFile.remove();
+            writeFile.close();
+            //writeFile.rename(tablePath);
         }
-        writeintoLOG(2, keywordList); //    写入日志
-        fieldFile.close();
-        readFile.close();
-        readFile.remove();
-        writeFile.close();
-        writeFile.rename(tablePath);
+
     } else {
         QMessageBox::critical(0, "错误", "无修改数据权限操作！",
                               QMessageBox::Ok | QMessageBox::Default,
                               QMessageBox::Cancel | QMessageBox::Escape, 0);
     }
-}
+    }
 
 //写入日志
 void managedatabysql::writeintoLOG(int i, QStringList keywordList) {
 
     QDir *dir = new QDir(QDir::currentPath());
     dir->cdUp();
-    QString fileName = dir->path() + "/DBMS/log/sys.txt";
+    QString fileName = dir->path() + "/log/sys.txt";
     QFile   file(fileName);
     QDateTime dateTime;
     dateTime = QDateTime::currentDateTime();

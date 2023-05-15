@@ -76,41 +76,34 @@ void registerw::on_quitButton_clicked() {
     ui->psw2->clear();
 }
 //返回数据库文件夹下的所有数据库
-void registerw::getDbList() {
+// 返回数据库文件夹的目录
+void registerw::getDbList()
+{
     QDir *dir = new QDir(QDir::currentPath());
 
     dir->cdUp();
-    //获取数据库文件夹路径
+
+    // --1 判断文件夹是否存在
     QString folderPath = dir->path() + "/data";
-    QDir dbDir(folderPath);
-    if (!dbDir.exists()) {
-        qDebug() << "数据库文件夹不存在";
-        QMessageBox::critical(nullptr, "错误", "数据库文件夹不存在",
-                              QMessageBox::Ok | QMessageBox::Default,
-                              QMessageBox::Cancel | QMessageBox::Escape, 0);
+    QDir    dbDir(folderPath);
 
-        // --1 判断文件夹是否存在
-        QString folderPath = dir->path() + "/data";
-        QDir dbDir(folderPath);
+    if (!dbDir.exists())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
+        return;
+    }
 
-        if (!dbDir.exists()) {
-            QMessageBox::critical(this, tr("错误"), tr("文件夹找不到"));
-            return;
-        }
+    // --2 获取当前路径下所有的文件夹名字
+    // -- 注：QDir::Dirs 为获取所有文件夹名称，获取文件名称需要修改
+    QStringList names = dbDir.entryList(QDir::Dirs);
 
-        // --2 获取当前路径下所有的文件夹名字
-        // -- 注：QDir::Dirs 为获取所有文件夹名称，获取文件名称需要修改
-        QStringList names = dbDir.entryList(QDir::Dirs);
+    // --3 删除当前文件夹和上级文件夹（温馨提示：隐藏的文件夹获取不了）
+    names.removeOne(".");
+    names.removeOne("..");
+    names.removeOne("sys");
 
-        // --3 删除当前文件夹和上级文件夹（温馨提示：隐藏的文件夹获取不了）
-        names.removeOne(".");
-        names.removeOne("..");
-        names.removeOne("sys");
-
-        // --4 将数据库名称添加到组件中
-        for (int i = 0; i < names.size(); i++) {
-            ui->dbName->addItem(names[i]);
-        }
-
+    // --4 将数据库名称添加到组件中
+    for (int i = 0; i < names.size(); i++) {
+        ui->dbName->addItem(names[i]);
     }
 }

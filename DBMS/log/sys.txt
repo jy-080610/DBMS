@@ -334,3 +334,5 @@ DBMS2|liuxiao|2023-05-15 13:35:33|insert into student values(98,72);
 DBMS2|liuxiao|2023-05-15 13:35:42|insert into student values(99,53);
 DBMS2|liuxiao|2023-05-15 13:35:51|insert into student values(100,89);
 DBMS2|liuxiao|2023-05-15 13:36:54|update student set Sno=111 where Sname=82;
+test|wende|2023-05-15 16:55:30|update student set grade=88 where sno=66;
+test|wende|2023-05-15 16:55:47|update student set grade=88 where sno=56;
