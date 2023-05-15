@@ -1,3 +1,0 @@
-cno,varchar,主键,非空
-cnname,varchar,非主键,非空
-cid,varchar,非主键,非空
