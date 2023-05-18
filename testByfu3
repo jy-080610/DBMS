@@ -4,73 +4,7 @@
 
 // You may need 
 dataoperation::dataoperation(QWidget *parent) :
-        QWidget(parent), ui(new Ui::dataoperation) {
-    ui->setupUi(this);
-    initDir();//初始化文件夹
-}
-
-dataoperation::~dataoperation() {
-    delete ui;
-}
-//初始化文件夹
-void dataoperation::initDir() {
-        QDir *dir = new QDir(QDir::currentPath());
-        dir->cdUp();
-        QFile file(dir->path() + "/data/sys/curuse.txt");
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            qDebug() << "文件打开失败";
-        }
-        QTextStream read(&file);
-        QStringList list;
-        QString str = read.readLine();
-        list = str.split(",");
-        user=list[0];
-        dirPath= dir->path() + "/data/" + list[1];
-        qDebug() << dirPath;
-        file.close();
-}
-bool dataoperation::isDigitString(const QString& src) {
-    const char *s=src.toUtf8().data();//将QString转char*
-    while (*s && *s >= '0' && *s <= '9') s++;
-    return !bool (*s);//如果是数字返回true
-}
-//判断是否为日期
-bool dataoperation::isDateString(QString str) {
-    QDateTime date = QDateTime::fromString(str, "yyyyMMdd");//设置时间格式
-    bool res;
-    if(str==""){
-        return true;
-    }
-    else res=date.isValid();//判断是否为日期,isvalid()函数用于判断是否为有效的日期,返回值为bool类型
-    if(res){//如果是日期
-       qDebug()<<"是日期"<<res;
-    }
-    else{
-        qDebug()<<"不是日期"<<res;
-
-    }
-    return res;
-}
-
-void dataoperation::on_pushButton_clicked() {
-    //表文件
-    QString fileName=dirPath+"/table/"+
-            this->ui->path->text()+"/"+
-            this->ui->path->text()+".trd";
-    qDebug()<<"fileName:"<<fileName;
-    filename =fileName;
-    //字段文件
-    QString tablePath=dirPath+"/table/"+
-            this->ui->path->text()+"/"+
-            this->ui->path->text()+".tdf";
-    qDebug()<<"tablePath:"<<tablePath;
-    QFile tablefile(tablePath);
-    if (!tablefile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "文件打开失败";
-    }
-    QTextStream readtable(&tablefile);
-    QStringList tablelist;
-    QStringList headlist;
+        QWidget(parent), ui(new Ui::dataoperatiogList headlist;
     QString readinfo;
     //表头
     while(!readtable.atEnd()) {
