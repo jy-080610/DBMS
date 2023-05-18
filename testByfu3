@@ -1,12 +1,4 @@
-//
-// 数据的增插删改保存操作
-//
 
-// You may need 
-dataoperation::dataoperation(QWidget *parent) :
-        QWidget(parent), ui(new Ui::dataoperatiogList headlist;
-    QString readinfo;
-    //表头
     while(!readtable.atEnd()) {
         readinfo = readtable.readLine();//读取一行
         tablelist = readinfo.split(",");//分割
