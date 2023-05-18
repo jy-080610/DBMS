@@ -1,0 +1,1150 @@
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
+#include<iostream>
+using namespace std;
+
+int merge(int* array,int left,int right) {
+	int L=left;
+	int R=(left+right)/2+1;
+	int n=right-left+1;
+	int test[1000]= {0};
+	int i=left;
+
+	int sum=0;
+	while(L<=(left+right)/2 && R<=right) {
+		if(array[L]<=array[R]) {
+			test[i]=array[L];
+			i++;
+			L++;
+		} else {
+			test[i]=array[R];
+			i++;
+			R++;
+			sum+=(left+right)/2+1-L;
+		}
+	}
+
+	while(L<=(left+right)/2) {
+		test[i]=array[L];
+		i++;
+		L++;
+	}
+
+	while(R<=right) {
+		test[i]=array[R];
+		i++;
+		R++;
+	}
+
+	for(int j=left; j<=right; j++) {
+		array[j]=test[j];
+	}
+	return sum;
+}
+
+int GetReversePair(int* array,int left,int right) {
+	if(left==right)
+		return 0;
+	else {
+		int leftValue=GetReversePair(array,left,(left+right)/2);
+		int rightValue=GetReversePair(array,(left+right)/2+1,right);
+		int midValue=merge(array,left,right);
+		return leftValue+rightValue+midValue;
+	}
+
+}
+int main() {
+	int n;
+	cin>>n;
+	int array[n]= {0};
+	for(int i=0; i<n; i++) {
+		cin>>array[i];
+	}
+	int output=GetReversePair(array,0,n-1);
+	cout<<output<<endl;
+	return 0;
+}
