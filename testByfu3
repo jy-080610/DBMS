@@ -4,10 +4,6 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_dataoperation.h" resolved
 
-#include "dataoperation.h"
-#include "ui_dataoperation.h"
-#include "privilegemanager.h"
-#include "QFileDialog"
 #include "qdebug.h"
 #include "qmessagebox.h"
 #include "iostream"
